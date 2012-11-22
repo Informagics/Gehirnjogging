@@ -1,9 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Informagic</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="menu_settings">Settings</string>
-    <string name="title_activity_main_menue">MainMenue</string>
+    <string name="app_name">Gehirnjogging</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="geteilt">/</string>
+    <string name="multiplizieren">*</string>
     <string name="Highscores">Highscores</string>
     <string name="Start">Start</string>
     <string name="Optionen">Optionen</string>

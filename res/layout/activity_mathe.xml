@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mathe"
+    android:gravity="left"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/IMVPlus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/textView1"
+        android:background="@null" />
+
+    <TextView
+        android:id="@+id/punkte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="196dp"
+        android:layout_y="18dp"
+         android:textSize="20sp"
+        android:text="Punktezahl : " />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_x="367dp"
+        android:layout_y="45dp"
+         android:textSize="15sp"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_x="196dp"
+        android:layout_y="46dp"
+         android:textSize="15sp"
+        android:text="" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="260dp"
+        android:layout_y="248dp"
+        android:onClick="sendMessage"
+        android:text="@string/multiplizieren" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="28dp"
+        android:layout_x="204dp"
+        android:layout_y="248dp"
+        android:onClick="sendMessage"
+        android:text="@string/plus" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="234dp"
+        android:layout_y="248dp"
+        android:onClick="sendMessage"
+        android:text="@string/geteilt" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="288dp"
+        android:layout_y="248dp"
+        android:onClick="sendMessage"
+        android:text="@string/minus" />
+
+    <ImageView
+        android:id="@+id/IMVSprechblase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="216dp"
+        android:layout_y="11dp"
+        android:visibility="invisible"
+        android:src="@drawable/sprechblase" />
+
+    <TextView
+        android:id="@+id/txtNur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="252dp"
+        android:layout_y="55dp"
+          android:visibility="invisible"
+        android:text="Du hast nur" />
+
+    <TextView
+        android:id="@+id/txtSchlecht"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="236dp"
+        android:layout_y="81dp"
+          android:visibility="invisible"
+        android:text="erreicht. GOTT ist das schlecht!" />
+
+</AbsoluteLayout>

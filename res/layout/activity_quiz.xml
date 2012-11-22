@@ -1,0 +1,116 @@
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_new_new" >
+
+    <TextView
+        android:id="@+id/txtHighscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="152dp"
+        android:layout_y="25dp"
+        android:text=""
+        android:textColor="#FFFFFF" />
+
+    <ImageView
+        android:id="@+id/IMVLinks"
+        android:layout_width="266dp"
+        android:layout_height="wrap_content"
+        android:layout_x="51dp"
+        android:layout_y="112dp"
+        android:visibility="invisible"
+        android:src="@drawable/quiz_pointer_1" />
+
+    <ImageView
+        android:id="@+id/IMVKat1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="23dp"
+        android:layout_y="73dp"
+        android:src="@drawable/quiz_button_1" />
+
+    <TextView
+        android:id="@+id/txtKat1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="58dp"
+        android:layout_y="83dp"
+        android:text="TextView"
+         android:textSize="12sp"
+        android:textColor="#FFFFFF" />
+
+    <ImageView
+        android:id="@+id/IMVKat2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="190dp"
+        android:layout_y="72dp"
+        android:src="@drawable/quiz_button_1" />
+
+    <ImageView
+        android:id="@+id/IMVOben"
+        android:layout_width="22dp"
+        android:layout_height="wrap_content"
+        android:layout_x="250dp"
+        android:layout_y="113dp"
+        android:visibility="invisible"
+        android:src="@drawable/quiz_pointer_2" />
+
+    <TextView
+        android:id="@+id/txtKat2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="230dp"
+        android:layout_y="84dp"
+        android:text="TextView"
+         android:textSize="12sp"
+        android:textColor="#FFFFFF" />
+
+    <ImageView
+        android:id="@+id/IMVKat3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="370dp"
+        android:layout_y="74dp"
+        android:src="@drawable/quiz_button_1" />
+
+    <TextView
+        android:id="@+id/txtKat3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="408dp"
+        android:layout_y="87dp"
+        android:text="TextView"
+         android:textSize="12sp"
+        android:textColor="#FFFFFF" />
+
+    <ImageView
+        android:id="@+id/IMVRechts"
+        android:layout_width="242dp"
+        android:layout_height="wrap_content"
+        android:layout_x="214dp"
+        android:layout_y="112dp"
+        android:visibility="invisible"
+        android:src="@drawable/quiz_pointer_3" />
+
+    <TextView
+        android:id="@+id/txtBegriff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="235dp"
+        android:layout_y="258dp"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/txtResponse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="423dp"
+        android:layout_y="230dp"
+        android:text=""
+        android:textColor="#FFFFFF" />
+
+</AbsoluteLayout>
