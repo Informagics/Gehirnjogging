@@ -2,6 +2,7 @@ package com.informagics.gehirnjogging.menue;
 
 import com.informagics.gehirnjogging.R;
 import com.informagics.gehirnjogging.bitout.BitOut;
+import com.informagics.gehirnjogging.kabelbinder.kabelbinder;
 import com.informagics.gehirnjogging.mathe.mathe;
 import com.informagics.gehirnjogging.quiz.Quiz;
 
@@ -32,7 +33,7 @@ public class Spielauswahl extends Activity {
     
     public void Kabelbinder(View view)
     {
-    	Intent intent = new Intent(this, BitOut.class);
+    	Intent intent = new Intent(this, kabelbinder.class);
     	startActivity(intent);
     }
 

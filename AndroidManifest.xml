@@ -64,9 +64,17 @@
                 android:value="com.informagics.gehirnjogging.menue.Spielauswahl"/>
          </activity>
          <activity
-             android:label="Kabelbinder"
+             android:label="BitOut"
              android:screenOrientation="landscape"
              android:name="com.informagics.gehirnjogging.bitout.BitOut">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.informagics.gehirnjogging.menue.Spielauswahl"/>
+         </activity>
+         <activity
+             android:label="Kabelbinder"
+             android:screenOrientation="landscape"
+             android:name="com.informagics.gehirnjogging.kabelbinder.kabelbinder">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.informagics.gehirnjogging.menue.Spielauswahl"/>

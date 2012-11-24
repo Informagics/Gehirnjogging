@@ -69,8 +69,7 @@ public class Quiz extends Activity {
         final TextView response = (TextView) findViewById(R.id.txtResponse);
         final ImageView oben = (ImageView) findViewById(R.id.IMVKat2); // Var. oben das ImageView IMVKAT2 zuweisen
         final TextView highscore = (TextView) findViewById(R.id.txtHighscore);
-     
-        InputStream is;
+        
 		try {
 			 txt = convertStreamToString("fragen.txt");
 		} catch (IOException e1) {
@@ -85,13 +84,13 @@ public class Quiz extends Activity {
 		http://www.mybringback.com/tutorial-series/3279/android-the-basics-32-androids-ontouchlistener-and-motionevent/ 
 		*/
 
-        oben.setOnTouchListener(new OnTouchListener(){ //Ontouchlistener fï¿½r die mittlere Kategorie
+        oben.setOnTouchListener(new OnTouchListener(){ //Ontouchlistener für die mittlere Kategorie
         
            
 			public boolean onTouch(View oben, MotionEvent event) {
                 switch (event.getAction())
                 {
-                    case MotionEvent.ACTION_DOWN: //Wenn ImageView gedrï¿½ckt wurde
+                    case MotionEvent.ACTION_DOWN: //Wenn ImageView gedrückt wurde
                     {
                     	if( bereitsgeklickt==1)
                     		return true; // Verlassen der onTOuch falls die Kategorie bereits geklickt wurde.
@@ -130,7 +129,7 @@ public class Quiz extends Activity {
 			public boolean onTouch(View links, MotionEvent event) {
                 switch (event.getAction())
                 {
-                    case MotionEvent.ACTION_DOWN: //Wenn ImageView gedrï¿½ckt wurde
+                    case MotionEvent.ACTION_DOWN: //Wenn ImageView gedrückt wurde
                     {
                     	
                     	  if( bereitsgeklickt==1)
@@ -169,7 +168,7 @@ public class Quiz extends Activity {
 			public boolean onTouch(View rechts, MotionEvent event) {
                 switch (event.getAction())
                 {
-                    case MotionEvent.ACTION_DOWN: //Wenn ImageView gedrï¿½ckt wurde
+                    case MotionEvent.ACTION_DOWN: //Wenn ImageView gedrückt wurde
                     {
                     	if( bereitsgeklickt==1)
                     		return true;
@@ -266,7 +265,7 @@ public int getQuestion(){
 	//Quelle : 
     public void neueRunde(){
     	
-    	 //Neue Runde einleiten(Alle werte zurï¿½cksetzen)
+    	 //Neue Runde einleiten(Alle werte zurücksetzen)
     	 ImageView opfeil = (ImageView) findViewById(R.id.IMVOben); //Mittleres IMGVIew
          ImageView rpfeil = (ImageView) findViewById(R.id.IMVRechts); // Rechtes ImageView
          ImageView lpfeil = (ImageView) findViewById(R.id.IMVLinks); // Linkes Imageview
@@ -297,7 +296,7 @@ public int getQuestion(){
     	char[] buffer = new char[2048];
     	try
     	{
-    		Reader reader = new BufferedReader(new InputStreamReader(is, "ISO-8859-1"));
+    		Reader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
     		int n;
     		while ((n = reader.read(buffer)) != -1) //Solange das Ende der Datei noch erreicht wurd
     		{
@@ -306,10 +305,10 @@ public int getQuestion(){
     	}
     	finally
     	{
-    		is.close(); //Zugriff auf die Datei schlieÃŸen
+    		is.close(); //Zugriff auf die Datei schließen
     	}
     	String text = writer.toString(); // In Var. text schreiben und in von Bit in String wandeln
-    	return text; //Text zurÃ¼ckgeben
+    	return text; //Text zurückgeben
     }
     
     public void stop(){

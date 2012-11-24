@@ -1,21 +1,75 @@
 package com.informagics.gehirnjogging.bitout;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringWriter;
+import java.io.Writer;
+
 import com.informagics.gehirnjogging.R;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 import android.app.Activity;
 
 public class BitOut extends Activity {
 
 	int moves=0;
+	int mode=0; //0=noch nicht gelöst 1=gelöst
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_bit_out);
+		
+		Levelinit(1);
 	}
+	
+	public void Levelinit(int Map)
+	{
+		String textdatei = null;
+		try {
+			textdatei=convertStreamToString("Bitout.txt");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		String[] Zeilen=textdatei.split("\n");
+		for(int y=0;y<5;y++){
+			String[] Spalten=Zeilen[Map].split(" ");
+			for(int x=0;x<5;x++){
+				((Button) findViewById(R.id.b00+x+6*y)).setText(Spalten[x+5*y]);
+			}
+		}
+	}
+	
+	public String convertStreamToString(String filename) throws IOException
+    {
+    	InputStream is = getResources().getAssets().open(filename);
+    	Writer writer = new StringWriter();
+    	char[] buffer = new char[2048];
+    	try
+    	{
+    		Reader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+    		int n;
+    		while ((n = reader.read(buffer)) != -1) //Solange das Ende der Datei noch erreicht wurd
+    		{
+    			writer.write(buffer, 0, n); //Schreiben buffer von 0 bis n
+    		}
+    	}
+    	finally
+    	{
+    		is.close(); //Zugriff auf die Datei schließen
+    	}
+    	String text = writer.toString(); // In Var. text schreiben und in von Bit in String wandeln
+    	return text; //Text zurÃ¼ckgeben
+    }
 	
 	void domove(int y,int x){		
 		int x1 = x - 1, x2 = x + 1, y1 = y - 1, y2 = y + 1;
@@ -44,10 +98,10 @@ public class BitOut extends Activity {
 	
 	void wechsel(Button view)
 	{
-		if(view.getText()=="1")
-			view.setText("0");
-		else
+		if("0".equals(view.getText()))
 			view.setText("1");
+		else
+			view.setText("0");
 	}
 	
 	public void clicked(View view){
@@ -55,18 +109,25 @@ public class BitOut extends Activity {
 		int x=zahl%6;
 		int y=(zahl-x)/6;
 		
-		//Button button = (Button) findViewById(view.getId());
-		//Button button2=(Button)findViewById(R.id.b00+8*y+x);
-		//ImageView iw;
-		//button2.setText("Test");
-		//Toast.makeText(getApplicationContext(), ""+y+" "+x, 100).show();
-		
 	    //clicked on cell (y,x)
-	    domove(y,x);
-	   	moves++;
-	   	/*if(mode==1 && solved())
+	   	if(mode==0)
 	   	{
-	   		mode=0;
-    	}*/
+    		moves++;
+    		((TextView) findViewById(R.id.Clicks)).setText("Clicks: "+moves);
+    		domove(y,x);
+    	}
+	   	solved();
+	}
+	
+	public void solved()
+	{
+		for(int y=0;y<5;y++){
+			for(int x=0;x<5;x++){
+				if("1".equals(((Button) findViewById(R.id.b00+x+6*y)).getText()))
+					return;
+			}
+		}
+		Toast.makeText(getApplicationContext(), "gelöst", Toast.LENGTH_SHORT).show();
+		mode=1;
 	}
 }
