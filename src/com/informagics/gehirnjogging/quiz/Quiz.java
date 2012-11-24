@@ -72,9 +72,7 @@ public class Quiz extends Activity {
      
         InputStream is;
 		try {
-			 is = getResources().getAssets().open("fragen.txt");
-				String textfile = convertStreamToString(is);
-				txt=textfile;
+			 txt = convertStreamToString("fragen.txt");
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -87,13 +85,13 @@ public class Quiz extends Activity {
 		http://www.mybringback.com/tutorial-series/3279/android-the-basics-32-androids-ontouchlistener-and-motionevent/ 
 		*/
 
-        oben.setOnTouchListener(new OnTouchListener(){ //Ontouchlistener für die mittlere Kategorie
+        oben.setOnTouchListener(new OnTouchListener(){ //Ontouchlistener fï¿½r die mittlere Kategorie
         
            
 			public boolean onTouch(View oben, MotionEvent event) {
                 switch (event.getAction())
                 {
-                    case MotionEvent.ACTION_DOWN: //Wenn ImageView gedrückt wurde
+                    case MotionEvent.ACTION_DOWN: //Wenn ImageView gedrï¿½ckt wurde
                     {
                     	if( bereitsgeklickt==1)
                     		return true; // Verlassen der onTOuch falls die Kategorie bereits geklickt wurde.
@@ -132,7 +130,7 @@ public class Quiz extends Activity {
 			public boolean onTouch(View links, MotionEvent event) {
                 switch (event.getAction())
                 {
-                    case MotionEvent.ACTION_DOWN: //Wenn ImageView gedrückt wurde
+                    case MotionEvent.ACTION_DOWN: //Wenn ImageView gedrï¿½ckt wurde
                     {
                     	
                     	  if( bereitsgeklickt==1)
@@ -171,7 +169,7 @@ public class Quiz extends Activity {
 			public boolean onTouch(View rechts, MotionEvent event) {
                 switch (event.getAction())
                 {
-                    case MotionEvent.ACTION_DOWN: //Wenn ImageView gedrückt wurde
+                    case MotionEvent.ACTION_DOWN: //Wenn ImageView gedrï¿½ckt wurde
                     {
                     	if( bereitsgeklickt==1)
                     		return true;
@@ -268,7 +266,7 @@ public int getQuestion(){
 	//Quelle : 
     public void neueRunde(){
     	
-    	 //Neue Runde einleiten(Alle werte zurücksetzen)
+    	 //Neue Runde einleiten(Alle werte zurï¿½cksetzen)
     	 ImageView opfeil = (ImageView) findViewById(R.id.IMVOben); //Mittleres IMGVIew
          ImageView rpfeil = (ImageView) findViewById(R.id.IMVRechts); // Rechtes ImageView
          ImageView lpfeil = (ImageView) findViewById(R.id.IMVLinks); // Linkes Imageview
@@ -286,31 +284,32 @@ public int getQuestion(){
          rpfeil.setVisibility(4);
          
          response.setText("");
-         check=getQuestion(); // Neue Frage auswählen und in der Funktion setzen
+         check=getQuestion(); // Neue Frage auswï¿½hlen und in der Funktion setzen
          
     }
     
     //Quelle : http://stackoverflow.com/questions/4789325/android-path-to-asset-txt-file
     
-    public static String convertStreamToString(InputStream is)
-            throws IOException {
-            Writer writer = new StringWriter();
-
-            char[] buffer = new char[2048];
-            try {
-                Reader reader = new BufferedReader(new InputStreamReader(is,
-                        "UTF-8"));
-                int n;
-                while ((n = reader.read(buffer)) != -1) { //Solange das Ende der Datei noch erreicht wurde
-                	
-                    writer.write(buffer, 0, n); //Schreiben buffer von 0 bis n
-                    
-                }
-            } finally {
-                is.close(); //Zugriff auf die Datei schließen
-            }
-            String text = writer.toString(); // In Var. text schreiben und in von Bit in String wandeln
-            return text; //Text zurückgeben
+    public String convertStreamToString(String filename) throws IOException
+    {
+    	InputStream is = getResources().getAssets().open(filename);
+    	Writer writer = new StringWriter();
+    	char[] buffer = new char[2048];
+    	try
+    	{
+    		Reader reader = new BufferedReader(new InputStreamReader(is, "ISO-8859-1"));
+    		int n;
+    		while ((n = reader.read(buffer)) != -1) //Solange das Ende der Datei noch erreicht wurd
+    		{
+    			writer.write(buffer, 0, n); //Schreiben buffer von 0 bis n
+    		}
+    	}
+    	finally
+    	{
+    		is.close(); //Zugriff auf die Datei schlieÃŸen
+    	}
+    	String text = writer.toString(); // In Var. text schreiben und in von Bit in String wandeln
+    	return text; //Text zurÃ¼ckgeben
     }
     
     public void stop(){
