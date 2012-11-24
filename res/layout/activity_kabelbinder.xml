@@ -1,0 +1,256 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".BitOutActivity" >
+
+    <TableLayout
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:layout_gravity="center_horizontal" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:id="@+id/i00"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="Clicked"
+                android:src="@drawable/cable_curve_1" />
+
+            <ImageView
+                android:id="@+id/i01"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="Clicked"
+                android:src="@drawable/cable_double_1" />
+
+            <ImageView
+                android:id="@+id/i02"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="Clicked"
+                android:src="@drawable/cable_double_1" />
+
+            <ImageView
+                android:id="@+id/i03"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="Clicked"
+                android:src="@drawable/cable_double_1" />
+
+            <ImageView
+                android:id="@+id/i04"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="Clicked"
+                android:src="@drawable/cable_double_1" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:id="@+id/i10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="Clicked"
+                android:src="@drawable/cable_double_1" />
+
+            <ImageView
+                android:id="@+id/i11"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="Clicked"
+                android:src="@drawable/cable_double_1" />
+
+            <ImageView
+                android:id="@+id/i12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="Clicked"
+                android:src="@drawable/cable_double_1" />
+
+            <ImageView
+                android:id="@+id/i13"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="Clicked"
+                android:src="@drawable/cable_double_1" />
+
+            <ImageView
+                android:id="@+id/i14"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="Clicked"
+                android:src="@drawable/cable_double_1" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:id="@+id/ImageView14"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="Clicked"
+                android:src="@drawable/cable_double_1" />
+
+            <ImageView
+                android:id="@+id/ImageView13"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="Clicked"
+                android:src="@drawable/cable_double_1" />
+
+            <ImageView
+                android:id="@+id/ImageView12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="Clicked"
+                android:src="@drawable/cable_double_1" />
+
+            <ImageView
+                android:id="@+id/ImageView11"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="Clicked"
+                android:src="@drawable/cable_double_1" />
+
+            <ImageView
+                android:id="@+id/ImageView10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="Clicked"
+                android:src="@drawable/cable_double_1" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:id="@+id/ImageView19"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="Clicked"
+                android:src="@drawable/cable_double_1" />
+
+            <ImageView
+                android:id="@+id/ImageView18"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="Clicked"
+                android:src="@drawable/cable_double_1" />
+
+            <ImageView
+                android:id="@+id/ImageView17"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="Clicked"
+                android:src="@drawable/cable_double_1" />
+
+            <ImageView
+                android:id="@+id/ImageView16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="Clicked"
+                android:src="@drawable/cable_double_1" />
+
+            <ImageView
+                android:id="@+id/ImageView15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="Clicked"
+                android:src="@drawable/cable_double_1" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow5"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:id="@+id/ImageView19"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="Clicked"
+                android:src="@drawable/cable_double_1" />
+
+            <ImageView
+                android:id="@+id/ImageView18"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="Clicked"
+                android:src="@drawable/cable_double_1" />
+
+            <ImageView
+                android:id="@+id/ImageView17"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="Clicked"
+                android:src="@drawable/cable_double_1" />
+
+            <ImageView
+                android:id="@+id/ImageView16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="Clicked"
+                android:src="@drawable/cable_double_1" />
+
+            <ImageView
+                android:id="@+id/ImageView15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="Clicked"
+                android:src="@drawable/cable_double_1" />
+        </TableRow>
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/Clickskabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clicks: 0" />
+
+</LinearLayout>
