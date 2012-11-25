@@ -1,18 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
 <AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/mathe"
-    android:gravity="left"
-    android:orientation="horizontal" >
+    android:background="@drawable/mathe" >
 
     <ImageView
         android:id="@+id/IMVPlus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/textView1"
+        android:contentDescription="@string/desc"
         android:background="@null" />
 
     <TextView
@@ -21,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_x="196dp"
         android:layout_y="18dp"
-         android:textSize="20sp"
+        android:textSize="20sp"
         android:text="Punktezahl : " />
 
     <TextView
@@ -88,6 +85,7 @@
         android:layout_x="216dp"
         android:layout_y="11dp"
         android:visibility="invisible"
+        android:contentDescription="@string/desc"
         android:src="@drawable/sprechblase" />
 
     <TextView
@@ -96,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_x="252dp"
         android:layout_y="55dp"
-          android:visibility="invisible"
+        android:visibility="invisible"
         android:text="Du hast nur" />
 
     <TextView
@@ -105,7 +103,7 @@
         android:layout_height="wrap_content"
         android:layout_x="236dp"
         android:layout_y="81dp"
-          android:visibility="invisible"
+        android:visibility="invisible"
         android:text="erreicht. GOTT ist das schlecht!" />
 
 </AbsoluteLayout>

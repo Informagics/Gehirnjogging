@@ -12,7 +12,7 @@
         android:layout_gravity="center_horizontal" >
 
         <TableRow
-            android:id="@+id/tableRow1"
+            android:id="@+id/itr0"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1" >
@@ -23,6 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="Clicked"
+                android:contentDescription="@string/desc"
                 android:src="@drawable/cable_curve_1" />
 
             <ImageView
@@ -31,6 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="Clicked"
+                android:contentDescription="@string/desc"
                 android:src="@drawable/cable_double_1" />
 
             <ImageView
@@ -39,6 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="Clicked"
+                android:contentDescription="@string/desc"
                 android:src="@drawable/cable_double_1" />
 
             <ImageView
@@ -47,6 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="Clicked"
+                android:contentDescription="@string/desc"
                 android:src="@drawable/cable_double_1" />
 
             <ImageView
@@ -55,11 +59,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="Clicked"
+                android:contentDescription="@string/desc"
                 android:src="@drawable/cable_double_1" />
         </TableRow>
 
         <TableRow
-            android:id="@+id/tableRow2"
+            android:id="@+id/itr1"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1" >
@@ -70,6 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="Clicked"
+                android:contentDescription="@string/desc"
                 android:src="@drawable/cable_double_1" />
 
             <ImageView
@@ -78,6 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="Clicked"
+                android:contentDescription="@string/desc"
                 android:src="@drawable/cable_double_1" />
 
             <ImageView
@@ -86,6 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="Clicked"
+                android:contentDescription="@string/desc"
                 android:src="@drawable/cable_double_1" />
 
             <ImageView
@@ -94,6 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="Clicked"
+                android:contentDescription="@string/desc"
                 android:src="@drawable/cable_double_1" />
 
             <ImageView
@@ -102,147 +111,163 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="Clicked"
+                android:contentDescription="@string/desc"
                 android:src="@drawable/cable_double_1" />
         </TableRow>
 
         <TableRow
-            android:id="@+id/tableRow3"
+            android:id="@+id/itr2"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1" >
 
             <ImageView
-                android:id="@+id/ImageView14"
+                android:id="@+id/i20"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="Clicked"
+                android:contentDescription="@string/desc"
                 android:src="@drawable/cable_double_1" />
 
             <ImageView
-                android:id="@+id/ImageView13"
+                android:id="@+id/i21"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="Clicked"
+                android:contentDescription="@string/desc"
                 android:src="@drawable/cable_double_1" />
 
             <ImageView
-                android:id="@+id/ImageView12"
+                android:id="@+id/i22"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="Clicked"
+                android:contentDescription="@string/desc"
                 android:src="@drawable/cable_double_1" />
 
             <ImageView
-                android:id="@+id/ImageView11"
+                android:id="@+id/i23"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="Clicked"
+                android:contentDescription="@string/desc"
                 android:src="@drawable/cable_double_1" />
 
             <ImageView
-                android:id="@+id/ImageView10"
+                android:id="@+id/i24"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="Clicked"
+                android:contentDescription="@string/desc"
                 android:src="@drawable/cable_double_1" />
         </TableRow>
 
         <TableRow
-            android:id="@+id/tableRow4"
+            android:id="@+id/itr3"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1" >
 
             <ImageView
-                android:id="@+id/ImageView19"
+                android:id="@+id/i30"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="Clicked"
+                android:contentDescription="@string/desc"
                 android:src="@drawable/cable_double_1" />
 
             <ImageView
-                android:id="@+id/ImageView18"
+                android:id="@+id/i31"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="Clicked"
+                android:contentDescription="@string/desc"
                 android:src="@drawable/cable_double_1" />
 
             <ImageView
-                android:id="@+id/ImageView17"
+                android:id="@+id/i32"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="Clicked"
+                android:contentDescription="@string/desc"
                 android:src="@drawable/cable_double_1" />
 
             <ImageView
-                android:id="@+id/ImageView16"
+                android:id="@+id/i33"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="Clicked"
+                android:contentDescription="@string/desc"
                 android:src="@drawable/cable_double_1" />
 
             <ImageView
-                android:id="@+id/ImageView15"
+                android:id="@+id/i34"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="Clicked"
+                android:contentDescription="@string/desc"
                 android:src="@drawable/cable_double_1" />
         </TableRow>
 
         <TableRow
-            android:id="@+id/tableRow5"
+            android:id="@+id/itr4"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1" >
 
             <ImageView
-                android:id="@+id/ImageView19"
+                android:id="@+id/i40"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="Clicked"
+                android:contentDescription="@string/desc"
                 android:src="@drawable/cable_double_1" />
 
             <ImageView
-                android:id="@+id/ImageView18"
+                android:id="@+id/i41"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="Clicked"
+                android:contentDescription="@string/desc"
                 android:src="@drawable/cable_double_1" />
 
             <ImageView
-                android:id="@+id/ImageView17"
+                android:id="@+id/i42"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="Clicked"
+                android:contentDescription="@string/desc"
                 android:src="@drawable/cable_double_1" />
 
             <ImageView
-                android:id="@+id/ImageView16"
+                android:id="@+id/i43"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="Clicked"
+                android:contentDescription="@string/desc"
                 android:src="@drawable/cable_double_1" />
 
             <ImageView
-                android:id="@+id/ImageView15"
+                android:id="@+id/i44"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="Clicked"
+                android:contentDescription="@string/desc"
                 android:src="@drawable/cable_double_1" />
         </TableRow>
     </TableLayout>
@@ -251,6 +276,6 @@
         android:id="@+id/Clickskabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Clicks: 0" />
+        android:text="@string/count" />
 
 </LinearLayout>

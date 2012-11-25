@@ -56,7 +56,7 @@ public class BitOut extends Activity {
     	char[] buffer = new char[2048];
     	try
     	{
-    		Reader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+    		Reader reader = new BufferedReader(new InputStreamReader(is, "ISO-8859-1"));
     		int n;
     		while ((n = reader.read(buffer)) != -1) //Solange das Ende der Datei noch erreicht wurd
     		{
@@ -68,7 +68,7 @@ public class BitOut extends Activity {
     		is.close(); //Zugriff auf die Datei schließen
     	}
     	String text = writer.toString(); // In Var. text schreiben und in von Bit in String wandeln
-    	return text; //Text zurÃ¼ckgeben
+    	return text; //Text zurückgeben
     }
 	
 	void domove(int y,int x){		

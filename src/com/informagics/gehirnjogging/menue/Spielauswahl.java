@@ -36,5 +36,11 @@ public class Spielauswahl extends Activity {
     	Intent intent = new Intent(this, kabelbinder.class);
     	startActivity(intent);
     }
+    
+    public void BitOut(View view)
+    {
+    	Intent intent = new Intent(this, BitOut.class);
+    	startActivity(intent);
+    }
 
 }
