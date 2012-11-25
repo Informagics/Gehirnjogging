@@ -11,41 +11,50 @@ import java.io.Writer;
 import com.informagics.gehirnjogging.R;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class kabelbinder extends Activity {
 	
-	int[] Bilder={R.drawable.cable_straight_1,R.drawable.cable_straight_2,
-			R.drawable.cable_curve_1,R.drawable.cable_curve_2,
-			R.drawable.cable_curve_3,R.drawable.cable_curve_4,
-			R.drawable.cable_double_1,R.drawable.cable_double_2,
-			R.drawable.cable_plug_1,R.drawable.cable_plug_2,
-			R.drawable.cable_plug_3,R.drawable.cable_plug_4};
+	int[][] Bilder=
+		{
+			{R.drawable.cable_straight_1,R.drawable.cable_straight_2,R.drawable.cable_straight_1,R.drawable.cable_straight_2},
+			{R.drawable.cable_curve_1,R.drawable.cable_curve_2,R.drawable.cable_curve_3,R.drawable.cable_curve_4},
+			{R.drawable.cable_double_1,R.drawable.cable_double_2,R.drawable.cable_double_1,R.drawable.cable_double_2},
+			{R.drawable.cable_plug_1,R.drawable.cable_plug_2,R.drawable.cable_plug_3,R.drawable.cable_plug_4}
+		};
 	
-	int[] mapwerte = {1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5};
+	String[][] mapwerte = new String[5][5];
+	int Clickzähler=0;
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState)
+	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_kabelbinder);
 		
-		Levelinit(0);//rand für zufalls level
+		Levelinit(1);//rand für zufalls level
 	}
 	
-	public void Clicked(View view){
-		BitmapDrawable drawable = (BitmapDrawable) ((ImageView)findViewById(view.getId())).getDrawable();
-		Bitmap result = drawable.getBitmap();
-
-		// Rotate it to show as a landscape
-		Matrix m = ((ImageView)findViewById(R.id.i00)).getImageMatrix();
-		m.postRotate(90);
-		result = Bitmap.createBitmap(result, 0, 0, result.getWidth(), result.getHeight(), m, true);
-		((ImageView)findViewById(view.getId())).setImageBitmap(result);
+	public void Clicked(View view)
+	{
+		int zahl=view.getId()-R.id.i00;
+		int x=zahl%6;
+		int y=(zahl-x)/6;
+		
+		String str_element[]=mapwerte[x][y].split(":");
+		int rotation=Integer.parseInt(str_element[1]);
+		int element=Integer.parseInt(str_element[0]);
+		
+		rotation=(rotation+1)%4;
+		mapwerte[x][y]=String.valueOf(element)+":"+String.valueOf(rotation);
+		
+		((ImageView)findViewById(view.getId())).setImageResource(Bilder[element][rotation]);
+		
+		Clickzähler++;
+		((TextView)findViewById(R.id.Clickskabel)).setText("Clicks: "+Clickzähler);
 	}
 	
 	public void Levelinit(int Map)
@@ -54,7 +63,6 @@ public class kabelbinder extends Activity {
 		try {
 			textdatei=convertStreamToString("kabelstrecken.txt");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -62,10 +70,28 @@ public class kabelbinder extends Activity {
 		for(int y=0;y<5;y++){
 			String[] Spalten=Zeilen[Map].split(" ");
 			for(int x=0;x<5;x++){
-				//mapwerte[0]=Integer.parseInt(Spalten[x]);
-				((ImageView)findViewById(R.id.i00+x+y*6)).setImageResource(Bilder[0]);
+				mapwerte[x][y]=Spalten[x+5*y];
+				String str_element[]=mapwerte[x][y].split(":");
+				int rotation=Integer.parseInt(str_element[1]);
+				int element=Integer.parseInt(str_element[0]);
+				((ImageView)findViewById(R.id.i00+x+y*6)).setImageResource(Bilder[element][rotation]);
 			}
 		}
+	}
+	
+	public void Lösung()
+	{
+		int Baum=0;
+		
+		do//suche nach einem element 3 baustein (Stecker)
+		{
+			
+		}while(Baum==1);
+		
+		do//Durchlauf der Map bis fehler oder zweites element 3 Baustein gefunden
+		{
+			
+		}while(Baum==1);
 	}
 	
 	public String convertStreamToString(String filename) throws IOException
@@ -75,7 +101,7 @@ public class kabelbinder extends Activity {
     	char[] buffer = new char[2048];
     	try
     	{
-    		Reader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+    		Reader reader = new BufferedReader(new InputStreamReader(is, "ISO-8859-1"));
     		int n;
     		while ((n = reader.read(buffer)) != -1) //Solange das Ende der Datei noch erreicht wurd
     		{
@@ -87,6 +113,6 @@ public class kabelbinder extends Activity {
     		is.close(); //Zugriff auf die Datei schließen
     	}
     	String text = writer.toString(); // In Var. text schreiben und in von Bit in String wandeln
-    	return text; //Text zurÃ¼ckgeben
+    	return text; //Text zurückgeben
     }
 }
