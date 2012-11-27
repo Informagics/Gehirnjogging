@@ -7,8 +7,8 @@
     tools:context=".BitOutActivity" >
 
     <TableLayout
-        android:layout_width="175dp"
-        android:layout_height="175dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_gravity="center_horizontal" >
 
         <TableRow

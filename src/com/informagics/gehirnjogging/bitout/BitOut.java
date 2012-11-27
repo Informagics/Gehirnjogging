@@ -20,14 +20,15 @@ import android.app.Activity;
 public class BitOut extends Activity {
 
 	int moves=0;
+	int rätselanzahl=4;
 	int mode=0; //0=noch nicht gelöst 1=gelöst
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_bit_out);
+		setContentView(R.layout.activity_bit_out);		
 		
-		Levelinit(1);
+		Levelinit((int)(Math.random()*rätselanzahl)%rätselanzahl);
 	}
 	
 	public void Levelinit(int Map)

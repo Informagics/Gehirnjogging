@@ -1,53 +1,60 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/menue"
     android:gravity="center_horizontal"
-    android:background="@drawable/menue" >
+    android:orientation="vertical" >
 
-     <Button
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="77dp" />
+    
+    <Button
         android:id="@+id/button3"
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="14dp"
-        android:text="@string/Start"
-        android:onClick="Spielauswahloeffnen"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="1"
         android:background="@drawable/___"
+        android:onClick="Spielauswahloeffnen"
+        android:text="@string/Start"
         android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="43dp"
-        android:text="@string/Highscores"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="1"
         android:background="@drawable/___"
+        android:text="@string/Highscores"
         android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_above="@+id/button4"
-        android:layout_alignLeft="@+id/button3"
-        android:layout_marginBottom="17dp"
-        android:text="@string/Credits"
-        android:onClick="Creditsoeffnen"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="1"
         android:background="@drawable/___"
+        android:onClick="Creditsoeffnen"
+        android:text="@string/Credits"
         android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_alignLeft="@+id/button3"
-        android:layout_below="@+id/button3"
-        android:layout_marginTop="16dp"
-        android:text="@string/Optionen"
-        android:onClick="Optionenauswahloeffnen"
+        android:layout_weight="1"
         android:background="@drawable/___"
+        android:onClick="Optionenauswahloeffnen"
+        android:text="@string/Optionen"
         android:textColor="#FFFFFF" />
+    
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="75dp" />
 
-</RelativeLayout>
+</LinearLayout>

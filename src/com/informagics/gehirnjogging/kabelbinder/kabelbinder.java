@@ -28,6 +28,7 @@ public class kabelbinder extends Activity {
 	
 	String[][] mapwerte = new String[5][5];
 	int Clickzähler=0;
+	int rätselanzahl=2;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -35,7 +36,8 @@ public class kabelbinder extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_kabelbinder);
 		
-		Levelinit(1);//rand für zufalls level
+		//Levelinit((int)(Math.random()*rätselanzahl)%rätselanzahl);//rand für zufalls level
+		Levelinit(2);
 	}
 	
 	public void Clicked(View view)
@@ -45,16 +47,18 @@ public class kabelbinder extends Activity {
 		int y=(zahl-x)/6;
 		
 		String str_element[]=mapwerte[x][y].split(":");
-		int rotation=Integer.parseInt(str_element[1]);
-		int element=Integer.parseInt(str_element[0]);
+		int rotation=Integer.valueOf(str_element[1]);
+		int element=Integer.valueOf(str_element[0]);
 		
 		rotation=(rotation+1)%4;
-		mapwerte[x][y]=String.valueOf(element)+":"+String.valueOf(rotation);
+		mapwerte[x][y]=String.valueOf(element) + ":" + String.valueOf(rotation);
 		
 		((ImageView)findViewById(view.getId())).setImageResource(Bilder[element][rotation]);
 		
 		Clickzähler++;
+		
 		((TextView)findViewById(R.id.Clickskabel)).setText("Clicks: "+Clickzähler);
+		Lösung();
 	}
 	
 	public void Levelinit(int Map)
@@ -81,17 +85,71 @@ public class kabelbinder extends Activity {
 	
 	public void Lösung()
 	{
-		int Baum=0;
+		int x=0,y=0;
+		int element;
+		int rotation;
+		int rotationneu;
 		
 		do//suche nach einem element 3 baustein (Stecker)
 		{
+			String str_element[]=mapwerte[x][y].split(":");
+			rotation=Integer.parseInt(str_element[1]);
+			element=Integer.parseInt(str_element[0]);
 			
-		}while(Baum==1);
-		
+			if(element!=3)
+			{
+				if(x==4)
+				{
+					y++;
+					x=0;
+				}
+				else
+				{
+					x++;
+				}
+			}
+			
+		}while(element!=3);
+		((TextView)findViewById(R.id.Clickskabel)).setText(""+x+" "+y);
 		do//Durchlauf der Map bis fehler oder zweites element 3 Baustein gefunden
 		{
+			if(element==0 || element==3)
+			{
+				if(rotation%2==1)
+					x+=rotation-2;//x manipulation
+				else
+					y+=rotation-1;//y manipulation
+			}
+			/*else
+			{
+				if(rotation%2==1)
+				{
+					y+=rotation-2;//y manipulation
+				}
+				else
+				{
+					x+=rotation-1;//x manipulation
+				}
+			}*/
 			
-		}while(Baum==1);
+			if(x==-1||x==5||y==-1||y==5)
+				return;
+			
+			String str_element[]=mapwerte[x][y].split(":");
+			rotationneu=Integer.parseInt(str_element[1]);
+			element=Integer.parseInt(str_element[0]);
+			
+			if((element == 3 && (rotationneu%2==rotation%2) && rotation!=rotationneu))
+				break;	
+			
+			if(element!=0 || (rotation+rotationneu)%2==1)
+				rotation=rotationneu;
+			
+			if(element != 0)//debug Geraden
+				return;
+			
+		}while(element!=3);
+		((TextView)findViewById(R.id.Clickskabel)).setText("Gelöst"+x+" "+y);
 	}
 	
 	public String convertStreamToString(String filename) throws IOException
@@ -112,7 +170,7 @@ public class kabelbinder extends Activity {
     	{
     		is.close(); //Zugriff auf die Datei schließen
     	}
-    	String text = writer.toString(); // In Var. text schreiben und in von Bit in String wandeln
-    	return text; //Text zurückgeben
+    	// In Var. text schreiben und in von Bit in String wandeln
+    	return writer.toString(); //Text zurückgeben
     }
 }

@@ -1,42 +1,50 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/menue" >
+    android:background="@drawable/menue"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
 
-     <Button
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="77dp" />
+
+    <Button
         android:id="@+id/button1"
         android:layout_width="200dp"
         android:layout_height="70dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:text="@string/Mathe"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
         android:background="@drawable/_____"
-        android:textColor="#FFFFFF"
-        android:onClick="Mathe"/>
+        android:onClick="Mathe"
+        android:text="@string/Mathe"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="200dp"
         android:layout_height="70dp"
-        android:layout_alignLeft="@+id/button1"
-        android:layout_centerVertical="true"
-        android:text="@string/Informatik"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
         android:background="@drawable/_____"
-        android:textColor="#FFFFFF"
-        android:onClick="Informatik"/>
+        android:onClick="Informatik"
+        android:text="@string/Informatik"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="200dp"
         android:layout_height="70dp"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="14dp"
-        android:text="@string/Kabelbinder"
+        android:layout_weight="1"
         android:background="@drawable/_____"
-        android:textColor="#FFFFFF"
-        android:onClick="Kabelbinder"/>
+        android:onClick="Kabelbinder"
+        android:text="@string/Kabelbinder"
+        android:textColor="#FFFFFF" />
 
-</RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="75dp" />
+
+</LinearLayout>
