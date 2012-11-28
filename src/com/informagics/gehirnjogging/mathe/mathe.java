@@ -18,22 +18,19 @@ public class mathe extends Activity {
 	private static String Rechenzeichen;
 	private static int Punkte = 0;
 	
-	
-	 
-	  final Handler _TimeisUp = new Handler();
-		
-		 final Runnable _TimeUp= new Runnable()
-		  {
-		  public void run()
-		 {
-		   endGame(); // Aufruf der neuen Runde
-		  }
-		  };
+	final Handler _TimeisUp = new Handler();
+	final Runnable _TimeUp= new Runnable()
+	{
+		public void run()
+		{
+			endGame(); // Aufruf der neuen Runde
+		}
+	};
 	  
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	
-        super.onCreate(savedInstanceState);
+    	super.onCreate(savedInstanceState);
         
         setContentView(R.layout.activity_mathe);
         
@@ -51,10 +48,10 @@ public class mathe extends Activity {
 	    Zahl1 = myRandom(1,20); // Rnd generation von 1-20
 	    Zahl2 = myRandom(1,20);
 	    String zeichen[]={"+","-","*","/"}; //Dek. und Ini. von zeichen mit den Mathematischen Operatoren
-	    Rechenzeichen = zeichen[myRandom(0,3)]; // Auswahl des Rechenzeichens per Rand.
+	    Rechenzeichen = zeichen[myRandom(0,1000)%4]; // Auswahl des Rechenzeichens per Rand.
 	    
-	    if(Rechenzeichen=="/") // If Div.
-	    	while(Zahl1%Zahl2==0) // Damit keine ,5 Zahlen entstehen können
+	    if("/".equals(Rechenzeichen)) // If Div.
+	    	while(Zahl1%Zahl2!=0) // Damit keine ,5 Zahlen entstehen können
 	    		Zahl2 = myRandom(1,20);
 	    
 	    Ergebnis=ergebnis(Zahl1,Zahl2,Rechenzeichen); // Übergabe an Funk. ergebnis
@@ -69,13 +66,13 @@ public class mathe extends Activity {
 	{
 		int Ergebnis = 88;
 		
-		if(zeichen == "+")// je nachdem welches Zeichen zuvor gewählt wurde wird das erg berechnet
+		if("+".equals(zeichen))// je nachdem welches Zeichen zuvor gewählt wurde wird das erg berechnet
 	    	Ergebnis=zahl1+zahl2;
-		else if(zeichen == "-")
+		else if("-".equals(zeichen))
 	    	Ergebnis=zahl1-zahl2;
-		else if(zeichen == "*")
+		else if("*".equals(zeichen))
 	    	Ergebnis=zahl1*zahl2;
-		else if(zeichen == "/")
+		else if("/".equals(zeichen))
 	    	Ergebnis=zahl1/zahl2;
 	    
 		return Ergebnis;
@@ -86,11 +83,10 @@ public class mathe extends Activity {
     	
     	//Dek. und Zuordnung der Views zu Vars.
         Button button = (Button) findViewById(view.getId());
-        char tests = button.getText().toString().charAt(0);
         TextView testrichtigkeit = (TextView) findViewById(R.id.textView2);
         TextView punkte = (TextView) findViewById(R.id.punkte);
         
-        if(tests==Rechenzeichen.charAt(0)){ 
+        if(Rechenzeichen.equals(button.getText())){ 
         	
         	testrichtigkeit.setText("Richtig"); // Ausgabe das die Antwort richtig war
         	Punkte++; // Punkte erhöhen
@@ -99,17 +95,15 @@ public class mathe extends Activity {
         }
         else{
         	if(Punkte!=0){
-        		
         		Punkte--; // Punkte verringern
         		punkte.setText("Punktzahl : "+Punkte); // Neuer Punktestand
-        		
         	}
-        	
         	testrichtigkeit.setText("Falsch"); // Ausgabe das die Antwort falsch ist
         }
         
         neueRunde(); // Aufruf zur neuen Runde
     }
+    
     public void neueRunde(){
     	
     	 //Spielfeld aufräumen
@@ -120,6 +114,7 @@ public class mathe extends Activity {
     	 Rätsel(this);
     	
     }
+    
     public void endGame(){
     	
     	 //Alles auf dem Spielfeld auf unsichtbar stellen und die Sprechblase mit Text anzeigen lassen
