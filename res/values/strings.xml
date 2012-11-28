@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    
     <string name="app_name">Gehirnjogging</string>
     <string name="plus">+</string>
     <string name="minus">-</string>
@@ -13,16 +13,16 @@
     <string name="Mathe">Mathe</string>
     <string name="Informatik">Informatik</string>
     <string name="Kabelbinder">Kabelbinder</string>
+    <string name="BitOut">BitOut</string>
     <string name="Lautstaerke">Lautstärke</string>
     <string name="Deutsch">Deutsch</string>
     <string name="Englisch">Englisch</string>
-    <string name="Blablabla">Page under Destruction</string>
     <string name="title_activity_optionen">Optionen</string>
     <string name="title_activity_spielauswahl">Spielauswahl</string>
     <string name="title_activity_credits">Credits</string>
     <string name="title_activity_optionenauswahl">Optionenauswahl</string>
-    <string name="activity_main">Ghirnficker</string>
+    <string name="title_activity_main">Ghirnficker</string>
     <string name="count">Counter: 0</string>
     <string name="desc"/>
-
+    
 </resources>
