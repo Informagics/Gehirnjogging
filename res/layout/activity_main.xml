@@ -15,9 +15,9 @@
         android:id="@+id/button3"
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="10dp"
         android:layout_weight="1"
-        android:background="@drawable/___"
+        android:background="@drawable/_____"
         android:onClick="Spielauswahloeffnen"
         android:text="@string/Start"
         android:textColor="#FFFFFF" />
@@ -26,9 +26,9 @@
         android:id="@+id/button4"
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="10dp"
         android:layout_weight="1"
-        android:background="@drawable/___"
+        android:background="@drawable/_____"
         android:text="@string/Highscores"
         android:textColor="#FFFFFF" />
 
@@ -36,9 +36,9 @@
         android:id="@+id/button1"
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="10dp"
         android:layout_weight="1"
-        android:background="@drawable/___"
+        android:background="@drawable/_____"
         android:onClick="Creditsoeffnen"
         android:text="@string/Credits"
         android:textColor="#FFFFFF" />
@@ -48,7 +48,7 @@
         android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_weight="1"
-        android:background="@drawable/___"
+        android:background="@drawable/_____"
         android:onClick="Optionenauswahloeffnen"
         android:text="@string/Optionen"
         android:textColor="#FFFFFF" />
