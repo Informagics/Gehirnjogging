@@ -132,15 +132,15 @@ public class kabelbinder extends Activity {
 				}
 			}*/
 			
-			if(x==-1||x==5||y==-1||y==5)
-				return;
-			
 			String str_element[]=mapwerte[x][y].split(":");
 			rotationneu=Integer.parseInt(str_element[1]);
 			element=Integer.parseInt(str_element[0]);
 			
 			if((element == 3 && (rotationneu%2==rotation%2) && rotation!=rotationneu))
-				break;	
+				break;
+			
+			if(x==-1||x==5||y==-1||y==5||rotation%2==rotationneu%2)
+				return;	
 			
 			if(element!=0 || (rotation+rotationneu)%2==1)
 				rotation=rotationneu;
@@ -149,7 +149,7 @@ public class kabelbinder extends Activity {
 				return;
 			
 		}while(element!=3);
-		((TextView)findViewById(R.id.Clickskabel)).setText("Gelöst"+x+" "+y);
+		((TextView)findViewById(R.id.Clickskabel)).setText(((TextView)findViewById(R.id.Clickskabel)).getText()+" Gelöst");
 	}
 	
 	public String convertStreamToString(String filename) throws IOException
