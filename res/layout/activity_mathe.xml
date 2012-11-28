@@ -8,7 +8,6 @@
         android:id="@+id/IMVPlus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/textView1"
         android:contentDescription="@string/desc"
         android:background="@null" />
 
@@ -28,7 +27,7 @@
         android:layout_marginLeft="20dp"
         android:layout_x="367dp"
         android:layout_y="45dp"
-         android:textSize="15sp"
+        android:textSize="15sp"
         android:text="" />
 
     <TextView
@@ -38,7 +37,7 @@
         android:layout_marginTop="35dp"
         android:layout_x="196dp"
         android:layout_y="46dp"
-         android:textSize="15sp"
+        android:textSize="15sp"
         android:text="" />
 
     <Button
