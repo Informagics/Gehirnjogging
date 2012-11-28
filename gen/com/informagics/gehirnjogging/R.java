@@ -45,6 +45,7 @@ public final class R {
         public static final int sprechblase=0x7f02001f;
     }
     public static final class id {
+        public static final int Button01=0x7f060057;
         public static final int Clicks=0x7f06001f;
         public static final int Clickskabel=0x7f06003e;
         public static final int IMVKat1=0x7f06004d;
@@ -144,18 +145,17 @@ public final class R {
         public static final int spielauswahl=0x7f030007;
     }
     public static final class string {
-        public static final int Blablabla=0x7f04000f;
+        public static final int BitOut=0x7f04000c;
         public static final int Credits=0x7f040008;
-        public static final int Deutsch=0x7f04000d;
-        public static final int Englisch=0x7f04000e;
+        public static final int Deutsch=0x7f04000e;
+        public static final int Englisch=0x7f04000f;
         public static final int Highscores=0x7f040005;
         public static final int Informatik=0x7f04000a;
         public static final int Kabelbinder=0x7f04000b;
-        public static final int Lautstaerke=0x7f04000c;
+        public static final int Lautstaerke=0x7f04000d;
         public static final int Mathe=0x7f040009;
         public static final int Optionen=0x7f040007;
         public static final int Start=0x7f040006;
-        public static final int activity_main=0x7f040014;
         public static final int app_name=0x7f040000;
         public static final int count=0x7f040015;
         public static final int desc=0x7f040016;
@@ -164,6 +164,7 @@ public final class R {
         public static final int multiplizieren=0x7f040004;
         public static final int plus=0x7f040001;
         public static final int title_activity_credits=0x7f040012;
+        public static final int title_activity_main=0x7f040014;
         public static final int title_activity_optionen=0x7f040010;
         public static final int title_activity_optionenauswahl=0x7f040013;
         public static final int title_activity_spielauswahl=0x7f040011;

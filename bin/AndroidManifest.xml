@@ -15,8 +15,9 @@
         android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
         
         <activity
-            android:label="@string/activity_main"
+            android:label="@string/title_activity_main"
             android:screenOrientation="landscape"
+            android:configChanges="keyboardHidden"
             android:name="com.informagics.gehirnjogging.menue.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -26,6 +27,7 @@
          <activity
              android:label="@string/title_activity_spielauswahl"
              android:screenOrientation="landscape"
+             android:configChanges="keyboardHidden"
              android:name="com.informagics.gehirnjogging.menue.Spielauswahl">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -34,6 +36,7 @@
          <activity
              android:label="@string/title_activity_optionenauswahl"
              android:screenOrientation="landscape"
+             android:configChanges="keyboardHidden"
              android:name="com.informagics.gehirnjogging.menue.Optionenauswahl">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -42,6 +45,7 @@
          <activity
              android:label="@string/title_activity_credits"
              android:screenOrientation="landscape"
+             android:configChanges="keyboardHidden"
              android:name="com.informagics.gehirnjogging.menue.Credits">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -50,6 +54,7 @@
          <activity
              android:label="Mathe"
              android:screenOrientation="landscape"
+             android:configChanges="keyboardHidden"
              android:name="com.informagics.gehirnjogging.mathe.mathe">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -58,6 +63,7 @@
          <activity
              android:label="Informatik"
              android:screenOrientation="landscape"
+             android:configChanges="keyboardHidden"
              android:name="com.informagics.gehirnjogging.quiz.Quiz">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -66,6 +72,7 @@
          <activity
              android:label="BitOut"
              android:screenOrientation="landscape"
+             android:configChanges="keyboardHidden"
              android:name="com.informagics.gehirnjogging.bitout.BitOut">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -74,6 +81,7 @@
          <activity
              android:label="Kabelbinder"
              android:screenOrientation="landscape"
+             android:configChanges="keyboardHidden"
              android:name="com.informagics.gehirnjogging.kabelbinder.kabelbinder">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
