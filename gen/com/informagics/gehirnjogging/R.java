@@ -11,40 +11,34 @@ public final class R {
     public static final class attr {
     }
     public static final class drawable {
-        public static final int _=0x7f020000;
-        public static final int __=0x7f020001;
-        public static final int ___=0x7f020002;
-        public static final int ____=0x7f020003;
-        public static final int _____=0x7f020004;
-        public static final int alle_zusammengeschnitten=0x7f020005;
-        public static final int background=0x7f020006;
-        public static final int background_new=0x7f020007;
-        public static final int background_new_new=0x7f020008;
-        public static final int cable_curve_1=0x7f020009;
-        public static final int cable_curve_2=0x7f02000a;
-        public static final int cable_curve_3=0x7f02000b;
-        public static final int cable_curve_4=0x7f02000c;
-        public static final int cable_double_1=0x7f02000d;
-        public static final int cable_double_2=0x7f02000e;
-        public static final int cable_plug_1=0x7f02000f;
-        public static final int cable_plug_2=0x7f020010;
-        public static final int cable_plug_3=0x7f020011;
-        public static final int cable_plug_4=0x7f020012;
-        public static final int cable_straight_1=0x7f020013;
-        public static final int cable_straight_2=0x7f020014;
-        public static final int entoman=0x7f020015;
-        public static final int ic_launcher=0x7f020016;
-        public static final int mathe=0x7f020017;
-        public static final int menue=0x7f020018;
-        public static final int quiz_button_1=0x7f020019;
-        public static final int quiz_button_begriff=0x7f02001a;
-        public static final int quiz_pointer_1=0x7f02001b;
-        public static final int quiz_pointer_2=0x7f02001c;
-        public static final int quiz_pointer_3=0x7f02001d;
-        public static final int speechbubble=0x7f02001e;
-        public static final int sprechblase=0x7f02001f;
+        public static final int alle_zusammengeschnitten=0x7f020000;
+        public static final int background_math=0x7f020001;
+        public static final int background_menue=0x7f020002;
+        public static final int background_quiz=0x7f020003;
+        public static final int button=0x7f020004;
+        public static final int cable_curve_1=0x7f020005;
+        public static final int cable_curve_2=0x7f020006;
+        public static final int cable_curve_3=0x7f020007;
+        public static final int cable_curve_4=0x7f020008;
+        public static final int cable_double_1=0x7f020009;
+        public static final int cable_double_2=0x7f02000a;
+        public static final int cable_plug_1=0x7f02000b;
+        public static final int cable_plug_2=0x7f02000c;
+        public static final int cable_plug_3=0x7f02000d;
+        public static final int cable_plug_4=0x7f02000e;
+        public static final int cable_straight_1=0x7f02000f;
+        public static final int cable_straight_2=0x7f020010;
+        public static final int deutsch=0x7f020011;
+        public static final int englisch=0x7f020012;
+        public static final int ic_launcher=0x7f020013;
+        public static final int quiz_button_1=0x7f020014;
+        public static final int quiz_pointer_1=0x7f020015;
+        public static final int quiz_pointer_2=0x7f020016;
+        public static final int quiz_pointer_3=0x7f020017;
+        public static final int sprechblase=0x7f020018;
     }
     public static final class id {
+        public static final int Aufgabe=0x7f060049;
         public static final int Button01=0x7f060057;
         public static final int Clicks=0x7f06001f;
         public static final int Clickskabel=0x7f06003e;
@@ -55,7 +49,7 @@ public final class R {
         public static final int IMVOben=0x7f060050;
         public static final int IMVPlus=0x7f060044;
         public static final int IMVRechts=0x7f060054;
-        public static final int IMVSprechblase=0x7f060048;
+        public static final int IMVSprechblase=0x7f060046;
         public static final int LinearLayout1=0x7f06003f;
         public static final int LinearLayout2=0x7f060000;
         public static final int b00=0x7f060002;
@@ -122,17 +116,16 @@ public final class R {
         public static final int itr2=0x7f06002c;
         public static final int itr3=0x7f060032;
         public static final int itr4=0x7f060038;
-        public static final int punkte=0x7f060046;
-        public static final int textView1=0x7f060045;
-        public static final int textView2=0x7f060047;
+        public static final int punkte=0x7f06004a;
+        public static final int textView2=0x7f060045;
         public static final int txtBegriff=0x7f060055;
         public static final int txtHighscore=0x7f06004b;
         public static final int txtKat1=0x7f06004e;
         public static final int txtKat2=0x7f060051;
         public static final int txtKat3=0x7f060053;
-        public static final int txtNur=0x7f060049;
+        public static final int txtNur=0x7f060047;
         public static final int txtResponse=0x7f060056;
-        public static final int txtSchlecht=0x7f06004a;
+        public static final int txtSchlecht=0x7f060048;
     }
     public static final class layout {
         public static final int activity_bit_out=0x7f030000;
