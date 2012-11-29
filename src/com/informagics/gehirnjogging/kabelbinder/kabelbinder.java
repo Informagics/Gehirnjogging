@@ -18,6 +18,12 @@ import android.widget.TextView;
 
 public class kabelbinder extends Activity {
 	
+	/*To-Do:
+	 * Kurven und Doppelkurven Bilder Reihenfolge anpassen
+	 * Kurven ins Spiel einbinden
+	 * Doppelkurven ins Spiel einbinden
+	*/
+	
 	int[][] Bilder=
 		{
 			{R.drawable.cable_straight_1,R.drawable.cable_straight_2,R.drawable.cable_straight_1,R.drawable.cable_straight_2},
@@ -36,8 +42,8 @@ public class kabelbinder extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_kabelbinder);
 		
-		//Levelinit((int)(Math.random()*rätselanzahl)%rätselanzahl);//rand für zufalls level
-		Levelinit(2);
+		Levelinit((int)(Math.random()*rätselanzahl*10)%rätselanzahl);//rand für zufalls level
+		//Levelinit(0);
 	}
 	
 	public void Clicked(View view)
@@ -86,11 +92,11 @@ public class kabelbinder extends Activity {
 	public void Lösung()
 	{
 		int x=0,y=0;
-		int element;
-		int rotation;
-		int rotationneu;
+		int element=0;
+		int rotation=0;
+		int rotationneu=0;
 		
-		do//suche nach einem element 3 baustein (Stecker)
+		do//suche nach einem Stecker Baustein (Element 3)
 		{
 			String str_element[]=mapwerte[x][y].split(":");
 			rotation=Integer.parseInt(str_element[1]);
@@ -98,20 +104,16 @@ public class kabelbinder extends Activity {
 			
 			if(element!=3)
 			{
-				if(x==4)
-				{
-					y++;
-					x=0;
-				}
-				else
-				{
-					x++;
-				}
+				if(x==4){ y++; x=0; }
+				else x++;
 			}
 			
 		}while(element!=3);
-		((TextView)findViewById(R.id.Clickskabel)).setText(""+x+" "+y);
-		do//Durchlauf der Map bis fehler oder zweites element 3 Baustein gefunden
+		
+		//Debug
+		((TextView)findViewById(R.id.Clickskabel)).setText("e: "+element+" x: "+x+" y: "+y+" Ra: "+rotation);
+		
+		do//Durchlauf der Map bis fehlerhafter Baustein oder zweiter Stecker Baustein erreicht wird
 		{
 			if(element==0 || element==3)
 			{
@@ -120,36 +122,70 @@ public class kabelbinder extends Activity {
 				else
 					y+=rotation-1;//y manipulation
 			}
-			/*else
+			else
 			{
-				if(rotation%2==1)
+				if(rotation==rotationneu)
 				{
-					y+=rotation-2;//y manipulation
+					switch (rotationneu)
+					{
+					case 0:
+						x-=1;
+						break;
+					case 1:
+						y+=1;
+						break;
+					case 2:
+						x+=1;
+						break;
+					case 3:
+						y-=1;
+						break;
+					}
+					rotation=(rotationneu+1)%4;
+				}
+				else if((rotation+1)%4==rotationneu)
+				{
+					switch (rotationneu)
+					{
+					case 0:
+						y+=1;
+						break;
+					case 1:
+						x+=1;
+						break;
+					case 2:
+						y-=1;
+						break;
+					case 3:
+						x-=1;
+						break;
+					}
+					rotation=(rotationneu+2)%4;
 				}
 				else
-				{
-					x+=rotation-1;//x manipulation
-				}
-			}*/
+					return;
+			}
+			
+			if(x==-1||x==5||y==-1||y==5)
+				return;
 			
 			String str_element[]=mapwerte[x][y].split(":");
 			rotationneu=Integer.parseInt(str_element[1]);
 			element=Integer.parseInt(str_element[0]);
 			
-			if((element == 3 && (rotationneu%2==rotation%2) && rotation!=rotationneu))
+			//Debug
+			((TextView)findViewById(R.id.Clickskabel)).setText(((TextView)findViewById(R.id.Clickskabel)).getText()+" | e: "+element+" x: "+x+" y: "+y+" Ra: "+rotation+" Rn: "+rotationneu);
+			
+			if(element == 3 && rotationneu%2==rotation%2 && rotationneu!=rotation)//ignorieren der Stecker
 				break;
+			else if(element == 3 && rotationneu%2==rotation%2 && rotationneu==rotation)
+				return;
 			
-			if(x==-1||x==5||y==-1||y==5||rotation%2==rotationneu%2)
-				return;	
-			
-			if(element!=0 || (rotation+rotationneu)%2==1)
-				rotation=rotationneu;
-			
-			if(element != 0)//debug Geraden
+			if(element!=1 && rotation%2!=rotationneu%2)//falsches rotierung des nächsten Bauteils
 				return;
 			
 		}while(element!=3);
-		((TextView)findViewById(R.id.Clickskabel)).setText(((TextView)findViewById(R.id.Clickskabel)).getText()+" Gelöst");
+		((TextView)findViewById(R.id.Clickskabel)).setText(((TextView)findViewById(R.id.Clickskabel)).getText()+" "+rotation+" "+rotationneu+" Gelöst");
 	}
 	
 	public String convertStreamToString(String filename) throws IOException

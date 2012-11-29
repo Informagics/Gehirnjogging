@@ -57,7 +57,7 @@ public class mathe extends Activity {
 	    Ergebnis=ergebnis(Zahl1,Zahl2,Rechenzeichen); // Übergabe an Funk. ergebnis
 	    
 	    // Create the text view
-	    TextView textView = (TextView) activity.findViewById(R.id.textView1);
+	    TextView textView = (TextView) activity.findViewById(R.id.Aufgabe);
 	    textView.setTextSize(20);
 	    textView.setText(String.valueOf(Zahl1) + "  "+ String.valueOf(Zahl2) + "=" + String.valueOf(Ergebnis)); // Setzen der Aufgabe
 	}
@@ -86,7 +86,7 @@ public class mathe extends Activity {
         TextView testrichtigkeit = (TextView) findViewById(R.id.textView2);
         TextView punkte = (TextView) findViewById(R.id.punkte);
         
-        if(Rechenzeichen.equals(button.getText())){ 
+        if(ergebnis(Zahl1,Zahl2,button.getText().toString())==Ergebnis){
         	
         	testrichtigkeit.setText("Richtig"); // Ausgabe das die Antwort richtig war
         	Punkte++; // Punkte erhöhen
@@ -109,7 +109,7 @@ public class mathe extends Activity {
     	 //Spielfeld aufräumen
     	 TextView testrichtigkeit = (TextView) findViewById(R.id.textView2);
     	 testrichtigkeit.setText("");
-    	 TextView textView = (TextView)findViewById(R.id.textView1);
+    	 TextView textView = (TextView)findViewById(R.id.Aufgabe);
     	 textView.setText("");
     	 Rätsel(this);
     	
@@ -123,7 +123,7 @@ public class mathe extends Activity {
     	 Button button3 = (Button) findViewById(R.id.button3);
     	 Button button4 = (Button) findViewById(R.id.button4);
     	 TextView testrichtigkeit = (TextView) findViewById(R.id.textView2);
-    	 TextView textView = (TextView)findViewById(R.id.textView1);
+    	 TextView textView = (TextView)findViewById(R.id.Aufgabe);
     	 TextView punkte = (TextView) findViewById(R.id.punkte);
     	 TextView nur = (TextView)findViewById(R.id.txtNur);
     	 TextView schlecht = (TextView) findViewById(R.id.txtSchlecht);

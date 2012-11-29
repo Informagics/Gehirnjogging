@@ -19,8 +19,13 @@ import android.app.Activity;
 
 public class BitOut extends Activity {
 
+	/*To-Do:
+	 * Fehler wenn Map im letzen Kästchen eine 0 hat
+	 * Übersichtliches und ansprechendes Layout machen
+	*/
+	
 	int moves=0;
-	int rätselanzahl=4;
+	int rätselanzahl=14;
 	int mode=0; //0=noch nicht gelöst 1=gelöst
 	
 	@Override
@@ -28,7 +33,8 @@ public class BitOut extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_bit_out);		
 		
-		Levelinit((int)(Math.random()*rätselanzahl)%rätselanzahl);
+		Levelinit((int)(Math.random()*rätselanzahl*10)%rätselanzahl);
+		//Levelinit(2);
 	}
 	
 	public void Levelinit(int Map)
