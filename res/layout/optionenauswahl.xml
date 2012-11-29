@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/menue" >
+    android:background="@drawable/background_menue" >
 
      <Button
         android:id="@+id/button1"
@@ -11,7 +11,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="59dp"
         android:layout_marginLeft="86dp"
-        android:background="@drawable/_"
+        android:background="@drawable/deutsch"
         android:text="@string/Deutsch" />
 
     <Button
@@ -22,7 +22,7 @@
         android:layout_alignBottom="@+id/button1"
         android:layout_marginLeft="76dp"
         android:layout_toRightOf="@+id/button1"
-        android:background="@drawable/__"
+        android:background="@drawable/englisch"
         android:text="@string/Englisch" />
 
 </RelativeLayout>
