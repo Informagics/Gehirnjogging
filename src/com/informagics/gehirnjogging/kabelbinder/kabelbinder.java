@@ -121,9 +121,9 @@ public class kabelbinder extends Activity {
 				else
 					y+=rotation-1;//y manipulation
 			}
-			else
+			else if(element==1)
 			{
-				if(rotation==rotationneu || (element==2 && rotation%2!=rotationneu%2))
+				if(rotation==rotationneu)
 				{
 					switch (rotationneu)
 					{
@@ -142,7 +142,7 @@ public class kabelbinder extends Activity {
 					}
 					rotation=(rotationneu+1)%4;
 				}
-				else if((rotation+1)%4==rotationneu || ((rotation-1)%4==rotationneu && element==2))
+				else if((rotation+1)%4==rotationneu)
 				{
 					switch (rotationneu)
 					{
@@ -164,6 +164,53 @@ public class kabelbinder extends Activity {
 				else
 					return;
 			}
+			else
+			{
+				if(rotationneu%2==0)
+				{
+					switch (rotation)
+					{
+					case 0:
+						rotation=1;
+						x-=1;
+						break;
+					case 1:
+						rotation=0;
+						y-=1;
+						break;
+					case 2:
+						rotation=3;
+						x+=1;
+						break;
+					case 3:
+						rotation=2;
+						y+=1;
+						break;
+					}
+				}
+				else
+				{
+					switch (rotation)
+					{
+					case 0:
+						rotation=3;
+						x+=1;
+						break;
+					case 1:
+						rotation=2;
+						y+=1;
+						break;
+					case 2:
+						rotation=1;
+						x-=1;
+						break;
+					case 3:
+						rotation=0;
+						y-=1;
+						break;
+					}
+				}
+			}
 			
 			if(x==-1||x==5||y==-1||y==5)
 				return;
@@ -180,7 +227,7 @@ public class kabelbinder extends Activity {
 			else if(element == 3 && rotationneu%2==rotation%2 && rotationneu==rotation)
 				return;
 			
-			if(element!=1 && element!=2 && rotation%2!=rotationneu%2)//falsches rotierung des nächsten Bauteils
+			if(element!=1 && element!=2 && rotation%2!=rotationneu%2)//falsche rotierung des nächsten Bauteils
 				return;
 			
 		}while(element!=3);
