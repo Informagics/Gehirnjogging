@@ -31,10 +31,10 @@ public class BitOut extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_bit_out);		
+		setContentView(R.layout.activity_bit_out);
 		
-		Levelinit((int)(Math.random()*rätselanzahl*10)%rätselanzahl);
-		//Levelinit(2);
+		//Levelinit((int)(Math.random()*rätselanzahl*10)%rätselanzahl);
+		Levelinit(0);
 	}
 	
 	public void Levelinit(int Map)
@@ -43,7 +43,6 @@ public class BitOut extends Activity {
 		try {
 			textdatei=convertStreamToString("Bitout.txt");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -54,6 +53,10 @@ public class BitOut extends Activity {
 				((Button) findViewById(R.id.b00+x+6*y)).setText(Spalten[x+5*y]);
 			}
 		}
+		
+		Toast.makeText(getApplicationContext(), ((Button)findViewById(R.id.b00+6*4+4)).getText().toString(), Toast.LENGTH_SHORT).show();
+		if("0"==((Button)findViewById(R.id.b00+6*4+4)).getText().toString())
+			((Button)findViewById(R.id.b00+6*4+4)).setText("hsfdsad");
 	}
 	
 	public String convertStreamToString(String filename) throws IOException

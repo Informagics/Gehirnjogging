@@ -38,18 +38,17 @@ public final class R {
         public static final int sprechblase=0x7f020018;
     }
     public static final class id {
-        public static final int Aufgabe=0x7f060049;
-        public static final int Button01=0x7f060057;
+        public static final int Aufgabe=0x7f060046;
+        public static final int Button01=0x7f060056;
         public static final int Clicks=0x7f06001f;
         public static final int Clickskabel=0x7f06003e;
-        public static final int IMVKat1=0x7f06004d;
+        public static final int IMVKat1=0x7f06004c;
         public static final int IMVKat2=0x7f06004f;
         public static final int IMVKat3=0x7f060052;
-        public static final int IMVLinks=0x7f06004c;
-        public static final int IMVOben=0x7f060050;
-        public static final int IMVPlus=0x7f060044;
-        public static final int IMVRechts=0x7f060054;
-        public static final int IMVSprechblase=0x7f060046;
+        public static final int IMVLinks=0x7f06004b;
+        public static final int IMVOben=0x7f06004e;
+        public static final int IMVRechts=0x7f060051;
+        public static final int IMVSprechblase=0x7f060045;
         public static final int LinearLayout1=0x7f06003f;
         public static final int LinearLayout2=0x7f060000;
         public static final int b00=0x7f060002;
@@ -116,15 +115,15 @@ public final class R {
         public static final int itr2=0x7f06002c;
         public static final int itr3=0x7f060032;
         public static final int itr4=0x7f060038;
-        public static final int punkte=0x7f06004a;
-        public static final int textView2=0x7f060045;
-        public static final int txtBegriff=0x7f060055;
-        public static final int txtHighscore=0x7f06004b;
-        public static final int txtKat1=0x7f06004e;
-        public static final int txtKat2=0x7f060051;
+        public static final int punkte=0x7f060044;
+        public static final int textView2=0x7f060049;
+        public static final int txtBegriff=0x7f060054;
+        public static final int txtHighscore=0x7f06004a;
+        public static final int txtKat1=0x7f06004d;
+        public static final int txtKat2=0x7f060050;
         public static final int txtKat3=0x7f060053;
         public static final int txtNur=0x7f060047;
-        public static final int txtResponse=0x7f060056;
+        public static final int txtResponse=0x7f060055;
         public static final int txtSchlecht=0x7f060048;
     }
     public static final class layout {

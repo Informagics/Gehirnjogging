@@ -20,7 +20,6 @@ public class kabelbinder extends Activity {
 	
 	/*To-Do:
 	 * Kurven und Doppelkurven Bilder Reihenfolge anpassen
-	 * Kurven ins Spiel einbinden
 	 * Doppelkurven ins Spiel einbinden
 	*/
 	
@@ -42,8 +41,8 @@ public class kabelbinder extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_kabelbinder);
 		
-		Levelinit((int)(Math.random()*rätselanzahl*10)%rätselanzahl);//rand für zufalls level
-		//Levelinit(0);
+		//Levelinit((int)(Math.random()*rätselanzahl*10)%rätselanzahl);//rand für zufalls level
+		Levelinit(2);
 	}
 	
 	public void Clicked(View view)
@@ -124,7 +123,7 @@ public class kabelbinder extends Activity {
 			}
 			else
 			{
-				if(rotation==rotationneu)
+				if(rotation==rotationneu || (element==2 && rotation%2!=rotationneu%2))
 				{
 					switch (rotationneu)
 					{
@@ -143,7 +142,7 @@ public class kabelbinder extends Activity {
 					}
 					rotation=(rotationneu+1)%4;
 				}
-				else if((rotation+1)%4==rotationneu)
+				else if((rotation+1)%4==rotationneu || ((rotation-1)%4==rotationneu && element==2))
 				{
 					switch (rotationneu)
 					{
@@ -181,7 +180,7 @@ public class kabelbinder extends Activity {
 			else if(element == 3 && rotationneu%2==rotation%2 && rotationneu==rotation)
 				return;
 			
-			if(element!=1 && rotation%2!=rotationneu%2)//falsches rotierung des nächsten Bauteils
+			if(element!=1 && element!=2 && rotation%2!=rotationneu%2)//falsches rotierung des nächsten Bauteils
 				return;
 			
 		}while(element!=3);
