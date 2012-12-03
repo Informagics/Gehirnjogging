@@ -18,11 +18,6 @@ import android.widget.TextView;
 
 public class kabelbinder extends Activity {
 	
-	/*To-Do:
-	 * Kurven und Doppelkurven Bilder Reihenfolge anpassen
-	 * Doppelkurven ins Spiel einbinden
-	*/
-	
 	int[][] Bilder=
 		{
 			{R.drawable.cable_straight_1,R.drawable.cable_straight_2,R.drawable.cable_straight_1,R.drawable.cable_straight_2},
@@ -32,8 +27,8 @@ public class kabelbinder extends Activity {
 		};
 	
 	String[][] mapwerte = new String[5][5];
-	int Clickzähler=0;
-	int rätselanzahl=2;
+	int Clickzähler = 0;
+	int rätselanzahl = 2;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -70,7 +65,7 @@ public class kabelbinder extends Activity {
 	{
 		String textdatei = null;
 		try {
-			textdatei=convertStreamToString("kabelstrecken.txt");
+			textdatei=convertStreamToString("kabelstrecken.map");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
