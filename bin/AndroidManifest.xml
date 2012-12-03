@@ -87,6 +87,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.informagics.gehirnjogging.menue.Spielauswahl"/>
          </activity>
+         <activity
+             android:label="Memory"
+             android:screenOrientation="landscape"
+             android:configChanges="keyboardHidden"
+             android:name="com.informagics.gehirnjogging.Memory.Memory">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.informagics.gehirnjogging.menue.Spielauswahl"/>
+         </activity>
     </application>
 
 </manifest>

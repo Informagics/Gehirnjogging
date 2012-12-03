@@ -1,120 +1,209 @@
-<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayoutQuiz"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_quiz" >
+    android:background="@drawable/background_quiz"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/txtHighscore"
+    <View
+        android:id="@+id/view1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="152dp"
-        android:layout_y="25dp"
-        android:text=""
-        android:textColor="#FFFFFF" />
+        android:layout_height="41dp" />
 
-    <ImageView
-        android:id="@+id/IMVLinks"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="51dp"
-        android:layout_y="112dp"
-        android:contentDescription="@string/desc"
-        android:src="@drawable/quiz_pointer_1"
-        android:visibility="invisible" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
-    <ImageView
-        android:id="@+id/IMVKat1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="23dp"
-        android:layout_y="73dp"
-        android:contentDescription="@string/desc"
-        android:src="@drawable/quiz_button_1" />
+        <View
+            android:id="@+id/view2"
+            android:layout_width="155dp"
+            android:layout_height="30dp" />
 
-    <TextView
-        android:id="@+id/txtKat1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="58dp"
-        android:layout_y="83dp"
-        android:text=""
-        android:textSize="12sp"
-        android:textColor="#FFFFFF" />
-    
-    <ImageView
-        android:id="@+id/IMVOben"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="250dp"
-        android:layout_y="112dp"
-        android:contentDescription="@string/desc"
-        android:visibility="invisible"
-        android:src="@drawable/quiz_pointer_2" />
+        <TextView
+            android:id="@+id/txtHighscore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" " />
 
-    <ImageView android:id="@+id/IMVKat2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="190dp"
-        android:layout_y="72dp"
-        android:contentDescription="@string/desc"
-        android:src="@drawable/quiz_button_1" />
-    
-    <TextView
-        android:id="@+id/txtKat2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="230dp"
-        android:layout_y="84dp"
-        android:text=""
-        android:textSize="12sp"
-        android:textColor="#FFFFFF" />
+        <View
+            android:id="@+id/view3"
+            android:layout_width="172dp"
+            android:layout_height="30dp" />
 
-    <ImageView
-        android:id="@+id/IMVRechts"
-        android:layout_width="242dp"
-        android:layout_height="128dp"
-        android:layout_x="214dp"
-        android:layout_y="112dp"
-        android:contentDescription="@string/desc"
-        android:visibility="invisible"
-        android:src="@drawable/quiz_pointer_3" />
+        <TextView
+            android:id="@+id/txtCountDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="" />
+    </LinearLayout>
 
-    <ImageView android:id="@+id/IMVKat3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="370dp"
-        android:layout_y="74dp"
-        android:contentDescription="@string/desc"
-        android:src="@drawable/quiz_button_1" />
-    
-    <TextView
-        android:id="@+id/txtKat3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="408dp"
-        android:layout_y="87dp"
-        android:text=""
-        android:textSize="12sp"
-        android:textColor="#FFFFFF" />
-    
-    <TextView
-        android:id="@+id/txtBegriff"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="235dp"
-        android:layout_y="258dp"
-        android:text=""
-        android:textColor="#FFFFFF"
-        android:textSize="12sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
-    <TextView
-        android:id="@+id/txtResponse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="423dp"
-        android:layout_y="230dp"
-        android:text=""
-        android:textColor="#FFFFFF" />
+        <View
+            android:id="@+id/view10"
+            android:layout_width="20dp"
+            android:layout_height="28dp" />
 
-</AbsoluteLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+           
+
+            <ImageView
+                android:id="@+id/IMVKat1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/quiz_button_1"
+                android:onClick="Clicked" />
+
+            <TextView
+                android:id="@+id/txtKat1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="TextView" />
+            
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="48dp"
+            android:layout_height="42dp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            
+            <ImageView
+                android:id="@+id/IMVKat2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/quiz_button_1"
+                android:onClick="Clicked" />
+
+            <TextView
+                android:id="@+id/txtKat2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="TextView" />
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view5"
+            android:layout_width="48dp"
+            android:layout_height="42dp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+          
+            <ImageView
+                android:id="@+id/IMVKat3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:onClick="Clicked"
+                android:src="@drawable/quiz_button_1" />
+
+            <TextView
+                android:id="@+id/txtKat3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="TextView" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <View
+            android:id="@+id/view6"
+            android:layout_width="42dp"
+            android:layout_height="34dp" />
+
+        <ImageView
+            android:id="@+id/IMVPointer"
+            android:layout_width="wrap_content"
+            android:layout_height="125dp"
+            android:visibility="invisible"
+            android:src="@drawable/quiz_pointer_mitte" />
+
+        <View
+            android:id="@+id/view7"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.50" >
+
+        <View
+            android:id="@+id/view8"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.84"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.92" >
+
+                <TextView
+                    android:id="@+id/txtBegriff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="TextView" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.42" >
+
+                <TextView
+                    android:id="@+id/txtResponse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view9"
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.01" />
+    </LinearLayout>
+
+</LinearLayout>

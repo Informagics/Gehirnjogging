@@ -5,6 +5,7 @@ import com.informagics.gehirnjogging.bitout.BitOut;
 import com.informagics.gehirnjogging.kabelbinder.kabelbinder;
 import com.informagics.gehirnjogging.mathe.mathe;
 import com.informagics.gehirnjogging.quiz.Quiz;
+import com.informagics.gehirnjogging.Memory.Memory;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -40,6 +41,12 @@ public class Spielauswahl extends Activity {
     public void BitOut(View view)
     {
     	Intent intent = new Intent(this, BitOut.class);
+    	startActivity(intent);
+    }
+    
+    public void Memory(View view)
+    {
+    	Intent intent = new Intent(this, Memory.class);
     	startActivity(intent);
     }
 

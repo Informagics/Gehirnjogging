@@ -13,7 +13,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
-        android:layout_marginRight="25dp"
         android:layout_marginTop="55dp"
         android:text="@string/count"
         android:textColor="@android:color/black" />

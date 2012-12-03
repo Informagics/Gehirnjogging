@@ -13,15 +13,16 @@ import com.informagics.gehirnjogging.R;
 
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.app.Activity;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class Quiz extends Activity {
+public class Quiz extends Activity 
+{
 	
 	int grr=0;
 	int check=0;
@@ -30,49 +31,50 @@ public class Quiz extends Activity {
 	String Fragenliste[]={""};
 	
 	
+	//Quelle : http://stackoverflow.com/questions/1877417/how-to-set-a-timer-in-android
+		
+	final Handler _newRoundHandler = new Handler();
+		
+		final Runnable _newRound= new Runnable()
+		{
+			public void run()
+			{
+				 neueRunde(); // Aufruf der neuen Runde
+			}
+		};	
+		 
 	
+		 
 	String txt;
 	
 	@Override
-    public void onCreate(Bundle savedInstanceState) {
-    	
-    	 //Quelle : http://stackoverflow.com/questions/1877417/how-to-set-a-timer-in-android
-		
-		 final Handler _newRoundHandler = new Handler();
-		
-		 final Runnable _newRound= new Runnable()
-		  {
-		  public void run()
-		 {
-		   neueRunde(); // Aufruf der neuen Runde
-		  }
-		  };
-		  final Handler _GameOver = new Handler();
-			
-			 final Runnable _Over= new Runnable()
-			  {
-			  public void run()
-			 {
-			   stop(); // Aufruf zum stoppen des Spiels
-			  }
-			  };
+    public void onCreate(Bundle savedInstanceState) 
+	{
+    	 
+		 
 		  
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
         
-        _GameOver.postDelayed(_Over, 180000); // 3Minuten
+      //CountDown
+    	new CountDownTimer(180000,1000)
+    	{
+    		public void onTick(long millisUntilFinished)
+    		{
+    			((TextView)findViewById(R.id.txtCountDown)).setText("Verbleibende Zeit : "+ millisUntilFinished/1000);
+    		}
+    		public void onFinish()
+    		{
+    			stop();
+    		}
+    	}.start();
         
-        final ImageView opfeil = (ImageView) findViewById(R.id.IMVOben); //Mittleres IMGVIew
-        final ImageView rpfeil = (ImageView) findViewById(R.id.IMVRechts); // Rechtes ImageView
-        final ImageView lpfeil = (ImageView) findViewById(R.id.IMVLinks); // Linkes Imageview
-        
-        final TextView response = (TextView) findViewById(R.id.txtResponse);
-        final ImageView oben = (ImageView) findViewById(R.id.IMVKat2); // Var. oben das ImageView IMVKAT2 zuweisen
-        final TextView highscore = (TextView) findViewById(R.id.txtHighscore);
-        
-		try {
+		try 
+		{
 			 txt = convertStreamToString("fragen.txt");
-		} catch (IOException e1) {
+		} 
+		catch (IOException e1)
+		{
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
@@ -84,124 +86,57 @@ public class Quiz extends Activity {
 		http://www.mybringback.com/tutorial-series/3279/android-the-basics-32-androids-ontouchlistener-and-motionevent/ 
 		*/
 
-        oben.setOnTouchListener(new OnTouchListener(){ //Ontouchlistener für die mittlere Kategorie
-        
-           
-			public boolean onTouch(View oben, MotionEvent event) {
-                switch (event.getAction())
-                {
-                    case MotionEvent.ACTION_DOWN: //Wenn ImageView gedrückt wurde
-                    {
-                    	if( bereitsgeklickt==1)
-                    		return true; // Verlassen der onTOuch falls die Kategorie bereits geklickt wurde.
-                    	
-                     opfeil.setVisibility(1); // ImageView des mittleren Pfeils auf visible setzen
-                     grr=2; // CHeck der onTouch
-                     
-                     if(grr==check && bereitsgeklickt==0){ //Wenn check==grr RIchtig dann wurde die Frage richtig beantwortet
-                    	 
-                 		response.setText("Richtig"); 
-                 		scorehigh+=5;
-                 		bereitsgeklickt=1;
-                 		highscore.setText(" "+ scorehigh);
-                 	   _newRoundHandler.postDelayed(_newRound, 3000); //Aufrufen der neuen Runde mit einem Delay von 3000 
-                 	   
-                     }else{
-                    	 
-                 		response.setText("Falsch");
-                 		bereitsgeklickt=1;
-                 	   _newRoundHandler.postDelayed(_newRound, 3000);
-                 	   
-                 	 }
-                  
-                     return true; // Verlasse switch
-                    }
-                   
-                }
-                return true; // Verlasse onTouch
-            }
-
-        });
-        final ImageView links = (ImageView) findViewById(R.id.IMVKat1);  // Var. links das ImageView IMVKAT1 zuweisen
-        links.setOnTouchListener(new OnTouchListener(){
-
-           
-			public boolean onTouch(View links, MotionEvent event) {
-                switch (event.getAction())
-                {
-                    case MotionEvent.ACTION_DOWN: //Wenn ImageView gedrückt wurde
-                    {
-                    	
-                    	  if( bereitsgeklickt==1)
-                    	  return true;
-                    	  
-                    	  lpfeil.setVisibility(1); // ImageView des rechten Pfeils auf visible setze
-                    	  grr=1;
-                    	  if(grr==check && bereitsgeklickt==0){
-                    		  
-                      		response.setText("Richtig"); 
-                      		scorehigh+=5;
-                      		bereitsgeklickt=1;
-                     		highscore.setText(" "+ scorehigh);
-                     	   _newRoundHandler.postDelayed(_newRound, 3000);
-                     	   
-                    	  }else{
-                    		  
-                      		response.setText("Falsch");
-                      		bereitsgeklickt=1;
-                      	   _newRoundHandler.postDelayed(_newRound, 3000);
-                      	   
-                      	 }
-                      
-                    	  return true; // Verlasse switch
-                    }
-                    
-                }
-                return true; // Verlasse onTouch
-            }
-
-        });
-        final ImageView rechts = (ImageView) findViewById(R.id.IMVKat3);  // Var. rechts das ImageView IMVKAT3 zuweisen
-        rechts.setOnTouchListener(new OnTouchListener(){
-
-           
-			public boolean onTouch(View rechts, MotionEvent event) {
-                switch (event.getAction())
-                {
-                    case MotionEvent.ACTION_DOWN: //Wenn ImageView gedrückt wurde
-                    {
-                    	if( bereitsgeklickt==1)
-                    		return true;
-                    	 rpfeil.setVisibility(1); // ImageView des linken Pfeils auf visible setze
-                    	 grr=3;
-                    	
-                    	 if(grr==check && bereitsgeklickt==0){
-                    		 
-                     		response.setText("Richtig"); 
-                     		scorehigh+=5;
-                     		 bereitsgeklickt=1;
-                     		highscore.setText(" "+ scorehigh);
-                     	   _newRoundHandler.postDelayed(_newRound, 3000);
-                     	   
-                     	 }else{
-                     		 
-                     		response.setText("Falsch");
-                     		 bereitsgeklickt=1;
-                     	   _newRoundHandler.postDelayed(_newRound, 3000);
-                     	   
-                     	 }
-                       
-                    	 return true; // Verlasse switch
-                    }
-                   
-                }
-               return true; // Verlasse onTouch
-            }
-
-        });
+	}
+public void Clicked(View view)
+{
+	
+	if( bereitsgeklickt==1)
+	return;
+	
+	TextView response = (TextView) findViewById(R.id.txtResponse);
+    TextView highscore = (TextView) findViewById(R.id.txtHighscore);
+    
+	if(view.getId()==R.id.IMVKat1)
+	{
+		grr=1;
+		((ImageView)findViewById(R.id.IMVPointer)).setVisibility(1);
+		((ImageView)findViewById(R.id.IMVPointer)).setImageResource(R.drawable.quiz_pointer_links);
+	}
+	else if(view.getId()==R.id.IMVKat2)
+	{
+		grr=2;
+		((ImageView)findViewById(R.id.IMVPointer)).setVisibility(1);
+		((ImageView)findViewById(R.id.IMVPointer)).setImageResource(R.drawable.quiz_pointer_mitte);
+	}
+	else if(view.getId()==R.id.IMVKat3)
+	{
+		grr=3;
+		((ImageView)findViewById(R.id.IMVPointer)).setVisibility(1);
+		((ImageView)findViewById(R.id.IMVPointer)).setImageResource(R.drawable.quiz_pointer_rechts);
+	} // Ende IF getView
+  	  
+  	  
+  	if(grr==check && bereitsgeklickt==0)
+  	{
+  		  
+    	response.setText("Richtig"); 
+    	scorehigh+=5;
+   		bereitsgeklickt=1;
+   		highscore.setText(" "+ scorehigh);
+   	   _newRoundHandler.postDelayed(_newRound, 3000);
+   	   
+  	}
+  	else
+  	{
+  		  
+    	response.setText("Falsch");
+    	bereitsgeklickt=1;
+    	_newRoundHandler.postDelayed(_newRound, 3000);
+    	   
     }
-  
-public int getQuestion(){
+}
+public int getQuestion()
+{
     	
 	  
     	final TextView tkat1=(TextView) findViewById(R.id.txtKat1);
@@ -231,7 +166,8 @@ public int getQuestion(){
         int randswitch =(int) (Math.random() * (4 - 1) + 1); //Rand auswahl der Kategorien sortierung
     	
     	
-    	if(randswitch==1){
+    	if(randswitch==1)
+    	{
     		
     		tkat1.setText(kat3);
         	tkat2.setText(kat2);
@@ -240,7 +176,9 @@ public int getQuestion(){
     		
         	auswahl=1;
         	
-    	}else if(randswitch==2){
+    	}
+    	else if(randswitch==2)
+    	{
     		
     		tkat1.setText(kat1);
         	tkat2.setText(kat3);
@@ -249,7 +187,9 @@ public int getQuestion(){
     	
         	auswahl= 2;
         	
-    	}else if(randswitch==3){
+    	}
+    	else if(randswitch==3)
+    	{
     		
     		tkat1.setText(kat2);
         	tkat2.setText(kat1);
@@ -263,12 +203,11 @@ public int getQuestion(){
     	
     }
 	//Quelle : 
-    public void neueRunde(){
+    public void neueRunde()
+    {
     	
     	 //Neue Runde einleiten(Alle werte zurücksetzen)
-    	 ImageView opfeil = (ImageView) findViewById(R.id.IMVOben); //Mittleres IMGVIew
-         ImageView rpfeil = (ImageView) findViewById(R.id.IMVRechts); // Rechtes ImageView
-         ImageView lpfeil = (ImageView) findViewById(R.id.IMVLinks); // Linkes Imageview
+    	
          TextView response = (TextView) findViewById(R.id.txtResponse); // Response Textview
          bereitsgeklickt=0;
          
@@ -278,9 +217,7 @@ public int getQuestion(){
 
           */
          
-         opfeil.setVisibility(4); // Visibility wieder auf invisible setzen
-         lpfeil.setVisibility(4);
-         rpfeil.setVisibility(4);
+         ((ImageView)findViewById(R.id.IMVPointer)).setVisibility(4);
          
          response.setText("");
          check=getQuestion(); // Neue Frage auswï¿½hlen und in der Funktion setzen
@@ -311,32 +248,29 @@ public int getQuestion(){
     	return text; //Text zurückgeben
     }
     
-    public void stop(){
+    public void stop()
+    {
     	
     	//Alles auf unsichtbar setzen & Text leeren
-   	 	ImageView opfeil = (ImageView) findViewById(R.id.IMVOben); //Mittleres IMGVIew
-        ImageView rpfeil = (ImageView) findViewById(R.id.IMVRechts); // Rechtes ImageView
-        ImageView lpfeil = (ImageView) findViewById(R.id.IMVLinks); // Linkes Imageview
-        TextView response = (TextView) findViewById(R.id.txtResponse); // Response Textview
-        ImageView oben = (ImageView) findViewById(R.id.IMVKat2);
-        ImageView links = (ImageView) findViewById(R.id.IMVKat1);
-        ImageView rechts = (ImageView) findViewById(R.id.IMVKat3);
-        TextView tkat1=(TextView) findViewById(R.id.txtKat1);
-		TextView tkat2=(TextView) findViewById(R.id.txtKat2);
-		TextView tkat3=(TextView) findViewById(R.id.txtKat3);
-		TextView tbegriff=(TextView) findViewById(R.id.txtBegriff);
+   	 	
+        //Neu
+		((ImageView)findViewById(R.id.IMVPointer)).setVisibility(4);
+		((ImageView)findViewById(R.id.IMVKat1)).setVisibility(4);
+		((ImageView)findViewById(R.id.IMVKat2)).setVisibility(4);
+		((ImageView)findViewById(R.id.IMVKat3)).setVisibility(4);
+		((TextView)findViewById(R.id.txtResponse)).setText("");
+		((TextView)findViewById(R.id.txtKat1)).setText("");
+		((TextView)findViewById(R.id.txtKat2)).setText("");
+		((TextView)findViewById(R.id.txtKat3)).setText("");
+		((TextView)findViewById(R.id.txtBegriff)).setText("");
+		((TextView)findViewById(R.id.txtHighscore)).setText("");
+		((TextView)findViewById(R.id.txtCountDown)).setText("");
 		
-        opfeil.setVisibility(4); // Visibility wieder auf invisible setzen
-        lpfeil.setVisibility(4);
-        rpfeil.setVisibility(4);
-        rechts.setVisibility(4);
-        links.setVisibility(4);
-        oben.setVisibility(4);
+		//GameOver Screen setzen
+		((LinearLayout)findViewById(R.id.LinearLayoutQuiz)).setBackgroundResource(R.drawable.bluescreen_quiz_gameover);
+		
+       
         
-        tbegriff.setText(""); // Textfelder leeren und GameOver ausgeben
-        tkat1.setText("");
-        tkat2.setText("GameOver");
-        tkat3.setText("");
-        response.setText("");
+       
     }
 }
