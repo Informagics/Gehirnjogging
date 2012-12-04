@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -14,19 +15,12 @@ import android.widget.TextView;
 
 public class Memory extends Activity {
 	
-	//Mainboardgrafik spackt rum : D
-	/*int[][] Bilder=
-		{
-			
-			{R.drawable.arbeitsspeicher,R.drawable.hdd,R.drawable.laufwerk,R.drawable.grafikkarte},
-			{R.drawable.mainboard,R.drawable.rj45_stecker,R.drawable.netzteil,R.drawable.coaxial}
-			
-		};*/
+	
 	int[][] Bilder=
 		{
 			
-			{R.drawable.eins,R.drawable.vier,R.drawable.fuenf,R.drawable.acht},
-			{R.drawable.zwei,R.drawable.drei,R.drawable.sechs,R.drawable.sieben}
+			{R.drawable.mem_card_bin,R.drawable.mem_card_coax,R.drawable.mem_card_dozentoman,R.drawable.mem_card_hdd},
+			{R.drawable.mem_card_rj45,R.drawable.drei,R.drawable.sechs,R.drawable.sieben}
 			
 		};
 	
@@ -209,7 +203,7 @@ public class Memory extends Activity {
 		{
 			((ImageView)findViewById(reset[0])).setVisibility(4);
 			((ImageView)findViewById(reset[1])).setVisibility(4);
-			((TextView)findViewById(R.id.txtMemoryScore)).setText(String.valueOf(score+=5));
+			((TextView)findViewById(R.id.txtMemoryScore)).setText("Score : " + String.valueOf(score+=5));
 			
 			finish++;
 			g=0;
@@ -223,11 +217,11 @@ public class Memory extends Activity {
 		}
 		else
 		{
-			((ImageView)findViewById(reset[0])).setImageResource(R.drawable.treffer_deck);
-			((ImageView)findViewById(reset[1])).setImageResource(R.drawable.treffer_deck);
+			((ImageView)findViewById(reset[0])).setImageResource(R.drawable.mem_card_back);
+			((ImageView)findViewById(reset[1])).setImageResource(R.drawable.mem_card_back);
 			
 			if(score>0)
-			((TextView)findViewById(R.id.txtMemoryScore)).setText(String.valueOf(score-=1));
+			((TextView)findViewById(R.id.txtMemoryScore)).setText("Score : " + String.valueOf(score-=1));
 			
 			g=0;
 			check=0;
@@ -239,11 +233,7 @@ public class Memory extends Activity {
     
     public void gameend()
     {
-    	/* TODO
-    	 * Layout ersetzen
-    	 * Layout anpassen(Visibility verschiebt die Objekte)
-    	 * DAS PHÄNOMENALE ENDE DIESES SPIELS SCHREIBEN
-    	 * Und jeder von uns faulen Säcke muss noch den Highscore einbauen...
-    	*/
+    	((LinearLayout)findViewById(R.id.LinearLayoutMemory3)).setBackgroundResource(R.drawable.tisch_over);
+    	((TextView)findViewById(R.id.txtMemoryScore)).setText("");
     }
 }

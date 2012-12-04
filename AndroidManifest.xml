@@ -43,6 +43,15 @@
                 android:value="com.informagics.gehirnjogging.menue.MainActivity"/>
          </activity>
          <activity
+             android:label="Nachschlagewerk"
+             android:screenOrientation="landscape"
+             android:configChanges="keyboardHidden"
+             android:name="com.informagics.gehirnjogging.menue.Nachschlagewerk">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.informagics.gehirnjogging.menue.MainActivity"/>
+         </activity>
+         <activity
              android:label="@string/title_activity_credits"
              android:screenOrientation="landscape"
              android:configChanges="keyboardHidden"
@@ -96,6 +105,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.informagics.gehirnjogging.menue.Spielauswahl"/>
          </activity>
+        
     </application>
 
 </manifest>

@@ -29,7 +29,8 @@ public class Quiz extends Activity
 	int scorehigh=0;
 	int bereitsgeklickt=0;
 	String Fragenliste[]={""};
-	
+	CountDownTimer CountDown2;
+	int countdowntime=180000;
 	
 	//Quelle : http://stackoverflow.com/questions/1877417/how-to-set-a-timer-in-android
 		
@@ -43,7 +44,18 @@ public class Quiz extends Activity
 			}
 		};	
 		 
-	
+	//CountDown
+    final CountDownTimer CountDown1 =new CountDownTimer(180000,1000)
+    {
+    	public void onTick(long millisUntilFinished)
+    	{
+    		((TextView)findViewById(R.id.txtCountDown)).setText("Verbleibende Zeit : "+ millisUntilFinished/1000);
+    	}
+    	public void onFinish()
+    	{
+    		stop(); // Funktionsaufruf Stop
+    	}
+    };
 		 
 	String txt;
 	
@@ -56,18 +68,7 @@ public class Quiz extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
         
-      //CountDown
-    	new CountDownTimer(180000,1000)
-    	{
-    		public void onTick(long millisUntilFinished)
-    		{
-    			((TextView)findViewById(R.id.txtCountDown)).setText("Verbleibende Zeit : "+ millisUntilFinished/1000);
-    		}
-    		public void onFinish()
-    		{
-    			stop();
-    		}
-    	}.start();
+        CountDown1.start();
         
 		try 
 		{
@@ -87,13 +88,40 @@ public class Quiz extends Activity
 		*/
 
 	}
+	
+protected void onPause() 
+{
+        super.onStop();
+        
+        CountDown1.cancel();
+        CountDown2.cancel();
+}
+
+protected void onResume() 
+{
+    	super.onResume();
+    	
+    	CountDown2 =new CountDownTimer(countdowntime,1000)
+        {
+        	public void onTick(long millisUntilFinished)
+        	{
+        		((TextView)findViewById(R.id.txtCountDown)).setText("Verbleibende Zeit : "+ millisUntilFinished/1000);
+        		countdowntime-=1000;
+        	}
+        	public void onFinish()
+        	{
+        		stop(); // Funktionsaufruf Stop
+        	}
+        }.start();
+    	
+}
+
 public void Clicked(View view)
 {
 	
 	if( bereitsgeklickt==1)
 	return;
 	
-	TextView response = (TextView) findViewById(R.id.txtResponse);
     TextView highscore = (TextView) findViewById(R.id.txtHighscore);
     
 	if(view.getId()==R.id.IMVKat1)
@@ -115,11 +143,29 @@ public void Clicked(View view)
 		((ImageView)findViewById(R.id.IMVPointer)).setImageResource(R.drawable.quiz_pointer_rechts);
 	} // Ende IF getView
   	  
-  	  
+  	if(check==1)
+  	{
+  		((ImageView)findViewById(R.id.IMVKat1)).setImageResource(R.drawable.quiz_button_r);
+  		((ImageView)findViewById(R.id.IMVKat2)).setImageResource(R.drawable.quiz_button_f);
+  		((ImageView)findViewById(R.id.IMVKat3)).setImageResource(R.drawable.quiz_button_f);
+  	}
+  	else if(check==2)
+  	{
+  		((ImageView)findViewById(R.id.IMVKat1)).setImageResource(R.drawable.quiz_button_f);
+  		((ImageView)findViewById(R.id.IMVKat2)).setImageResource(R.drawable.quiz_button_r);
+  		((ImageView)findViewById(R.id.IMVKat3)).setImageResource(R.drawable.quiz_button_f);
+  	}
+  	else if(check==3)
+  	{
+  		((ImageView)findViewById(R.id.IMVKat1)).setImageResource(R.drawable.quiz_button_f);
+  		((ImageView)findViewById(R.id.IMVKat2)).setImageResource(R.drawable.quiz_button_f);
+  		((ImageView)findViewById(R.id.IMVKat3)).setImageResource(R.drawable.quiz_button_r);
+  	}// Ende IF CHeck
+  	
   	if(grr==check && bereitsgeklickt==0)
   	{
   		  
-    	response.setText("Richtig"); 
+    	
     	scorehigh+=5;
    		bereitsgeklickt=1;
    		highscore.setText(" "+ scorehigh);
@@ -129,7 +175,7 @@ public void Clicked(View view)
   	else
   	{
   		  
-    	response.setText("Falsch");
+    	
     	bereitsgeklickt=1;
     	_newRoundHandler.postDelayed(_newRound, 3000);
     	   
@@ -208,7 +254,10 @@ public int getQuestion()
     	
     	 //Neue Runde einleiten(Alle werte zurücksetzen)
     	
-         TextView response = (TextView) findViewById(R.id.txtResponse); // Response Textview
+         ((ImageView)findViewById(R.id.IMVKat1)).setImageResource(R.drawable.quiz_button_1);
+         ((ImageView)findViewById(R.id.IMVKat2)).setImageResource(R.drawable.quiz_button_1);
+         ((ImageView)findViewById(R.id.IMVKat3)).setImageResource(R.drawable.quiz_button_1);
+         
          bereitsgeklickt=0;
          
          /* Quellen :
@@ -219,7 +268,7 @@ public int getQuestion()
          
          ((ImageView)findViewById(R.id.IMVPointer)).setVisibility(4);
          
-         response.setText("");
+         
          check=getQuestion(); // Neue Frage auswï¿½hlen und in der Funktion setzen
          
     }
@@ -258,7 +307,6 @@ public int getQuestion()
 		((ImageView)findViewById(R.id.IMVKat1)).setVisibility(4);
 		((ImageView)findViewById(R.id.IMVKat2)).setVisibility(4);
 		((ImageView)findViewById(R.id.IMVKat3)).setVisibility(4);
-		((TextView)findViewById(R.id.txtResponse)).setText("");
 		((TextView)findViewById(R.id.txtKat1)).setText("");
 		((TextView)findViewById(R.id.txtKat2)).setText("");
 		((TextView)findViewById(R.id.txtKat3)).setText("");
@@ -267,7 +315,7 @@ public int getQuestion()
 		((TextView)findViewById(R.id.txtCountDown)).setText("");
 		
 		//GameOver Screen setzen
-		((LinearLayout)findViewById(R.id.LinearLayoutQuiz)).setBackgroundResource(R.drawable.bluescreen_quiz_gameover);
+		((LinearLayout)findViewById(R.id.LinearLayoutQuiz)).setBackgroundResource(R.drawable.bluescreen_gameover_quiz);
 		
        
         

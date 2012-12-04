@@ -2,6 +2,7 @@ package com.informagics.gehirnjogging.menue;
 
 import com.informagics.gehirnjogging.R;
 
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -27,6 +28,11 @@ public class MainActivity extends Activity {
     
     public void Creditsoeffnen(View c){
     	Intent intent = new Intent(this, Credits.class);
+    	startActivity(intent);
+    }
+    
+    public void Nachschlagewerkoeffnen(View c){
+    	Intent intent = new Intent(this, Nachschlagewerk.class);
     	startActivity(intent);
     }
 }

@@ -24,6 +24,7 @@
     <string name="title_activity_main">Ghirnficker</string>
     <string name="count">Counter: 0</string>
     <string name="Memory">Memory</string>
+    <string name="Nachschlagewerk">Nachschlagewerk</string>
     <string name="desc"/>
     
 </resources>
