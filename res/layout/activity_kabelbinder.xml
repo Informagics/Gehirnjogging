@@ -278,5 +278,17 @@
         android:layout_height="wrap_content"
         android:textSize="10sp"
         android:text="@string/count" />
+    
+    <TextView
+        android:id="@+id/TimerKabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/timerkabel" />
+
+    <TextView
+        android:id="@+id/PunkteKabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/punktekabel" />
 
 </LinearLayout>

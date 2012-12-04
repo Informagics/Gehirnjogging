@@ -21,10 +21,14 @@
     <string name="title_activity_spielauswahl">Spielauswahl</string>
     <string name="title_activity_credits">Credits</string>
     <string name="title_activity_optionenauswahl">Optionenauswahl</string>
-    <string name="title_activity_main">Ghirnficker</string>
+    <string name="title_activity_main">Informagics</string>
     <string name="count">Counter: 0</string>
     <string name="Memory">Memory</string>
     <string name="Nachschlagewerk">Nachschlagewerk</string>
+    <string name="punktezahlbitout">Punkte: 100</string>
+    <string name="timerbitout"></string>
+    <string name="timerkabel">Zeit</string>
+    <string name="punktekabel">Punkte: 100</string>
     <string name="desc"/>
     
 </resources>

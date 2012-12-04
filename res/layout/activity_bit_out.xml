@@ -232,4 +232,17 @@
                 android:onClick="clicked" />
         </TableRow>
     </TableLayout>
+
+    <TextView
+        android:id="@+id/PunktezahlBitOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/punktezahlbitout" />
+    
+    <TextView 
+        android:id="@+id/TimerBitOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/timerbitout"/>
+
 </LinearLayout>

@@ -2,7 +2,6 @@ package com.informagics.gehirnjogging.menue;
 
 import com.informagics.gehirnjogging.R;
 
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
