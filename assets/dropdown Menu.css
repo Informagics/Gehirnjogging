@@ -1,0 +1,108 @@
+/* CSS Document */
+body {
+	background-image:url(Bilder/bg_sternenhimmel.jpg);
+	background-repeat:repeat;
+	background-color:#FFF;
+	font-family:Arial, Helvetica, sans-serif;
+	background-color:#000;
+}
+
+#wrapper {
+	margin-left: auto;
+	Margin-right: auto;
+	margin-top: 30px;
+	width: 614px;
+	min-height: 6px;
+	border: 1px solid #0F0;
+	background-color: #ffffff;
+	box-shadow:#F00 8px 8px 102px;
+}
+
+#navMenu {
+	margin-left:auto;
+	margin-right:auto;
+	padding:0;
+}
+
+#navMenu ul {
+	margin:0;
+	padding:0;
+}
+
+#navMenu li {
+	margin:0;
+	padding:0;
+	list-style:none;
+	float:left;
+	position:relative;
+	background-color:#0033FF;
+	text-align:center;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	text-decoration:none;
+	min-height:25px;
+	min-width:150px;
+	display:block;
+	color:#FFFFFF;
+	border:1px solid #000000;
+	font-size:12px;
+}
+
+#navMenu ul li a {
+	text-align:center;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	text-decoration:none;
+	min-height:25px;
+	min-width:150px;
+	display:block;
+	color:#FFFFFF;
+	border:0px solid #000000;
+	font-size:12px;
+}
+
+#navMenu ul ul {
+	position:absolute;
+	visibility:hidden;
+	top:25px;
+}
+
+#navMenu ul li:hover ul {
+	visibility:visible;
+}
+/**********************************************************************************************/
+
+#navMenu li:hover {
+	background-color:#000099;	
+}
+
+
+#navMenu ul li:hover ul li a:hover { 
+	background-color:#000099;
+	color:#FFF;
+}
+
+#navMenu a:hover{
+	color:#FFFFFF;
+}
+
+.clearFloat {
+	clear:both;
+	margin:0;
+	padding:0;
+}
+
+#navMenue ul li:hover ul li a {
+	background-color:#FFFFFF;
+	color:#0000FF;
+}
+
+#wrapper a {
+	text-align: center;
+}
+
+#wrapper p {
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+}
+#wrapper {
+	text-align: center;
+}
