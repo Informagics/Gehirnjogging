@@ -3,13 +3,13 @@
     android:id="@+id/LinearLayoutMemory3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/tisch"
+    android:background="@drawable/background_memory"
     android:orientation="vertical" >
 
     <View
         android:id="@+id/view1"
         android:layout_width="wrap_content"
-        android:layout_height="28dp" />
+        android:layout_height="42dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -221,7 +221,7 @@
             <View
                 android:id="@+id/view3"
                 android:layout_width="wrap_content"
-                android:layout_height="18dp" />
+                android:layout_height="10dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -238,9 +238,9 @@
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
+                        android:text="Score : "
                         android:textColor="#000000"
-                        android:textSize="16sp"
-                        android:text="Score : " />
+                        android:textSize="16sp" />
 
                 </RelativeLayout>
 

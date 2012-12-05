@@ -20,7 +20,7 @@ public class Memory extends Activity {
 		{
 			
 			{R.drawable.mem_card_bin,R.drawable.mem_card_coax,R.drawable.mem_card_dozentoman,R.drawable.mem_card_hdd},
-			{R.drawable.mem_card_rj45,R.drawable.drei,R.drawable.sechs,R.drawable.sieben}
+			{R.drawable.mem_card_rj45,R.drawable.mem_card_fcard,R.drawable.mem_card_ram,R.drawable.mem_card_mouse}
 			
 		};
 	
@@ -233,7 +233,6 @@ public class Memory extends Activity {
     
     public void gameend()
     {
-    	((LinearLayout)findViewById(R.id.LinearLayoutMemory3)).setBackgroundResource(R.drawable.tisch_over);
-    	((TextView)findViewById(R.id.txtMemoryScore)).setText("");
+    	((LinearLayout)findViewById(R.id.LinearLayoutMemory3)).setBackgroundResource(R.drawable.background_memory_over);
     }
 }
