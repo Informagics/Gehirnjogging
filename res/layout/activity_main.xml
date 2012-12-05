@@ -9,7 +9,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="77dp" />
+        android:layout_height="87dp" />
     
     <Button
         android:id="@+id/button3"
@@ -66,6 +66,6 @@
     
     <View
         android:layout_width="match_parent"
-        android:layout_height="75dp" />
+        android:layout_height="62dp" />
 
 </LinearLayout>
