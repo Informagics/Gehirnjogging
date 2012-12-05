@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+
     <string name="app_name">Gehirnjogging</string>
     <string name="plus">+</string>
     <string name="minus">-</string>
@@ -26,9 +26,11 @@
     <string name="Memory">Memory</string>
     <string name="Nachschlagewerk">Nachschlagewerk</string>
     <string name="punktezahlbitout">Punkte: 100</string>
-    <string name="timerbitout"></string>
-    <string name="timerkabel">Zeit</string>
+    <string name="timerbitout">Zeit:</string>
+    <string name="timerkabel">Zeit:</string>
     <string name="punktekabel">Punkte: 100</string>
-    <string name="desc"/>
-    
+    <string name="desc" />
+    <string name="title_activity_highscore">Highscore</string>
+    <string name="title_activity_benutzername">Benutzername</string>
+
 </resources>

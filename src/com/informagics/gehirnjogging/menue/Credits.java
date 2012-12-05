@@ -8,10 +8,6 @@ import android.os.Bundle;
 import android.widget.MediaController;
 import android.widget.VideoView;
 import android.app.Activity;
-import android.media.MediaPlayer;
-import android.net.Uri;
-import android.widget.MediaController;
-import android.widget.VideoView;
 
 public class Credits extends Activity 
 {
@@ -20,10 +16,10 @@ public class Credits extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.credits);
-        /*
-        MediaPlayer mp= MediaPlayer.create(this, R.raw.musikdatei); //nur für Musikwiedergabe
+        
+        MediaPlayer mp= MediaPlayer.create(this, R.raw.k); //nur für Musikwiedergabe
         mp.start();
-        */
+        
         VideoView Videoview = (VideoView)findViewById(R.id.videoview1);
         Uri videopfad = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.credits); //Quelle ist eigenes Projekt; Name des Projekts; Dateipfad (ohne dateiendung)
         MediaController mc = new MediaController(this); // Erstellt ein Videoplayer mit Pause-Button usw. DRINGEND NOTWENDIG!!! ohne gehts nicht

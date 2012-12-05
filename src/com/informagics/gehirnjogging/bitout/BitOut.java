@@ -173,29 +173,30 @@ public class BitOut extends Activity {
 			view.setBackgroundResource(R.drawable.bits_button_zero);
 	}
 	
-	public void clicked(View view){
+	public void clicked(View view)
+	{
+		if(mode == 1)
+			return;
+		
 		int zahl=view.getId()-R.id.b00;
 		int x=zahl%6;
 		int y=(zahl-x)/6;
 		
 	    //clicked on cell (y,x)
-	   	if(mode==0)
-	   	{
-    		moves++;
-    		((TextView) findViewById(R.id.Clicks)).setText("Clicks: "+moves); //Übergibt die benötigten Klicks an den Clicks Textview
-    		domove(y,x);
+    	moves++;
+    	((TextView) findViewById(R.id.Clicks)).setText("Clicks: "+moves); //Übergibt die benötigten Klicks an den Clicks Textview
+    	domove(y,x);
     		
-    		if (punktezahl != 0) //Damit es keine negative Punktezahl gibt
-    		{
-    			punktezahl--;
-    			((TextView) findViewById(R.id.PunktezahlBitOut)).setText("Punkte: "+punktezahl); //Punktezahl wird an Textview übergeben
-    		}
-    		else
-    		{
-    			((TextView) findViewById(R.id.PunktezahlBitOut)).setText("Punkte: 0");
-    		}
-    		
+    	if (punktezahl != 0) //Damit es keine negative Punktezahl gibt
+    	{
+    		punktezahl--;
+    		((TextView) findViewById(R.id.PunktezahlBitOut)).setText("Punkte: "+punktezahl); //Punktezahl wird an Textview übergeben
     	}
+    	else
+    	{
+    		((TextView) findViewById(R.id.PunktezahlBitOut)).setText("Punkte: 0");
+    	}
+    	
 	   	solved();
 	}
 	

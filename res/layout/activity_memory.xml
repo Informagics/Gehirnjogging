@@ -3,7 +3,7 @@
     android:id="@+id/LinearLayoutMemory3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/tisch"
+    android:background="@drawable/background_memory"
     android:orientation="vertical" >
 
     <View

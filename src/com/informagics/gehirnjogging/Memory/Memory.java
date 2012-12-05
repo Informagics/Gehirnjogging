@@ -1,7 +1,6 @@
 package com.informagics.gehirnjogging.Memory;
 
 import com.informagics.gehirnjogging.R;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,26 +9,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
-
-
-public class Memory extends Activity {
-	
-	
+public class Memory extends Activity
+{
 	int[][] Bilder=
-		{
-			
+	{
 			{R.drawable.mem_card_bin,R.drawable.mem_card_coax,R.drawable.mem_card_dozentoman,R.drawable.mem_card_hdd},
 			{R.drawable.mem_card_rj45,R.drawable.drei,R.drawable.sechs,R.drawable.sieben}
-			
-		};
+	};
 	
 	int Kartenfeld[][] = new int[4][4];    
 	int compare[]=new int [2];
 	int check=0,g=0,score=0,finish=0;
-	int reset[]=new int [2];
-	
-	
+	int reset[]=new int [2];	
 	
 	final Handler _newDelayHandler = new Handler();
 	
@@ -95,85 +86,68 @@ public class Memory extends Activity {
 		{
 			if(Kartenfeld[x][y]==1)
 			{
-			
 				((ImageView)findViewById(view.getId())).setImageResource(Bilder[0][0]);
 				
 				reset[check]=view.getId();
 				compare[check]=Kartenfeld[x][y];
 				check++;
-			
 			}
 			else if(Kartenfeld[x][y]==2)
 			{
-			
 				((ImageView)findViewById(view.getId())).setImageResource(Bilder[0][1]);
 				
 				reset[check]=view.getId();
 				compare[check]=Kartenfeld[x][y];
 				check++;
-			
 			}
 			else if(Kartenfeld[x][y]==3)
 			{
-				
 				((ImageView)findViewById(view.getId())).setImageResource(Bilder[0][2]);
 				
 				reset[check]=view.getId();
 				compare[check]=Kartenfeld[x][y];
-				check++;
-			
+				check++;		
 			}
 			else if(Kartenfeld[x][y]==4)
 			{
-			
 				((ImageView)findViewById(view.getId())).setImageResource(Bilder[0][3]);
 				
 				reset[check]=view.getId();
 				compare[check]=Kartenfeld[x][y];
 				check++;
-			
 			}
 			else if(Kartenfeld[x][y]==5)
 			{
-			
 				((ImageView)findViewById(view.getId())).setImageResource(Bilder[1][0]);
 				
 				reset[check]=view.getId();
 				compare[check]=Kartenfeld[x][y];
-				check++;
-			
+				check++;	
 			}
 			else if(Kartenfeld[x][y]==6)
 			{
-					
 				((ImageView)findViewById(view.getId())).setImageResource(Bilder[1][1]);
 				
 				reset[check]=view.getId();
 				compare[check]=Kartenfeld[x][y];
 				check++;
-			
 			}
 			else if(Kartenfeld[x][y]==7)
 			{
-			
 				((ImageView)findViewById(view.getId())).setImageResource(Bilder[1][2]);
 				
 				reset[check]=view.getId();
 				compare[check]=Kartenfeld[x][y];
 				check++;
-			
 			}
 			else if(Kartenfeld[x][y]==8)
-			{
-			
+			{	
 				((ImageView)findViewById(view.getId())).setImageResource(Bilder[1][3]);
 				
 				reset[check]=view.getId();
 				compare[check]=Kartenfeld[x][y];
 				check++;
-			
-			} 
-			
+			}
 		}
 		
 		
@@ -189,16 +163,11 @@ public class Memory extends Activity {
 		else if(check>2)
 		{
 			return;
-		}
-		
-		
+		}		
 	}
     
     public void Auswertung()
-	{
-    	
-    	
-    	
+	{ 	
 		if(compare[0]==compare[1])
 		{
 			((ImageView)findViewById(reset[0])).setVisibility(4);
@@ -225,15 +194,12 @@ public class Memory extends Activity {
 			
 			g=0;
 			check=0;
-		}
-		
-		
-		
+		}		
 	}
     
     public void gameend()
     {
-    	((LinearLayout)findViewById(R.id.LinearLayoutMemory3)).setBackgroundResource(R.drawable.tisch_over);
+    	((LinearLayout)findViewById(R.id.LinearLayoutMemory3)).setBackgroundResource(R.drawable.background_memory_over);
     	((TextView)findViewById(R.id.txtMemoryScore)).setText("");
     }
 }

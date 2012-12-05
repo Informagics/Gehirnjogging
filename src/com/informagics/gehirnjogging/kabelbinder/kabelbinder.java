@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringWriter;
 import java.io.Writer;
+
+import com.informagics.gehirnjogging.Highscoreeintrag;
 import com.informagics.gehirnjogging.R;
 import android.app.Activity;
 import android.os.Bundle;
@@ -19,9 +21,8 @@ import android.widget.Toast;
 public class kabelbinder extends Activity 
 {
 	
-	CountDownTimer cd;
-	CountDownTimer cd2;
-	int Punkte = 100;
+	CountDownTimer cd,cd2;
+	int Punkte = 100,mode=0;
 	long zeit1, neuezeit=0, neuezeit2;
 	boolean test = false;
 	
@@ -35,7 +36,7 @@ public class kabelbinder extends Activity
 	
 	String[][] mapwerte = new String[5][5];
 	int Clickzähler = 0;
-	int rätselanzahl = 2;
+	int rätselanzahl = 3;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -43,11 +44,10 @@ public class kabelbinder extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_kabelbinder);
 		
-		//Levelinit((int)(Math.random()*rätselanzahl*10)%rätselanzahl);//rand für zufalls level
-		Levelinit(2);
+		Levelinit((int)(Math.random()*rätselanzahl*10)%rätselanzahl);//rand für zufalls level
 		
 		cd = new CountDownTimer(240000, 1000) //setzt den Timer auf 240 Sekunden 
-		 {
+		{
 		     public void onTick(long zeit) 
 		     {
 		    	 zeit1 = zeit; //übermittelt die noch verbleibende zeit
@@ -56,6 +56,7 @@ public class kabelbinder extends Activity
 
 		     public void onFinish() 
 		     {
+		    	 mode = 1;
 		    	 ((TextView)findViewById(R.id.TimerKabel)).setText("Zeit ist abgelaufen!");
 		    	 ((TextView)findViewById(R.id.PunkteKabel)).setText("Punkte: 0");
 		    	 Toast.makeText(getApplicationContext(), "Du warst zu langsam! Versuch es nochmal!", Toast.LENGTH_LONG).show();		    	 
@@ -108,6 +109,9 @@ public class kabelbinder extends Activity
 	
 	public void Clicked(View view)
 	{
+		if(mode == 1)
+			return;
+
 		int zahl=view.getId()-R.id.i00;
 		int x=zahl%6;
 		int y=(zahl-x)/6;
@@ -186,16 +190,16 @@ public class kabelbinder extends Activity
 		
 		do//Durchlauf der Map bis fehlerhafter Baustein oder zweiter Stecker Baustein erreicht wird
 		{
-			if(element==0 || element==3)
+			if(element == 0 || element == 3)
 			{
 				if(rotation%2==1)
 					x+=rotation-2;//x manipulation
 				else
 					y+=rotation-1;//y manipulation
 			}
-			else
+			else if(element == 1)
 			{
-				if(rotation==rotationneu || (element==2 && rotation%2!=rotationneu%2))
+				if(rotation==rotationneu)
 				{
 					switch (rotationneu)
 					{
@@ -214,7 +218,7 @@ public class kabelbinder extends Activity
 					}
 					rotation=(rotationneu+1)%4;
 				}
-				else if((rotation+1)%4==rotationneu || ((rotation-1)%4==rotationneu && element==2))
+				else if((rotation+1)%4==rotationneu)
 				{
 					switch (rotationneu)
 					{
@@ -235,6 +239,53 @@ public class kabelbinder extends Activity
 				}
 				else
 					return;
+			}
+			else
+			{
+				if(rotationneu%2==0)
+				{
+					switch (rotation)
+					{
+					case 0:
+						rotation=1;
+						x-=1;
+						break;
+					case 1:
+						rotation=0;
+						y-=1;
+						break;
+					case 2:
+						rotation=3;
+						x+=1;
+						break;
+					case 3:
+						rotation=2;
+						y+=1;
+						break;
+					}
+				}
+				else
+				{
+					switch (rotation)
+					{
+					case 0:
+						rotation=3;
+						x+=1;
+						break;
+					case 1:
+						rotation=2;
+						y+=1;
+						break;
+					case 2:
+						rotation=1;
+						x-=1;
+						break;
+					case 3:
+						rotation=0;
+						y-=1;
+						break;
+					}
+				}
 			}
 			
 			if(x==-1||x==5||y==-1||y==5)
@@ -257,8 +308,13 @@ public class kabelbinder extends Activity
 			
 		}while(element!=3);
 		cd.cancel();
-		
-		//((TextView)findViewById(R.id.Clickskabel)).setText(((TextView)findViewById(R.id.Clickskabel)).getText()+" "+rotation+" "+rotationneu+" Gelöst");
+		mode = 1;
+		try {
+			Highscoreeintrag.txt_eintragen("cabel",3,this);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		((TextView)findViewById(R.id.Clickskabel)).setText(((TextView)findViewById(R.id.Clickskabel)).getText()+" "+rotation+" "+rotationneu+" Gelöst");
 	}
 	
 	public String convertStreamToString(String filename) throws IOException

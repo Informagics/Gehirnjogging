@@ -1,6 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/LinearLayout2"
+    android:background="@drawable/background_cable"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -24,7 +25,7 @@
                 android:layout_weight="1"
                 android:onClick="Clicked"
                 android:contentDescription="@string/desc"
-                android:src="@drawable/cable_curve_1" />
+                android:src="@drawable/cable_double_1" />
 
             <ImageView
                 android:id="@+id/i01"
@@ -276,7 +277,6 @@
         android:id="@+id/Clickskabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="10sp"
         android:text="@string/count" />
     
     <TextView

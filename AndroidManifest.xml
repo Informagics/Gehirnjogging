@@ -12,100 +12,107 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
-        
+        android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
         <activity
-            android:label="@string/title_activity_main"
-            android:screenOrientation="landscape"
+            android:name="com.informagics.gehirnjogging.menue.MainActivity"
             android:configChanges="keyboardHidden"
-            android:name="com.informagics.gehirnjogging.menue.MainActivity">
+            android:label="@string/title_activity_main"
+            android:screenOrientation="landscape" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-         </activity>
-         <activity
-             android:label="@string/title_activity_spielauswahl"
-             android:screenOrientation="landscape"
-             android:configChanges="keyboardHidden"
-             android:name="com.informagics.gehirnjogging.menue.Spielauswahl">
+        </activity>
+        <activity
+            android:name="com.informagics.gehirnjogging.menue.Spielauswahl"
+            android:configChanges="keyboardHidden"
+            android:label="@string/title_activity_spielauswahl"
+            android:screenOrientation="landscape" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.informagics.gehirnjogging.menue.MainActivity"/>
-         </activity>
-         <activity
-             android:label="@string/title_activity_optionenauswahl"
-             android:screenOrientation="landscape"
-             android:configChanges="keyboardHidden"
-             android:name="com.informagics.gehirnjogging.menue.Optionenauswahl">
+                android:value="com.informagics.gehirnjogging.menue.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.informagics.gehirnjogging.menue.Optionenauswahl"
+            android:configChanges="keyboardHidden"
+            android:label="@string/title_activity_optionenauswahl"
+            android:screenOrientation="landscape" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.informagics.gehirnjogging.menue.MainActivity"/>
-         </activity>
-         <activity
-             android:label="Nachschlagewerk"
-             android:screenOrientation="landscape"
-             android:configChanges="keyboardHidden"
-             android:name="com.informagics.gehirnjogging.menue.Nachschlagewerk">
+                android:value="com.informagics.gehirnjogging.menue.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.informagics.gehirnjogging.menue.Nachschlagewerk"
+            android:configChanges="keyboardHidden"
+            android:label="Nachschlagewerk"
+            android:screenOrientation="landscape" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.informagics.gehirnjogging.menue.MainActivity"/>
-         </activity>
-         <activity
-             android:label="@string/title_activity_credits"
-             android:screenOrientation="landscape"
-             android:configChanges="keyboardHidden"
-             android:name="com.informagics.gehirnjogging.menue.Credits">
+                android:value="com.informagics.gehirnjogging.menue.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.informagics.gehirnjogging.menue.Credits"
+            android:configChanges="keyboardHidden"
+            android:label="@string/title_activity_credits"
+            android:screenOrientation="landscape" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.informagics.gehirnjogging.menue.MainActivity"/>
-         </activity>
-         <activity
-             android:label="Mathe"
-             android:screenOrientation="landscape"
-             android:configChanges="keyboardHidden"
-             android:name="com.informagics.gehirnjogging.mathe.mathe">
+                android:value="com.informagics.gehirnjogging.menue.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.informagics.gehirnjogging.mathe.mathe"
+            android:configChanges="keyboardHidden"
+            android:label="Mathe"
+            android:screenOrientation="landscape" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.informagics.gehirnjogging.menue.Spielauswahl"/>
-         </activity>
-         <activity
-             android:label="Informatik"
-             android:screenOrientation="landscape"
-             android:configChanges="keyboardHidden"
-             android:name="com.informagics.gehirnjogging.quiz.Quiz">
+                android:value="com.informagics.gehirnjogging.menue.Spielauswahl" />
+        </activity>
+        <activity
+            android:name="com.informagics.gehirnjogging.quiz.Quiz"
+            android:configChanges="keyboardHidden"
+            android:label="Informatik"
+            android:screenOrientation="landscape" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.informagics.gehirnjogging.menue.Spielauswahl"/>
-         </activity>
-         <activity
-             android:label="BitOut"
-             android:screenOrientation="landscape"
-             android:configChanges="keyboardHidden"
-             android:name="com.informagics.gehirnjogging.bitout.BitOut">
+                android:value="com.informagics.gehirnjogging.menue.Spielauswahl" />
+        </activity>
+        <activity
+            android:name="com.informagics.gehirnjogging.bitout.BitOut"
+            android:configChanges="keyboardHidden"
+            android:label="BitOut"
+            android:screenOrientation="landscape" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.informagics.gehirnjogging.menue.Spielauswahl"/>
-         </activity>
-         <activity
-             android:label="Kabelbinder"
-             android:screenOrientation="landscape"
-             android:configChanges="keyboardHidden"
-             android:name="com.informagics.gehirnjogging.kabelbinder.kabelbinder">
+                android:value="com.informagics.gehirnjogging.menue.Spielauswahl" />
+        </activity>
+        <activity
+            android:name="com.informagics.gehirnjogging.kabelbinder.kabelbinder"
+            android:configChanges="keyboardHidden"
+            android:label="Kabelbinder"
+            android:screenOrientation="landscape" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.informagics.gehirnjogging.menue.Spielauswahl"/>
-         </activity>
-         <activity
-             android:label="Memory"
-             android:screenOrientation="landscape"
-             android:configChanges="keyboardHidden"
-             android:name="com.informagics.gehirnjogging.Memory.Memory">
+                android:value="com.informagics.gehirnjogging.menue.Spielauswahl" />
+        </activity>
+        <activity
+            android:name="com.informagics.gehirnjogging.Memory.Memory"
+            android:configChanges="keyboardHidden"
+            android:label="Memory"
+            android:screenOrientation="landscape" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.informagics.gehirnjogging.menue.Spielauswahl"/>
-         </activity>
-        
+                android:value="com.informagics.gehirnjogging.menue.Spielauswahl" />
+        </activity>
+        <activity
+            android:name="com.informagics.gehirnjogging.Highscore"
+            android:label="@string/title_activity_highscore" >
+        </activity>
+        <activity
+            android:name="com.informagics.gehirnjogging.Benutzername"
+            android:label="@string/title_activity_benutzername" >
+        </activity>
     </application>
 
 </manifest>
