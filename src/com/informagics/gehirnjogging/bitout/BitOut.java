@@ -1,12 +1,8 @@
 package com.informagics.gehirnjogging.bitout;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.io.Writer;
+
+import com.informagics.gehirnjogging.InputOutput;
 import com.informagics.gehirnjogging.R;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -107,7 +103,7 @@ public class BitOut extends Activity {
 	{
 		String textdatei = null;
 		try {
-			textdatei=convertStreamToString("bitout.map");
+			textdatei=InputOutput.txt_int_auslesen("bitout.map","ISO-8859-1",this);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -121,28 +117,6 @@ public class BitOut extends Activity {
 			}
 		}
 	}
-	
-	public String convertStreamToString(String filename) throws IOException
-    {
-    	InputStream is = getResources().getAssets().open(filename);
-    	Writer writer = new StringWriter();
-    	char[] buffer = new char[2048];
-    	try
-    	{
-    		Reader reader = new BufferedReader(new InputStreamReader(is, "ISO-8859-1"));
-    		int n;
-    		while ((n = reader.read(buffer)) != -1) //Solange das Ende der Datei noch erreicht wurd
-    		{
-    			writer.write(buffer, 0, n); //Schreiben buffer von 0 bis n
-    		}
-    	}
-    	finally
-    	{
-    		is.close(); //Zugriff auf die Datei schließen
-    	}
-    	String text = writer.toString(); // In Var. text schreiben und in von Bit in String wandeln
-    	return text; //Text zurückgeben
-    }
 	
 	void domove(int y,int x){		
 		int x1 = x - 1, x2 = x + 1, y1 = y - 1, y2 = y + 1;

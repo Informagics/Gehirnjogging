@@ -1,14 +1,8 @@
 package com.informagics.gehirnjogging.kabelbinder;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.io.Writer;
 
-import com.informagics.gehirnjogging.Highscoreeintrag;
+import com.informagics.gehirnjogging.InputOutput;
 import com.informagics.gehirnjogging.R;
 import android.app.Activity;
 import android.os.Bundle;
@@ -22,7 +16,7 @@ public class kabelbinder extends Activity
 {
 	
 	CountDownTimer cd,cd2;
-	int Punkte = 100,mode=0;
+	int Punkte = 100 , mode=0;
 	long zeit1, neuezeit=0, neuezeit2;
 	boolean test = false;
 	
@@ -146,8 +140,9 @@ public class kabelbinder extends Activity
 	{
 		String textdatei = null;
 		try {
-			textdatei=convertStreamToString("kabelstrecken.map");
+			textdatei=InputOutput.txt_int_auslesen("kabelstrecken.map","ISO-8859-1",this);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -310,32 +305,14 @@ public class kabelbinder extends Activity
 		cd.cancel();
 		mode = 1;
 		try {
-			Highscoreeintrag.txt_eintragen("cabel",3,this);
+			InputOutput.HS_int_eintragen("cabel",String.valueOf(Punkte),this);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		((TextView)findViewById(R.id.Clickskabel)).setText(((TextView)findViewById(R.id.Clickskabel)).getText()+" "+rotation+" "+rotationneu+" Gelöst");
+		try {
+			((TextView)findViewById(R.id.Clickskabel)).setText(InputOutput.HS_int_auslesen("cabel",this));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
-	
-	public String convertStreamToString(String filename) throws IOException
-    {
-    	InputStream is = getResources().getAssets().open(filename);
-    	Writer writer = new StringWriter();
-    	char[] buffer = new char[2048];
-    	try
-    	{
-    		Reader reader = new BufferedReader(new InputStreamReader(is, "ISO-8859-1"));
-    		int n;
-    		while ((n = reader.read(buffer)) != -1) //Solange das Ende der Datei noch erreicht wurd
-    		{
-    			writer.write(buffer, 0, n); //Schreiben buffer von 0 bis n
-    		}
-    	}
-    	finally
-    	{
-    		is.close(); //Zugriff auf die Datei schließen
-    	}
-    	// In Var. text schreiben und in von Bit in String wandeln
-    	return writer.toString(); //Text zurückgeben
-    }
 }
