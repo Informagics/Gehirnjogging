@@ -264,7 +264,17 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="clicked" />
+
         </TableRow>
     </TableLayout>
-
+    
+    <Button
+        android:id="@+id/btn_BitOut_neustart"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:onClick="Levelinit"
+        android:text="Neustart" />
+    
 </LinearLayout>

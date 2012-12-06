@@ -17,7 +17,7 @@ public class BitOut extends Activity {
 	 * Übersichtliches und ansprechendes Layout machen
 	*/
 	
-	int moves=0, punktezahl=100, rätselanzahl=14;
+	int moves, punktezahl, rätselanzahl=14;
 	long zeit1, neuezeit=0, neuezeit2;
 	boolean test = false;
 	int mode=0; //0=noch nicht gelöst 1=gelöst
@@ -31,7 +31,7 @@ public class BitOut extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_bit_out);
 		
-		Levelinit((int)(Math.random()*rätselanzahl*10)%rätselanzahl);
+		Levelinit();
 		
 		countdowntimer = new CountDownTimer(240000, 1000) //setzt den Timer auf 240 Sekunden 
 		 {
@@ -97,8 +97,39 @@ public class BitOut extends Activity {
 	    }
 	}
 	
-	public void Levelinit(int Map)
+	public void Levelinit(View view)
+	{		
+		Levelinit();
+		
+		countdowntimer.cancel();
+		
+		countdowntimer = new CountDownTimer(240000, 1000) //setzt den Timer auf 240 Sekunden 
+		 {
+		     public void onTick(long zeit) 
+		     {
+		    	 zeit1 = zeit; //übermittelt die noch verbleibende zeit
+		    	 ((TextView)findViewById(R.id.TimerBitOut)).setText("Zeit: "+zeit / 1000);
+		     }
+
+		     public void onFinish() 
+		     {
+		    	 ((TextView)findViewById(R.id.TimerBitOut)).setText("Zeit ist abgelaufen!");
+		    	 ((TextView)findViewById(R.id.PunktezahlBitOut)).setText("Punkte: 0");
+		    	 Toast.makeText(getApplicationContext(), "Du warst zu langsam! Versuch es nochmal!", Toast.LENGTH_LONG).show();
+		    	 mode =1; //setzt das Rätsel in den gelöst Zustand
+		    	 
+		     }
+		 }.start();
+	}
+	
+	public void Levelinit()
 	{
+		moves = 0;
+		punktezahl = 100;
+		mode=0;
+		((TextView) findViewById(R.id.PunktezahlBitOut)).setText("Punkte: "+punktezahl);
+		((TextView) findViewById(R.id.Clicks)).setText("Clicks: "+moves);
+		int Map = (int)(Math.random()*rätselanzahl*10)%rätselanzahl;
 		String textdatei = null;
 		textdatei=InputOutput.txt_int_auslesen("bitout.map","ISO-8859-1",this);
 		
@@ -182,5 +213,6 @@ public class BitOut extends Activity {
 		Toast.makeText(getApplicationContext(), "gelöst", Toast.LENGTH_SHORT).show();
 		Toast.makeText(getApplicationContext(), "Deine Punktzahl: "+punktezahl, Toast.LENGTH_LONG).show();
 		mode=1;
+		InputOutput.HS_int_eintragen("bitout",String.valueOf(punktezahl),this);
 	}
 }

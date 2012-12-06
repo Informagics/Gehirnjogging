@@ -14,8 +14,8 @@ public class kabelbinder extends Activity
 {
 	
 	CountDownTimer cd,cd2;
-	int Punkte = 100 , mode=0;
-	long zeit1, neuezeit=0, neuezeit2;
+	int Punkte , mode=0;
+	long zeit1, neuezeit = 0, neuezeit2;
 	boolean test = false;
 	
 	int[][] Bilder=
@@ -27,8 +27,8 @@ public class kabelbinder extends Activity
 		};
 	
 	String[][] mapwerte = new String[5][5];
-	int Clickzähler = 0;
-	int rätselanzahl = 3;
+	int Clickzähler;
+	int rätselanzahl = 10;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -36,7 +36,7 @@ public class kabelbinder extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_kabelbinder);
 		
-		Levelinit((int)(Math.random()*rätselanzahl*10)%rätselanzahl);//rand für zufalls level
+		Levelinit();//rand für zufalls level
 		
 		cd = new CountDownTimer(240000, 1000) //setzt den Timer auf 240 Sekunden 
 		{
@@ -134,8 +134,38 @@ public class kabelbinder extends Activity
 		Lösung();
 	}
 	
-	public void Levelinit(int Map)
+	public void Levelinit(View view)
 	{
+		Levelinit();
+		
+		cd.cancel();
+		
+		cd = new CountDownTimer(240000, 1000) //setzt den Timer auf 240 Sekunden 
+		{
+			public void onTick(long zeit) 
+			{
+				zeit1 = zeit; //übermittelt die noch verbleibende zeit
+				((TextView)findViewById(R.id.TimerKabel)).setText("Zeit: "+zeit / 1000);
+			}
+			
+			public void onFinish() 
+			{
+				mode = 1;
+				((TextView)findViewById(R.id.TimerKabel)).setText("Zeit ist abgelaufen!");
+				((TextView)findViewById(R.id.PunkteKabel)).setText("Punkte: 0");
+				Toast.makeText(getApplicationContext(), "Du warst zu langsam! Versuch es nochmal!", Toast.LENGTH_LONG).show();		    	 
+			}
+		}.start();
+	}
+	
+	public void Levelinit()
+	{
+		mode = 0;
+		Punkte = 100;
+		Clickzähler = 0;
+		((TextView) findViewById(R.id.PunkteKabel)).setText("Punkte: "+Punkte);
+		((TextView)findViewById(R.id.Clickskabel)).setText("Clicks: "+Clickzähler);
+		int Map = (int)(Math.random()*rätselanzahl*10)%rätselanzahl;
 		String textdatei = null;
 		textdatei=InputOutput.txt_int_auslesen("kabelstrecken.map","ISO-8859-1",this);
 		
@@ -297,7 +327,6 @@ public class kabelbinder extends Activity
 		}while(element!=3);
 		cd.cancel();
 		mode = 1;
-		InputOutput.HS_int_eintragen("cabel",String.valueOf(Punkte),this);
-		((TextView)findViewById(R.id.Clickskabel)).setText(InputOutput.HS_int_auslesen("cabel",this));
+		InputOutput.HS_int_eintragen("cable",String.valueOf(Punkte),this);
 	}
 }

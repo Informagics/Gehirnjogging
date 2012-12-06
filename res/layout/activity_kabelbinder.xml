@@ -285,10 +285,25 @@
         android:layout_height="wrap_content"
         android:text="@string/timerkabel" />
 
-    <TextView
-        android:id="@+id/PunkteKabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/punktekabel" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/PunkteKabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/punktekabel" />
+
+        <Button
+            android:id="@+id/btn_cable_neustart"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:onClick="Levelinit"
+            android:text="Neues Level" />
+
+    </LinearLayout>
 
 </LinearLayout>

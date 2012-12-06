@@ -1,53 +1,56 @@
 package com.informagics.gehirnjogging;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.StringWriter;
 import java.io.Writer;
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 
 public class InputOutput
 {	
 	public static void HS_int_eintragen(String Spiel,String Punkte,Context con)
 	{
-        try {
-            FileOutputStream fOut = con.openFileOutput ( Spiel + ".rec" , con.MODE_WORLD_READABLE ) ;
-            OutputStreamWriter osw = new OutputStreamWriter ( fOut ) ;
-            osw.write(HS_int_auslesen(Spiel,con));
-            osw.write ( Punkte ) ;
-            osw.flush ( ) ;
-            osw.close ( ) ;
-        } catch ( Exception e ) {
-            e.printStackTrace ( ) ;
-        }
+	      SharedPreferences settings = con.getSharedPreferences("Highscore", 0);
+	      SharedPreferences.Editor editor = settings.edit();
+	      editor.putString(Spiel, "");
+	      //editor.putString(Spiel, HS_sortieren(HS_int_auslesen(Spiel, con)+Punkte+"\n"));
+	      editor.putString(Spiel, HS_int_auslesen(Spiel, con)+Punkte+"\n");
+	      editor.commit();
 	}
 	
 	public static String HS_int_auslesen(String Spiel,Context con)
 	{
-        String datax = "" ;
-        try {
-            FileInputStream fIn = con.openFileInput ( Spiel + ".rec" ) ;
-            InputStreamReader isr = new InputStreamReader ( fIn ) ;
-            BufferedReader buffreader = new BufferedReader ( isr ) ;
-
-            String readString = buffreader.readLine ( ) ;
-            while ( readString != null ) {
-                datax = datax + readString ;
-                readString = buffreader.readLine ( ) ;
-            }
-
-            isr.close ( ) ;
-        } catch ( IOException ioe ) {
-            ioe.printStackTrace ( ) ;
-        }
-        return datax ;
+		SharedPreferences settings = con.getSharedPreferences("Highscore", 0);
+	    return settings.getString(Spiel, "");
+	}
+	
+	public static String HS_sortieren(String HS)
+	{
+		String text = "";
+		String[] textarr = HS.split("\n");
+		int[] textintarr = new int[11];
+		for(int i=0;i<11;i++)
+			textintarr[i]=Integer.valueOf(textarr[i]);
+		
+		for (int n=11; n>1; n=n-1){
+			for (int i=0; i<n-1; i=i+1){
+				if (textintarr[i] > textintarr[i+1]){
+					int a = textintarr[i];
+					textintarr[i]=textintarr[i+1];
+					textintarr[i+1]=a;
+				}
+			}
+		}
+		
+		for(int i=0;i<10;i++)
+			text += String.valueOf(textintarr[i])+"\n";
+		
+		return text;
 	}
 	
 	//Quelle : http://stackoverflow.com/questions/4789325/android-path-to-asset-txt-file
