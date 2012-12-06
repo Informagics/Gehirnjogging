@@ -1,9 +1,7 @@
 package com.informagics.gehirnjogging;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,58 +17,37 @@ public class InputOutput
 {	
 	public static void HS_int_eintragen(String Spiel,String Punkte,Context con)
 	{
-		File verzeichnis = con.getDir(Spiel, Context.MODE_WORLD_WRITEABLE);
-		File datei = new File(verzeichnis,Spiel);
-		OutputStreamWriter osw = null;
-		
-		try {
-			FileOutputStream fos = new FileOutputStream(datei);
-			osw = new OutputStreamWriter(fos);
-			//osw.write(HS_int_auslesen(Spiel,con));
-			osw.write(Punkte+"\n");
-			osw.write(Punkte+"\n");
-			osw.write(Punkte+"\n");
-			osw.write(Punkte+"\n");
-			osw.write(Punkte+"\n");
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				osw.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+        try {
+            FileOutputStream fOut = con.openFileOutput ( Spiel + ".rec" , con.MODE_WORLD_READABLE ) ;
+            OutputStreamWriter osw = new OutputStreamWriter ( fOut ) ;
+            osw.write(HS_int_auslesen(Spiel,con));
+            osw.write ( Punkte ) ;
+            osw.flush ( ) ;
+            osw.close ( ) ;
+        } catch ( Exception e ) {
+            e.printStackTrace ( ) ;
+        }
 	}
 	
 	public static String HS_int_auslesen(String Spiel,Context con)
 	{
-		File verzeichnis = con.getDir(Spiel, Context.MODE_WORLD_WRITEABLE);
-		File datei = new File(verzeichnis,Spiel);
-		BufferedReader br = null;
-		String text = "";
-		String zeile;
-		
-		try {
-			FileInputStream fis = new FileInputStream(datei);
-			br = new BufferedReader(new InputStreamReader(fis));
-			while((zeile=br.readLine()) != null){
-				text += zeile;
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				br.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return text;
+        String datax = "" ;
+        try {
+            FileInputStream fIn = con.openFileInput ( Spiel + ".rec" ) ;
+            InputStreamReader isr = new InputStreamReader ( fIn ) ;
+            BufferedReader buffreader = new BufferedReader ( isr ) ;
+
+            String readString = buffreader.readLine ( ) ;
+            while ( readString != null ) {
+                datax = datax + readString ;
+                readString = buffreader.readLine ( ) ;
+            }
+
+            isr.close ( ) ;
+        } catch ( IOException ioe ) {
+            ioe.printStackTrace ( ) ;
+        }
+        return datax ;
 	}
 	
 	//Quelle : http://stackoverflow.com/questions/4789325/android-path-to-asset-txt-file
