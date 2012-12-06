@@ -3,6 +3,7 @@ package com.informagics.gehirnjogging.mathe;
 import com.informagics.gehirnjogging.R;
 
 import android.app.Activity;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -19,6 +20,8 @@ public class mathe extends Activity
 	private static int Punkte = 0;
 	CountDownTimer CountDown2;
 	int countdowntime=120000;
+	int clicked=0,musikcheck=0;
+	MediaPlayer gameover,click,time;
 	
 	//CountDown
     CountDownTimer CountDown1 =new CountDownTimer(120000,1000)
@@ -26,6 +29,11 @@ public class mathe extends Activity
     	public void onTick(long millisUntilFinished)
     	{
     		((TextView)findViewById(R.id.txtTimeLeftMathe)).setText("Verbleibende Zeit : "+ millisUntilFinished/1000);
+    		if(millisUntilFinished<3000 && musikcheck==0)
+    		{
+    		musikcheck=1;
+            time.start();
+    		}
     	}
     	public void onFinish()
     	{
@@ -40,6 +48,9 @@ public class mathe extends Activity
     	super.onCreate(savedInstanceState);
         
         setContentView(R.layout.activity_mathe);
+        click=MediaPlayer.create(this, R.raw.menuepunkt_auswahl);
+        gameover=MediaPlayer.create(this, R.raw.ratsel_verloren);
+        time=MediaPlayer.create(this, R.raw.zeitleft);
         CountDown1.start();
         Rätsel(this); 
 	}
@@ -66,6 +77,12 @@ public class mathe extends Activity
 	        	public void onTick(long millisUntilFinished)
 	        	{
 	        		((TextView)findViewById(R.id.txtTimeLeftMathe)).setText("Verbleibende Zeit : "+ millisUntilFinished/1000);
+	        		if(millisUntilFinished<3000 && musikcheck==0)
+	        		{
+	        		musikcheck=1;
+	                time.start();
+	        		}
+	        		
 	        		countdowntime-=1000;
 	        	}
 	        	public void onFinish()
@@ -113,6 +130,11 @@ public class mathe extends Activity
     /** Called when the user clicks the Send button */
     public void sendMessage(View view) 
     {
+    	if(clicked==0)
+        {
+        	clicked=1;
+        	click.start();
+        }
     	
     	//Dek. und Zuordnung der Views zu Vars.
         if(ergebnis(Zahl1,Zahl2,view.getId()-R.id.m00)==Ergebnis)
@@ -132,6 +154,7 @@ public class mathe extends Activity
     {
     	
     	 //Spielfeld aufräumen
+    	 clicked=0;
     	 ((TextView)findViewById(R.id.Aufgabe)).setText("");
     	 Rätsel(this);
     	
@@ -147,7 +170,7 @@ public class mathe extends Activity
     	 ((Button)findViewById(R.id.m03)).setVisibility(4);
     	 ((TextView)findViewById(R.id.punkte)).setTextSize(12);
     	 ((TextView)findViewById(R.id.Aufgabe)).setVisibility(4);
-    	 
+    	 gameover.start();
     	 if(Punkte==1)
     	 ((TextView)findViewById(R.id.punkte)).setText("Du hast "+String.valueOf(Punkte)+" Punkt erreicht. GOTT IST DAS SCHLECHT! *NAK NAK*");
     	 else

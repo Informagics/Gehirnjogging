@@ -12,6 +12,7 @@ import com.informagics.gehirnjogging.R;
 
 
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -28,10 +29,12 @@ public class Quiz extends Activity
 	int check=0;
 	int scorehigh=0;
 	int bereitsgeklickt=0;
+	int clicked=0,musikcheck=0;
 	String Fragenliste[]={""};
 	CountDownTimer CountDown2;
 	int countdowntime=180000;
 	int end=0;
+	MediaPlayer gameover,click,time;
 	
 	//Quelle : http://stackoverflow.com/questions/1877417/how-to-set-a-timer-in-android
 		
@@ -52,6 +55,11 @@ public class Quiz extends Activity
     	public void onTick(long millisUntilFinished)
     	{
     		((TextView)findViewById(R.id.txtCountDown)).setText("Verbleibende Zeit : "+ millisUntilFinished/1000);
+    		if(millisUntilFinished<3000 && musikcheck==0)
+    		{
+    		musikcheck=1;
+            time.start();
+    		}
     	}
     	public void onFinish()
     	{
@@ -70,6 +78,10 @@ public class Quiz extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
         
+        click=MediaPlayer.create(this, R.raw.menuepunkt_auswahl);
+        gameover=MediaPlayer.create(this, R.raw.ratsel_verloren);
+        time=MediaPlayer.create(this, R.raw.zeitleft);
+        
         CountDown1.start();
         
 		try 
@@ -78,7 +90,6 @@ public class Quiz extends Activity
 		} 
 		catch (IOException e1)
 		{
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		check=getQuestion();
@@ -108,6 +119,13 @@ protected void onResume()
         	public void onTick(long millisUntilFinished)
         	{
         		((TextView)findViewById(R.id.txtCountDown)).setText("Verbleibende Zeit : "+ millisUntilFinished/1000);
+        		
+        		if(millisUntilFinished<3000 && musikcheck==0)
+        		{
+        		musikcheck=1;
+                time.start();
+        		}
+        		
         		countdowntime-=1000;
         	}
         	public void onFinish()
@@ -125,6 +143,11 @@ public void Clicked(View view)
 	return;
 	
     TextView highscore = (TextView) findViewById(R.id.txtHighscore);
+    if(clicked==0)
+    {
+    	clicked=1;
+    	click.start();
+    }
     
 	if(view.getId()==R.id.IMVKat1)
 	{
@@ -257,7 +280,7 @@ public int getQuestion()
          ((ImageView)findViewById(R.id.IMVKat3)).setImageResource(R.drawable.quiz_button_1);
          
          bereitsgeklickt=0;
-         
+         clicked=0;
          /* Quellen :
           * http://developer.android.com/reference/android/widget/ImageView.html
 			http://developer.android.com/reference/android/widget/ImageView.html#setVisibility%28int%29
@@ -311,6 +334,7 @@ public int getQuestion()
 		((TextView)findViewById(R.id.txtHighscore)).setText("");
 		((TextView)findViewById(R.id.txtCountDown)).setText("");
 		
+		gameover.start();
 		//GameOver Screen setzen
 		((LinearLayout)findViewById(R.id.LinearLayoutQuiz)).setBackgroundResource(R.drawable.bluescreen_gameover_quiz);
 		
