@@ -17,9 +17,6 @@ public class Credits extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.credits);
         
-        MediaPlayer mp= MediaPlayer.create(this, R.raw.k); //nur für Musikwiedergabe
-        mp.start();
-        
         VideoView Videoview = (VideoView)findViewById(R.id.videoview1);
         Uri videopfad = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.credits); //Quelle ist eigenes Projekt; Name des Projekts; Dateipfad (ohne dateiendung)
         MediaController mc = new MediaController(this); // Erstellt ein Videoplayer mit Pause-Button usw. DRINGEND NOTWENDIG!!! ohne gehts nicht

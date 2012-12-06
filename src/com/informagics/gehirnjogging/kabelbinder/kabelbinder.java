@@ -3,6 +3,7 @@ package com.informagics.gehirnjogging.kabelbinder;
 import com.informagics.gehirnjogging.InputOutput;
 import com.informagics.gehirnjogging.R;
 import android.app.Activity;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -14,9 +15,11 @@ public class kabelbinder extends Activity
 {
 	
 	CountDownTimer cd,cd2;
-	int Punkte , mode=0;
+	int Punkte, mode=0, Clickzähler, rätselanzahl = 10, musikcheck = 0;;
 	long zeit1, neuezeit = 0, neuezeit2;
 	boolean test = false;
+	
+	MediaPlayer gameover,gewonnen,click,time;
 	
 	int[][] Bilder=
 		{
@@ -27,14 +30,17 @@ public class kabelbinder extends Activity
 		};
 	
 	String[][] mapwerte = new String[5][5];
-	int Clickzähler;
-	int rätselanzahl = 10;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_kabelbinder);
+		
+		click=MediaPlayer.create(this, R.raw.menuepunkt_auswahl);
+        gameover=MediaPlayer.create(this, R.raw.ratsel_verloren);
+        time=MediaPlayer.create(this, R.raw.zeitleft);
+        gewonnen=MediaPlayer.create(this, R.raw.ratsel_gewonnen);
 		
 		Levelinit();//rand für zufalls level
 		
@@ -44,6 +50,11 @@ public class kabelbinder extends Activity
 		     {
 		    	 zeit1 = zeit; //übermittelt die noch verbleibende zeit
 		    	((TextView)findViewById(R.id.TimerKabel)).setText("Zeit: "+zeit / 1000);
+		    	if(zeit < 3000 && musikcheck == 0)
+		    	{
+		    		musikcheck = 1;
+		            time.start();
+		    	}
 		     }
 
 		     public void onFinish() 
@@ -52,6 +63,7 @@ public class kabelbinder extends Activity
 		    	 ((TextView)findViewById(R.id.TimerKabel)).setText("Zeit ist abgelaufen!");
 		    	 ((TextView)findViewById(R.id.PunkteKabel)).setText("Punkte: 0");
 		    	 Toast.makeText(getApplicationContext(), "Du warst zu langsam! Versuch es nochmal!", Toast.LENGTH_LONG).show();		    	 
+		    	 gameover.start();
 		     }
 		 }.start();
 	}
@@ -163,6 +175,7 @@ public class kabelbinder extends Activity
 		mode = 0;
 		Punkte = 100;
 		Clickzähler = 0;
+		musikcheck = 0;
 		((TextView) findViewById(R.id.PunkteKabel)).setText("Punkte: "+Punkte);
 		((TextView)findViewById(R.id.Clickskabel)).setText("Clicks: "+Clickzähler);
 		int Map = (int)(Math.random()*rätselanzahl*10)%rätselanzahl;
@@ -327,6 +340,7 @@ public class kabelbinder extends Activity
 		}while(element!=3);
 		cd.cancel();
 		mode = 1;
+		gewonnen.start();
 		InputOutput.HS_int_eintragen("cable",String.valueOf(Punkte),this);
 	}
 }

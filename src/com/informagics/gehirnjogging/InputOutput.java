@@ -33,13 +33,13 @@ public class InputOutput
 	{
 		String text = "";
 		String[] textarr = HS.split("\n");
-		int[] textintarr = new int[11];
-		for(int i=0;i<textarr.length-2;i++)
+		int[] textintarr = new int[textarr.length-2];
+		for(int i=0;i<textarr.length-1;i++)
 			textintarr[i]=Integer.valueOf(textarr[i]);
 		
-		for (int n=textarr.length-2; n>1; n=n-1){
+		for (int n=textarr.length-1; n>1; n=n-1){
 			for (int i=0; i<n-1; i=i+1){
-				if (textintarr[i] > textintarr[i+1]){
+				if (textintarr[i] < textintarr[i+1]){
 					int a = textintarr[i];
 					textintarr[i]=textintarr[i+1];
 					textintarr[i+1]=a;
@@ -47,7 +47,7 @@ public class InputOutput
 			}
 		}
 		
-		for(int i=0;i<textarr.length-1;i++)
+		for(int i=0;i<textintarr.length;i++)
 			text += String.valueOf(textintarr[i])+"\n";
 		
 		return text;
