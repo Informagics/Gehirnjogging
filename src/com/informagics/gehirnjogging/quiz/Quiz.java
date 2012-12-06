@@ -1,6 +1,5 @@
 package com.informagics.gehirnjogging.quiz;
 
-import java.io.IOException;
 import com.informagics.gehirnjogging.InputOutput;
 import com.informagics.gehirnjogging.R;
 import android.os.Bundle;
@@ -57,15 +56,7 @@ public class Quiz extends Activity
         
         CountDown1.start();
         
-		try 
-		{
-			 txt = InputOutput.txt_int_auslesen("fragen.txt","UTF-8",this);
-		} 
-		catch (IOException e1)
-		{
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		txt = InputOutput.txt_int_auslesen("fragen.txt","UTF-8",this);
 		check=getQuestion();
     
        

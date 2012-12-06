@@ -1,7 +1,5 @@
 package com.informagics.gehirnjogging.kabelbinder;
 
-import java.io.IOException;
-
 import com.informagics.gehirnjogging.InputOutput;
 import com.informagics.gehirnjogging.R;
 import android.app.Activity;
@@ -139,12 +137,7 @@ public class kabelbinder extends Activity
 	public void Levelinit(int Map)
 	{
 		String textdatei = null;
-		try {
-			textdatei=InputOutput.txt_int_auslesen("kabelstrecken.map","ISO-8859-1",this);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		textdatei=InputOutput.txt_int_auslesen("kabelstrecken.map","ISO-8859-1",this);
 		
 		String[] Zeilen=textdatei.split("\n");
 		for(int y=0;y<5;y++){
@@ -304,15 +297,7 @@ public class kabelbinder extends Activity
 		}while(element!=3);
 		cd.cancel();
 		mode = 1;
-		try {
-			InputOutput.HS_int_eintragen("cabel",String.valueOf(Punkte),this);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		try {
-			((TextView)findViewById(R.id.Clickskabel)).setText(InputOutput.HS_int_auslesen("cabel",this));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		InputOutput.HS_int_eintragen("cabel",String.valueOf(Punkte),this);
+		((TextView)findViewById(R.id.Clickskabel)).setText(InputOutput.HS_int_auslesen("cabel",this));
 	}
 }

@@ -1,96 +1,87 @@
 package com.informagics.gehirnjogging;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.StringWriter;
 import java.io.Writer;
 import android.app.Activity;
-import android.widget.NumberPicker;
+import android.content.Context;
 
 public class InputOutput
 {	
-	public static void HS_int_eintragen(String Spiel,String Punkte,Activity ac) throws IOException
+	public static void HS_int_eintragen(String Spiel,String Punkte,Context con)
 	{
-		/*try
-		{
-			BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream("/sdcard/"+Spiel));
-			ObjectOutputStream oos = new ObjectOutputStream(stream);
-            oos.writeObject(scoreObj);//objekt
-            oos.close();    
-        }
-		catch (FileNotFoundException e)
-		{
-            e.printStackTrace();
-        }
-		catch (IOException e)
-		{
-            e.printStackTrace();
-        }*/
+		File verzeichnis = con.getDir(Spiel, Context.MODE_WORLD_WRITEABLE);
+		File datei = new File(verzeichnis,Spiel);
+		OutputStreamWriter osw = null;
 		
-		FileOutputStream fos;
-
-	    try {
-	        fos = new FileOutputStream("/sdcard/"+Spiel+".rec");
-	        fos.write((HS_int_auslesen(Spiel,ac)+"\n"+Punkte).getBytes());
-	        fos.close();
-	    } catch (FileNotFoundException e) {
-	        e.printStackTrace();
-
-	    } catch (IOException e) {
-	        e.printStackTrace();
-
-	    }
+		try {
+			FileOutputStream fos = new FileOutputStream(datei);
+			osw = new OutputStreamWriter(fos);
+			//osw.write(HS_int_auslesen(Spiel,con));
+			osw.write(Punkte+"\n");
+			osw.write(Punkte+"\n");
+			osw.write(Punkte+"\n");
+			osw.write(Punkte+"\n");
+			osw.write(Punkte+"\n");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				osw.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
-	public static String HS_int_auslesen(String Spiel,Activity ac) throws IOException
+	public static String HS_int_auslesen(String Spiel,Context con)
 	{
-		/*try {
-			BufferedInputStream bs = new BufferedInputStream(new FileInputStream("/sdcard/score"));
-			ObjectInputStream objIn = new ObjectInputStream(bs);
-			highScore = (Score) objIn.readObject( );
-			objIn.close(); 
-			bs.close();    
-        }
-		catch (FileNotFoundException e)
-		{
-            e.printStackTrace();
-        }
-		catch (StreamCorruptedException e)
-		{
-            e.printStackTrace();
-        }
-		catch (IOException e)
-		{
-            e.printStackTrace();
-        }
-		catch (ClassNotFoundException e)
-        {
-            e.printStackTrace();
-        }*/
+		File verzeichnis = con.getDir(Spiel, Context.MODE_WORLD_WRITEABLE);
+		File datei = new File(verzeichnis,Spiel);
+		BufferedReader br = null;
+		String text = "";
+		String zeile;
 		
-		FileInputStream fis;
-		fis = new FileInputStream("/sdcard/score");
-		StringBuffer fileContent = new StringBuffer("");
-
-		byte[] buffer = new byte[1024];
-		int n;
-		while ((n = fis.read(buffer)) != -1) {
-		    fileContent.append(new String(buffer));
+		try {
+			FileInputStream fis = new FileInputStream(datei);
+			br = new BufferedReader(new InputStreamReader(fis));
+			while((zeile=br.readLine()) != null){
+				text += zeile;
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				br.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-		
-		return fileContent.toString();
+		return text;
 	}
 	
 	//Quelle : http://stackoverflow.com/questions/4789325/android-path-to-asset-txt-file
-	public static String txt_int_auslesen(String Datei,String Format,Activity ac) throws IOException
+	public static String txt_int_auslesen(String Datei,String Format,Activity ac)
 	{
-    	InputStream is = ac.getResources().getAssets().open(Datei);
+    	InputStream is = null;
+		try {
+			is = ac.getResources().getAssets().open(Datei);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     	Writer writer = new StringWriter();
     	char[] buffer = new char[2048];
     	try
@@ -101,10 +92,16 @@ public class InputOutput
     		{
     			writer.write(buffer, 0, n); //Schreiben buffer von 0 bis n
     		}
-    	}
+    	} catch (IOException e) {
+			e.printStackTrace();
+		}
     	finally
     	{
-    		is.close(); //Zugriff auf die Datei schließen
+    		try {
+				is.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} //Zugriff auf die Datei schließen
     	}
     	// In Var. text schreiben und in von Bit in String wandeln
     	return writer.toString(); //Text zurückgeben

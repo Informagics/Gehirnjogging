@@ -1,5 +1,6 @@
 package com.informagics.gehirnjogging.menue;
 
+import com.informagics.gehirnjogging.Highscore;
 import com.informagics.gehirnjogging.R;
 
 import android.os.Bundle;
@@ -22,6 +23,11 @@ public class MainActivity extends Activity {
     
     public void Optionenauswahloeffnen(View b){
     	Intent intent = new Intent(this, Optionenauswahl.class);
+    	startActivity(intent);
+    }
+    
+    public void Highscoreoeffnen(View a){
+    	Intent intent = new Intent(this, Highscore.class);
     	startActivity(intent);
     }
     
