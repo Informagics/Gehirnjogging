@@ -3,29 +3,44 @@ package com.informagics.gehirnjogging.mathe;
 import com.informagics.gehirnjogging.R;
 
 import android.app.Activity;
+import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.Handler;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-public class mathe extends Activity {
+public class mathe extends Activity 
+{
 	
 	private static int Ergebnis = 0;
 	private static int Zahl1 = 0;
 	private static int Zahl2 = 0;
-	private static String Rechenzeichen;
+	private static int Rechenzeichen;
 	private static int Punkte = 0;
+	CountDownTimer CountDown2;
+	int countdowntime=120000;
+	int clicked=0,musikcheck=0;
+	MediaPlayer gameover,click,time;
 	
-	final Handler _TimeisUp = new Handler();
-	final Runnable _TimeUp= new Runnable()
-	{
-		public void run()
-		{
-			endGame(); // Aufruf der neuen Runde
-		}
-	};
+	//CountDown
+    CountDownTimer CountDown1 =new CountDownTimer(120000,1000)
+    {
+    	public void onTick(long millisUntilFinished)
+    	{
+    		((TextView)findViewById(R.id.txtTimeLeftMathe)).setText("Verbleibende Zeit : "+ millisUntilFinished/1000);
+    		if(millisUntilFinished<3000 && musikcheck==0)
+    		{
+    		musikcheck=1;
+            time.start();
+    		}
+    	}
+    	public void onFinish()
+    	{
+    		endGame(); // Funktionsaufruf Stop
+    	}
+    };
+	
 	  
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,112 +48,135 @@ public class mathe extends Activity {
     	super.onCreate(savedInstanceState);
         
         setContentView(R.layout.activity_mathe);
-        
-        _TimeisUp.postDelayed(_TimeUp, 120000); // Timer starten (2 Minuten )
-        
+        click=MediaPlayer.create(this, R.raw.menuepunkt_auswahl);
+        gameover=MediaPlayer.create(this, R.raw.ratsel_verloren);
+        time=MediaPlayer.create(this, R.raw.zeitleft);
+        CountDown1.start();
         Rätsel(this); 
 	}
 	
-	public static int myRandom(int low, int high) { // Rand. Funk.
+	public static int myRandom(int low, int high) // Rand. Funk.
+	{ 
 		return (int) (Math.random() * (high - low) + low);
     }
+	
+	public void onPause() 
+	{
+	        super.onStop();
+	        
+	        CountDown1.cancel();
+	        CountDown2.cancel();
+	}
+
+	public void onResume() 
+	{
+	    	super.onResume();
+	    	
+	    	CountDown2 =new CountDownTimer(countdowntime,1000)
+	        {
+	        	public void onTick(long millisUntilFinished)
+	        	{
+	        		((TextView)findViewById(R.id.txtTimeLeftMathe)).setText("Verbleibende Zeit : "+ millisUntilFinished/1000);
+	        		if(millisUntilFinished<3000 && musikcheck==0)
+	        		{
+	        		musikcheck=1;
+	                time.start();
+	        		}
+	        		
+	        		countdowntime-=1000;
+	        	}
+	        	public void onFinish()
+	        	{
+	        		endGame();
+	        	}
+	        }.start();
+	    	
+	}
 	
 	public static void Rätsel(Activity activity)
 	{
 	    Zahl1 = myRandom(1,20); // Rnd generation von 1-20
 	    Zahl2 = myRandom(1,20);
-	    String zeichen[]={"+","-","*","/"}; //Dek. und Ini. von zeichen mit den Mathematischen Operatoren
-	    Rechenzeichen = zeichen[myRandom(0,1000)%4]; // Auswahl des Rechenzeichens per Rand.
+	    Rechenzeichen = myRandom(0,1000)%4; // Auswahl des Rechenzeichens per Rand.
 	    
-	    if("/".equals(Rechenzeichen)) // If Div.
+	    if(Rechenzeichen==2) // If Div.
 	    	while(Zahl1%Zahl2!=0) // Damit keine ,5 Zahlen entstehen können
 	    		Zahl2 = myRandom(1,20);
 	    
 	    Ergebnis=ergebnis(Zahl1,Zahl2,Rechenzeichen); // Übergabe an Funk. ergebnis
 	    
-	    // Create the text view
+	    //TextView init. , schriftgröße setzen und aufgabe mit .setText
 	    TextView textView = (TextView) activity.findViewById(R.id.Aufgabe);
 	    textView.setTextSize(20);
 	    textView.setText(String.valueOf(Zahl1) + "  "+ String.valueOf(Zahl2) + "=" + String.valueOf(Ergebnis)); // Setzen der Aufgabe
 	}
 	
-	public static int ergebnis(int zahl1,int zahl2,String zeichen)
+	public static int ergebnis(int zahl1,int zahl2,int zeichen)
 	{
 		int Ergebnis = 88;
 		
-		if("+".equals(zeichen))// je nachdem welches Zeichen zuvor gewählt wurde wird das erg berechnet
-	    	Ergebnis=zahl1+zahl2;
-		else if("-".equals(zeichen))
-	    	Ergebnis=zahl1-zahl2;
-		else if("*".equals(zeichen))
+		if(zeichen==0)// je nachdem welches Zeichen zuvor gewählt wurde wird das erg berechnet
 	    	Ergebnis=zahl1*zahl2;
-		else if("/".equals(zeichen))
+		else if(zeichen==1)
+	    	Ergebnis=zahl1+zahl2;
+		else if(zeichen==2)
 	    	Ergebnis=zahl1/zahl2;
+		else if(zeichen==3)
+	    	Ergebnis=zahl1-zahl2;
 	    
 		return Ergebnis;
 	}
     
     /** Called when the user clicks the Send button */
-    public void sendMessage(View view) {
+    public void sendMessage(View view) 
+    {
+    	if(clicked==0)
+        {
+        	clicked=1;
+        	click.start();
+        }
     	
     	//Dek. und Zuordnung der Views zu Vars.
-        Button button = (Button) findViewById(view.getId());
-        TextView testrichtigkeit = (TextView) findViewById(R.id.textView2);
-        TextView punkte = (TextView) findViewById(R.id.punkte);
-        
-        if(ergebnis(Zahl1,Zahl2,button.getText().toString())==Ergebnis){
-        	
-        	testrichtigkeit.setText("Richtig"); // Ausgabe das die Antwort richtig war
-        	Punkte++; // Punkte erhöhen
-        	punkte.setText("Punktzahl : "+Punkte); // Neuer Punktestand
-        	
+        if(ergebnis(Zahl1,Zahl2,view.getId()-R.id.m00)==Ergebnis)
+        {
+        	((TextView)findViewById(R.id.punkte)).setText("Punktezahl : "+(++Punkte));
         }
-        else{
-        	if(Punkte!=0){
-        		Punkte--; // Punkte verringern
-        		punkte.setText("Punktzahl : "+Punkte); // Neuer Punktestand
-        	}
-        	testrichtigkeit.setText("Falsch"); // Ausgabe das die Antwort falsch ist
+        else
+        {
+        	if(Punkte!=0)
+        	((TextView)findViewById(R.id.punkte)).setText("Punktezahl : "+(--Punkte));
         }
         
         neueRunde(); // Aufruf zur neuen Runde
     }
     
-    public void neueRunde(){
+    public void neueRunde()
+    {
     	
     	 //Spielfeld aufräumen
-    	 TextView testrichtigkeit = (TextView) findViewById(R.id.textView2);
-    	 testrichtigkeit.setText("");
-    	 TextView textView = (TextView)findViewById(R.id.Aufgabe);
-    	 textView.setText("");
+    	 clicked=0;
+    	 ((TextView)findViewById(R.id.Aufgabe)).setText("");
     	 Rätsel(this);
     	
     }
     
-    public void endGame(){
+    public void endGame()
+    {
     	
-    	 //Alles auf dem Spielfeld auf unsichtbar stellen und die Sprechblase mit Text anzeigen lassen
-    	 Button button1 = (Button) findViewById(R.id.button1);
-    	 Button button2 = (Button) findViewById(R.id.button2);
-    	 Button button3 = (Button) findViewById(R.id.button3);
-    	 Button button4 = (Button) findViewById(R.id.button4);
-    	 TextView testrichtigkeit = (TextView) findViewById(R.id.textView2);
-    	 TextView textView = (TextView)findViewById(R.id.Aufgabe);
-    	 TextView punkte = (TextView) findViewById(R.id.punkte);
-    	 TextView nur = (TextView)findViewById(R.id.txtNur);
-    	 TextView schlecht = (TextView) findViewById(R.id.txtSchlecht);
-    	 ImageView sprechblase = (ImageView) findViewById(R.id.IMVSprechblase);
-    	 button1.setVisibility(4);
-    	 button2.setVisibility(4);
-    	 button3.setVisibility(4);
-    	 button4.setVisibility(4);
-    	 testrichtigkeit.setVisibility(4);
-    	 textView.setVisibility(4);
-    	 punkte.setVisibility(4);
-    	 sprechblase.setVisibility(1);
-    	 nur.setText("Du hast nur "+Punkte+" Punkte");
-    	 nur.setVisibility(1);
-    	 schlecht.setVisibility(1);
+    	 //Alles auf dem Spielfeld auf unsichtbar stellen und inx txtAusgabe den Endpunktestand ausgeben
+    	 ((Button)findViewById(R.id.m00)).setVisibility(4);
+    	 ((Button)findViewById(R.id.m01)).setVisibility(4);
+    	 ((Button)findViewById(R.id.m02)).setVisibility(4);
+    	 ((Button)findViewById(R.id.m03)).setVisibility(4);
+    	 ((TextView)findViewById(R.id.punkte)).setTextSize(12);
+    	 ((TextView)findViewById(R.id.Aufgabe)).setVisibility(4);
+    	 gameover.start();
+    	 if(Punkte==1)
+    	 ((TextView)findViewById(R.id.punkte)).setText("Du hast "+String.valueOf(Punkte)+" Punkt erreicht. GOTT IST DAS SCHLECHT! *NAK NAK*");
+    	 else
+    	 ((TextView)findViewById(R.id.punkte)).setText("Du hast "+String.valueOf(Punkte)+" Punkte erreicht. GOTT IST DAS SCHLECHT! *NAK NAK*");
+    	 
+    	 ((TextView)findViewById(R.id.txtTimeLeftMathe)).setVisibility(4);
     	 
     }
 }

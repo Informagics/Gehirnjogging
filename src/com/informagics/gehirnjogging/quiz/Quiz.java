@@ -2,6 +2,7 @@ package com.informagics.gehirnjogging.quiz;
 
 import com.informagics.gehirnjogging.InputOutput;
 import com.informagics.gehirnjogging.R;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -17,9 +18,12 @@ public class Quiz extends Activity
 	int check=0;
 	int scorehigh=0;
 	int bereitsgeklickt=0;
+	int clicked=0,musikcheck=0;
 	String Fragenliste[]={""};
 	CountDownTimer CountDown2;
 	int countdowntime=180000;
+	int end=0;
+	MediaPlayer gameover,click,time;
 	
 	//Quelle : http://stackoverflow.com/questions/1877417/how-to-set-a-timer-in-android
 		
@@ -29,7 +33,8 @@ public class Quiz extends Activity
 		{
 			public void run()
 			{
-				 neueRunde(); // Aufruf der neuen Runde
+				if(end!=1)
+				neueRunde(); // Aufruf der neuen Runde
 			}
 		};	
 		 
@@ -39,6 +44,11 @@ public class Quiz extends Activity
     	public void onTick(long millisUntilFinished)
     	{
     		((TextView)findViewById(R.id.txtCountDown)).setText("Verbleibende Zeit : "+ millisUntilFinished/1000);
+    		if(millisUntilFinished<3000 && musikcheck==0)
+    		{
+    		musikcheck=1;
+            time.start();
+    		}
     	}
     	public void onFinish()
     	{
@@ -53,6 +63,10 @@ public class Quiz extends Activity
 	{  
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+        
+        click=MediaPlayer.create(this, R.raw.menuepunkt_auswahl);
+        gameover=MediaPlayer.create(this, R.raw.ratsel_verloren);
+        time=MediaPlayer.create(this, R.raw.zeitleft);
         
         CountDown1.start();
         
@@ -84,6 +98,13 @@ public class Quiz extends Activity
         	public void onTick(long millisUntilFinished)
         	{
         		((TextView)findViewById(R.id.txtCountDown)).setText("Verbleibende Zeit : "+ millisUntilFinished/1000);
+        		
+        		if(millisUntilFinished<3000 && musikcheck==0)
+        		{
+        		musikcheck=1;
+                time.start();
+        		}
+        		
         		countdowntime-=1000;
         	}
         	public void onFinish()
@@ -98,8 +119,13 @@ public class Quiz extends Activity
 		
 		if( bereitsgeklickt==1)
 			return;
-	
+		
 		TextView highscore = (TextView) findViewById(R.id.txtHighscore);
+		if(clicked==0)
+		{
+			clicked=1;
+			click.start();
+		}
     
 		if(view.getId()==R.id.IMVKat1)
 		{
@@ -118,14 +144,14 @@ public class Quiz extends Activity
 			grr=3;
 			((ImageView)findViewById(R.id.IMVPointer)).setVisibility(1);
 			((ImageView)findViewById(R.id.IMVPointer)).setImageResource(R.drawable.quiz_pointer_rechts);
-		} // Ende IF getView
- 	 	  
+			} // Ende IF getView
+		
 		if(check==1)
 		{
 			((ImageView)findViewById(R.id.IMVKat1)).setImageResource(R.drawable.quiz_button_r);
 			((ImageView)findViewById(R.id.IMVKat2)).setImageResource(R.drawable.quiz_button_f);
 			((ImageView)findViewById(R.id.IMVKat3)).setImageResource(R.drawable.quiz_button_f);
-		}
+			}
 		else if(check==2)
 		{
 			((ImageView)findViewById(R.id.IMVKat1)).setImageResource(R.drawable.quiz_button_f);
@@ -133,29 +159,29 @@ public class Quiz extends Activity
 			((ImageView)findViewById(R.id.IMVKat3)).setImageResource(R.drawable.quiz_button_f);
 		}
 		else if(check==3)
-  		{
+		{
 			((ImageView)findViewById(R.id.IMVKat1)).setImageResource(R.drawable.quiz_button_f);
 			((ImageView)findViewById(R.id.IMVKat2)).setImageResource(R.drawable.quiz_button_f);
 			((ImageView)findViewById(R.id.IMVKat3)).setImageResource(R.drawable.quiz_button_r);
 		}// Ende IF CHeck
-  	
+		
 		if(grr==check && bereitsgeklickt==0)
 		{
 			scorehigh+=5;
 			bereitsgeklickt=1;
 			highscore.setText(" "+ scorehigh);
-			_newRoundHandler.postDelayed(_newRound, 3000);
+			_newRoundHandler.postDelayed(_newRound, 1000);
 		}
 		else
 		{
 			bereitsgeklickt=1;
-			_newRoundHandler.postDelayed(_newRound, 3000);
+			_newRoundHandler.postDelayed(_newRound, 1000);
 		}
 	}
-
+	
 	public int getQuestion()
 	{
-		final TextView tkat1=(TextView) findViewById(R.id.txtKat1);
+    	final TextView tkat1=(TextView) findViewById(R.id.txtKat1);
 		final TextView tkat2=(TextView) findViewById(R.id.txtKat2);
 		final TextView tkat3=(TextView) findViewById(R.id.txtKat3);
 		final TextView tbegriff=(TextView) findViewById(R.id.txtBegriff);
@@ -215,13 +241,13 @@ public class Quiz extends Activity
     public void neueRunde()
     {
     	 //Neue Runde einleiten(Alle werte zurücksetzen)
-    	
+    	 if(end!=1)
          ((ImageView)findViewById(R.id.IMVKat1)).setImageResource(R.drawable.quiz_button_1);
          ((ImageView)findViewById(R.id.IMVKat2)).setImageResource(R.drawable.quiz_button_1);
          ((ImageView)findViewById(R.id.IMVKat3)).setImageResource(R.drawable.quiz_button_1);
          
          bereitsgeklickt=0;
-         
+         clicked=0;
          /* Quellen :
           * http://developer.android.com/reference/android/widget/ImageView.html
 			http://developer.android.com/reference/android/widget/ImageView.html#setVisibility%28int%29
@@ -229,8 +255,6 @@ public class Quiz extends Activity
           */
          
          ((ImageView)findViewById(R.id.IMVPointer)).setVisibility(4);
-         
-         
          check=getQuestion(); // Neue Frage auswï¿½hlen und in der Funktion setzen
          
     }
@@ -240,6 +264,7 @@ public class Quiz extends Activity
     	//Alles auf unsichtbar setzen & Text leeren
    	 	
         //Neu
+    	end=1;
 		((ImageView)findViewById(R.id.IMVPointer)).setVisibility(4);
 		((ImageView)findViewById(R.id.IMVKat1)).setVisibility(4);
 		((ImageView)findViewById(R.id.IMVKat2)).setVisibility(4);
@@ -251,6 +276,7 @@ public class Quiz extends Activity
 		((TextView)findViewById(R.id.txtHighscore)).setText("");
 		((TextView)findViewById(R.id.txtCountDown)).setText("");
 		
+		gameover.start();
 		//GameOver Screen setzen
 		((LinearLayout)findViewById(R.id.LinearLayoutQuiz)).setBackgroundResource(R.drawable.bluescreen_gameover_quiz);  
     }

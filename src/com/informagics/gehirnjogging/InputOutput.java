@@ -18,8 +18,8 @@ public class InputOutput
 	      SharedPreferences settings = con.getSharedPreferences("Highscore", 0);
 	      SharedPreferences.Editor editor = settings.edit();
 	      editor.putString(Spiel, "");
-	      //editor.putString(Spiel, HS_sortieren(HS_int_auslesen(Spiel, con)+Punkte+"\n"));
-	      editor.putString(Spiel, HS_int_auslesen(Spiel, con)+Punkte+"\n");
+	      editor.putString(Spiel, HS_sortieren(HS_int_auslesen(Spiel, con)+Punkte+"\n"));
+	      //editor.putString(Spiel, HS_int_auslesen(Spiel, con)+Punkte+"\n");
 	      editor.commit();
 	}
 	
@@ -34,10 +34,10 @@ public class InputOutput
 		String text = "";
 		String[] textarr = HS.split("\n");
 		int[] textintarr = new int[11];
-		for(int i=0;i<11;i++)
+		for(int i=0;i<textarr.length-2;i++)
 			textintarr[i]=Integer.valueOf(textarr[i]);
 		
-		for (int n=11; n>1; n=n-1){
+		for (int n=textarr.length-2; n>1; n=n-1){
 			for (int i=0; i<n-1; i=i+1){
 				if (textintarr[i] > textintarr[i+1]){
 					int a = textintarr[i];
@@ -47,7 +47,7 @@ public class InputOutput
 			}
 		}
 		
-		for(int i=0;i<10;i++)
+		for(int i=0;i<textarr.length-1;i++)
 			text += String.valueOf(textintarr[i])+"\n";
 		
 		return text;
