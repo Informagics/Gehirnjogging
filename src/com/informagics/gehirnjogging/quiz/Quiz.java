@@ -31,6 +31,7 @@ public class Quiz extends Activity
 	String Fragenliste[]={""};
 	CountDownTimer CountDown2;
 	int countdowntime=180000;
+	int end=0;
 	
 	//Quelle : http://stackoverflow.com/questions/1877417/how-to-set-a-timer-in-android
 		
@@ -40,7 +41,8 @@ public class Quiz extends Activity
 		{
 			public void run()
 			{
-				 neueRunde(); // Aufruf der neuen Runde
+				if(end!=1)
+				neueRunde(); // Aufruf der neuen Runde
 			}
 		};	
 		 
@@ -164,20 +166,16 @@ public void Clicked(View view)
   	
   	if(grr==check && bereitsgeklickt==0)
   	{
-  		  
-    	
     	scorehigh+=5;
    		bereitsgeklickt=1;
    		highscore.setText(" "+ scorehigh);
-   	   _newRoundHandler.postDelayed(_newRound, 3000);
+   	   _newRoundHandler.postDelayed(_newRound, 1000);
    	   
   	}
   	else
   	{
-  		  
-    	
-    	bereitsgeklickt=1;
-    	_newRoundHandler.postDelayed(_newRound, 3000);
+  		bereitsgeklickt=1;
+    	_newRoundHandler.postDelayed(_newRound, 1000);
     	   
     }
 }
@@ -253,7 +251,7 @@ public int getQuestion()
     {
     	
     	 //Neue Runde einleiten(Alle werte zurücksetzen)
-    	
+    	 if(end!=1)
          ((ImageView)findViewById(R.id.IMVKat1)).setImageResource(R.drawable.quiz_button_1);
          ((ImageView)findViewById(R.id.IMVKat2)).setImageResource(R.drawable.quiz_button_1);
          ((ImageView)findViewById(R.id.IMVKat3)).setImageResource(R.drawable.quiz_button_1);
@@ -267,8 +265,6 @@ public int getQuestion()
           */
          
          ((ImageView)findViewById(R.id.IMVPointer)).setVisibility(4);
-         
-         
          check=getQuestion(); // Neue Frage auswï¿½hlen und in der Funktion setzen
          
     }
@@ -303,6 +299,7 @@ public int getQuestion()
     	//Alles auf unsichtbar setzen & Text leeren
    	 	
         //Neu
+    	end=1;
 		((ImageView)findViewById(R.id.IMVPointer)).setVisibility(4);
 		((ImageView)findViewById(R.id.IMVKat1)).setVisibility(4);
 		((ImageView)findViewById(R.id.IMVKat2)).setVisibility(4);

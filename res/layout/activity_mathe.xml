@@ -10,31 +10,30 @@
         android:layout_width="wrap_content"
         android:layout_height="21dp" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="146dp" >
 
-        <View
-            android:layout_width="199dp"
-            android:layout_height="276dp" />
-        
         <TextView
             android:id="@+id/punkte"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:text="Punktzahl : 0"
             android:textSize="20sp" />
 
-        <ImageView
-            android:id="@+id/IMVSprechblase"
+        <TextView
+            android:id="@+id/txtTimeLeftMathe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/desc"
-            android:src="@drawable/sprechblase"
-            android:visibility="invisible" />
+            android:layout_above="@+id/punkte"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="26dp"
+            android:text="Verbleibende Zeit : " />
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/Aufgabe"
@@ -44,62 +43,52 @@
         android:text="asfdasda"
         android:textSize="15sp" />
 
-    <TextView
-        android:id="@+id/txtNur"
+    <View
+        android:id="@+id/view1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Du hast nur"
-        android:visibility="invisible" />
+        android:layout_height="58dp" />
 
-    <TextView
-        android:id="@+id/txtSchlecht"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="erreicht. GOTT ist das schlecht!"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:textSize="15sp" />
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="256dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="sendMessage"
-            android:text="@string/multiplizieren" />
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal" >
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="sendMessage"
-            android:text="@string/plus" />
+            <Button
+                android:id="@+id/m00"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@drawable/math_button_mul"
+                android:onClick="sendMessage" />
 
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="sendMessage"
-            android:text="@string/geteilt" />
+            <Button
+                android:id="@+id/m01"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@drawable/math_button_add"
+                android:onClick="sendMessage" />
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="sendMessage"
-            android:text="@string/minus" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/m02"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@drawable/math_button_div"
+                android:onClick="sendMessage" />
+
+            <Button
+                android:id="@+id/m03"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginRight="106dp"
+                android:background="@drawable/math_button_sub"
+                android:onClick="sendMessage" />
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </LinearLayout>
