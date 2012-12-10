@@ -276,6 +276,7 @@ public class Quiz extends Activity
 		((TextView)findViewById(R.id.txtHighscore)).setText("");
 		((TextView)findViewById(R.id.txtCountDown)).setText("");
 		
+		InputOutput.HS_int_eintragen("quiz",String.valueOf(scorehigh),this);
 		gameover.start();
 		//GameOver Screen setzen
 		((LinearLayout)findViewById(R.id.LinearLayoutQuiz)).setBackgroundResource(R.drawable.bluescreen_gameover_quiz);  

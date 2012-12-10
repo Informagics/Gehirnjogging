@@ -1,5 +1,6 @@
 package com.informagics.gehirnjogging.Memory;
 
+import com.informagics.gehirnjogging.InputOutput;
 import com.informagics.gehirnjogging.R;
 import android.app.Activity;
 import android.media.MediaPlayer;
@@ -206,6 +207,7 @@ public class Memory extends Activity
     {
     	((LinearLayout)findViewById(R.id.LinearLayoutMemory3)).setBackgroundResource(R.drawable.background_memory_over);
     	over.start();
+    	InputOutput.HS_int_eintragen("memory",String.valueOf(score),this);
     }
     
     public void Refresh(View view)

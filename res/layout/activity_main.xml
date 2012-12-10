@@ -12,56 +12,56 @@
         android:layout_height="87dp" />
     
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btn_Start"
         android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_marginBottom="10dp"
         android:layout_weight="1"
         android:background="@drawable/button"
-        android:onClick="Spielauswahloeffnen"
+        android:onClick="Auswahloeffnen"
         android:text="@string/Start"
         android:textColor="#FFFFFF" />
 
     <Button
-        android:id="@+id/Button01"
+        android:id="@+id/btn_Nachschlagewerk"
         android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_marginBottom="10dp"
         android:layout_weight="1"
         android:background="@drawable/button"
-        android:onClick="Nachschlagewerkoeffnen"
+        android:onClick="Auswahloeffnen"
         android:text="@string/Nachschlagewerk"
         android:textColor="#FFFFFF" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btn_Highscore"
         android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_marginBottom="10dp"
         android:layout_weight="1"
         android:background="@drawable/button"
-        android:onClick="Highscoreoeffnen"
+        android:onClick="Auswahloeffnen"
         android:text="@string/Highscores"
         android:textColor="#FFFFFF" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/btn_Credits"
         android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_marginBottom="10dp"
         android:layout_weight="1"
         android:background="@drawable/button"
-        android:onClick="Creditsoeffnen"
+        android:onClick="Auswahloeffnen"
         android:text="@string/Credits"
         android:textColor="#FFFFFF" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_Optionen"
         android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_weight="1"
         android:background="@drawable/button"
-        android:onClick="Optionenauswahloeffnen"
+        android:onClick="Auswahloeffnen"
         android:text="@string/Optionen"
         android:textColor="#FFFFFF" />
     

@@ -8,6 +8,7 @@
     tools:context=".Highscore" >
 
     <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -60,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="54dp"
+        android:layout_marginTop="44dp"
         android:text="Kabelbinder"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -70,7 +71,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt_HS_Titel"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
         android:text="Highscore" />
 
 </RelativeLayout>

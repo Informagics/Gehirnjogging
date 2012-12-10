@@ -1,5 +1,6 @@
 package com.informagics.gehirnjogging.mathe;
 
+import com.informagics.gehirnjogging.InputOutput;
 import com.informagics.gehirnjogging.R;
 
 import android.app.Activity;
@@ -177,6 +178,7 @@ public class mathe extends Activity
     	 ((TextView)findViewById(R.id.punkte)).setText("Du hast "+String.valueOf(Punkte)+" Punkte erreicht. GOTT IST DAS SCHLECHT! *NAK NAK*");
     	 
     	 ((TextView)findViewById(R.id.txtTimeLeftMathe)).setVisibility(4);
+    	 InputOutput.HS_int_eintragen("mathe",String.valueOf(Punkte),this);
     	 
     }
 }

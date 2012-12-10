@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.Arrays;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -17,9 +19,7 @@ public class InputOutput
 	{
 	      SharedPreferences settings = con.getSharedPreferences("Highscore", 0);
 	      SharedPreferences.Editor editor = settings.edit();
-	      editor.putString(Spiel, "");
-	      editor.putString(Spiel, HS_sortieren(HS_int_auslesen(Spiel, con)+Punkte+"\n"));
-	      //editor.putString(Spiel, HS_int_auslesen(Spiel, con)+Punkte+"\n");
+	      editor.putString(Spiel, HS_sortieren(HS_int_auslesen(Spiel, con)+Punkte));
 	      editor.commit();
 	}
 	
@@ -33,22 +33,14 @@ public class InputOutput
 	{
 		String text = "";
 		String[] textarr = HS.split("\n");
-		int[] textintarr = new int[textarr.length-2];
-		for(int i=0;i<textarr.length-2;i++)
-			textintarr[i]=Integer.valueOf(textarr[i]);
+		Arrays.sort(textarr);
+		int grenze=0;
 		
-		for (int n=textarr.length-2; n>1; n--){
-			for (int i=0; i<n-1; i++){
-				if (textintarr[i] < textintarr[i+1]){
-					int a = textintarr[i];
-					textintarr[i]=textintarr[i+1];
-					textintarr[i+1]=a;
-				}
-			}
-		}
+		if(textarr.length>10)
+			grenze=1;
 		
-		for(int i=0;i<textintarr.length-1;i++)
-			text += String.valueOf(textintarr[i])+"\n";
+		for(int i=textarr.length-1;i>=grenze;i--)
+			text += textarr[i]+"\n";
 		
 		return text;
 	}
