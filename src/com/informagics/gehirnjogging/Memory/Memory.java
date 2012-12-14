@@ -23,7 +23,7 @@ public class Memory extends Activity
    
 	int Kartenfeld[][] = new int[4][4];    
 	int compare[]=new int [2];
-	int check=0,g=0,score=0,finish=0;
+	int check=0,g=0,score=0,finish=0,mode=1;
 	int reset[]=new int [2];	
 	
 	final Handler _newDelayHandler = new Handler();
@@ -207,51 +207,58 @@ public class Memory extends Activity
     {
     	((LinearLayout)findViewById(R.id.LinearLayoutMemory3)).setBackgroundResource(R.drawable.background_memory_over);
     	over.start();
+    	((ImageView)findViewById(R.id.IMVRetryMem)).setVisibility(1);
     	InputOutput.HS_int_eintragen("memory",String.valueOf(score),this);
+    	mode=0;
     }
     
     public void Refresh(View view)
     {
-    	score=0;
-    	((TextView)findViewById(R.id.txtMemoryScore)).setText("Score : " + String.valueOf(score));
-    	compare[0]=0;
-    	compare[1]=1;
-    	reset[0]=0;
-    	reset[1]=1;
-    	((LinearLayout)findViewById(R.id.LinearLayoutMemory3)).setBackgroundResource(R.drawable.background_memory);
-    	((ImageView)findViewById(R.id.c00)).setImageResource(R.drawable.mem_card_back);
-    	((ImageView)findViewById(R.id.c00)).setVisibility(1);
-    	((ImageView)findViewById(R.id.c01)).setImageResource(R.drawable.mem_card_back);
-    	((ImageView)findViewById(R.id.c01)).setVisibility(1);
-    	((ImageView)findViewById(R.id.c02)).setImageResource(R.drawable.mem_card_back);
-    	((ImageView)findViewById(R.id.c02)).setVisibility(1);
-    	((ImageView)findViewById(R.id.c03)).setImageResource(R.drawable.mem_card_back);
-    	((ImageView)findViewById(R.id.c03)).setVisibility(1);
-    	((ImageView)findViewById(R.id.c10)).setImageResource(R.drawable.mem_card_back);
-    	((ImageView)findViewById(R.id.c10)).setVisibility(1);
-    	((ImageView)findViewById(R.id.c11)).setImageResource(R.drawable.mem_card_back);
-    	((ImageView)findViewById(R.id.c11)).setVisibility(1);
-    	((ImageView)findViewById(R.id.c12)).setImageResource(R.drawable.mem_card_back);
-    	((ImageView)findViewById(R.id.c12)).setVisibility(1);
-    	((ImageView)findViewById(R.id.c13)).setImageResource(R.drawable.mem_card_back);
-    	((ImageView)findViewById(R.id.c13)).setVisibility(1);
-    	((ImageView)findViewById(R.id.c20)).setImageResource(R.drawable.mem_card_back);
-    	((ImageView)findViewById(R.id.c20)).setVisibility(1);
-    	((ImageView)findViewById(R.id.c21)).setImageResource(R.drawable.mem_card_back);
-    	((ImageView)findViewById(R.id.c21)).setVisibility(1);
-    	((ImageView)findViewById(R.id.c22)).setImageResource(R.drawable.mem_card_back);
-    	((ImageView)findViewById(R.id.c22)).setVisibility(1);
-    	((ImageView)findViewById(R.id.c23)).setImageResource(R.drawable.mem_card_back);
-    	((ImageView)findViewById(R.id.c23)).setVisibility(1);
-    	((ImageView)findViewById(R.id.c30)).setImageResource(R.drawable.mem_card_back);
-    	((ImageView)findViewById(R.id.c30)).setVisibility(1);
-    	((ImageView)findViewById(R.id.c31)).setImageResource(R.drawable.mem_card_back);
-    	((ImageView)findViewById(R.id.c31)).setVisibility(1);
-    	((ImageView)findViewById(R.id.c32)).setImageResource(R.drawable.mem_card_back);
-    	((ImageView)findViewById(R.id.c32)).setVisibility(1);
-    	((ImageView)findViewById(R.id.c33)).setImageResource(R.drawable.mem_card_back);
-    	((ImageView)findViewById(R.id.c33)).setVisibility(1);
-    	
-    	Spielfeld();
+    	if(mode==0)
+    	{
+    		score=0;
+	    	((TextView)findViewById(R.id.txtMemoryScore)).setText("Score : " + String.valueOf(score));
+	    	finish=0;
+	    	compare[0]=0;
+	    	compare[1]=1;
+	    	reset[0]=0;
+	    	reset[1]=1;
+	    	((LinearLayout)findViewById(R.id.LinearLayoutMemory3)).setBackgroundResource(R.drawable.background_memory);
+	    	((ImageView)findViewById(R.id.c00)).setImageResource(R.drawable.mem_card_back);
+	    	((ImageView)findViewById(R.id.c00)).setVisibility(1);
+	    	((ImageView)findViewById(R.id.c01)).setImageResource(R.drawable.mem_card_back);
+	    	((ImageView)findViewById(R.id.c01)).setVisibility(1);
+	    	((ImageView)findViewById(R.id.c02)).setImageResource(R.drawable.mem_card_back);
+	    	((ImageView)findViewById(R.id.c02)).setVisibility(1);
+	    	((ImageView)findViewById(R.id.c03)).setImageResource(R.drawable.mem_card_back);
+	    	((ImageView)findViewById(R.id.c03)).setVisibility(1);
+	    	((ImageView)findViewById(R.id.c10)).setImageResource(R.drawable.mem_card_back);
+	    	((ImageView)findViewById(R.id.c10)).setVisibility(1);
+	    	((ImageView)findViewById(R.id.c11)).setImageResource(R.drawable.mem_card_back);
+	    	((ImageView)findViewById(R.id.c11)).setVisibility(1);
+	    	((ImageView)findViewById(R.id.c12)).setImageResource(R.drawable.mem_card_back);
+	    	((ImageView)findViewById(R.id.c12)).setVisibility(1);
+	    	((ImageView)findViewById(R.id.c13)).setImageResource(R.drawable.mem_card_back);
+	    	((ImageView)findViewById(R.id.c13)).setVisibility(1);
+	    	((ImageView)findViewById(R.id.c20)).setImageResource(R.drawable.mem_card_back);
+	    	((ImageView)findViewById(R.id.c20)).setVisibility(1);
+	    	((ImageView)findViewById(R.id.c21)).setImageResource(R.drawable.mem_card_back);
+	    	((ImageView)findViewById(R.id.c21)).setVisibility(1);
+	    	((ImageView)findViewById(R.id.c22)).setImageResource(R.drawable.mem_card_back);
+	    	((ImageView)findViewById(R.id.c22)).setVisibility(1);
+	    	((ImageView)findViewById(R.id.c23)).setImageResource(R.drawable.mem_card_back);
+	    	((ImageView)findViewById(R.id.c23)).setVisibility(1);
+	    	((ImageView)findViewById(R.id.c30)).setImageResource(R.drawable.mem_card_back);
+	    	((ImageView)findViewById(R.id.c30)).setVisibility(1);
+	    	((ImageView)findViewById(R.id.c31)).setImageResource(R.drawable.mem_card_back);
+	    	((ImageView)findViewById(R.id.c31)).setVisibility(1);
+	    	((ImageView)findViewById(R.id.c32)).setImageResource(R.drawable.mem_card_back);
+	    	((ImageView)findViewById(R.id.c32)).setVisibility(1);
+	    	((ImageView)findViewById(R.id.c33)).setImageResource(R.drawable.mem_card_back);
+	    	((ImageView)findViewById(R.id.c33)).setVisibility(1);
+	    	((ImageView)findViewById(R.id.IMVRetryMem)).setVisibility(4);
+	    	mode=1;
+	    	Spielfeld();
+    	}
     }
 }
