@@ -70,6 +70,7 @@ public final class R {
         public static final int IMVKat2=0x7f07007d;
         public static final int IMVKat3=0x7f07007b;
         public static final int IMVPointer=0x7f07007f;
+        public static final int IMVRetryMem=0x7f07005e;
         public static final int LinearLayout1=0x7f07004f;
         public static final int LinearLayout2=0x7f070000;
         public static final int LinearLayoutMemory3=0x7f07005c;
@@ -169,7 +170,6 @@ public final class R {
         public static final int i42=0x7f070048;
         public static final int i43=0x7f070049;
         public static final int i44=0x7f07004a;
-        public static final int imageView1=0x7f07005e;
         public static final int itr0=0x7f07002d;
         public static final int itr1=0x7f070033;
         public static final int itr2=0x7f070039;
