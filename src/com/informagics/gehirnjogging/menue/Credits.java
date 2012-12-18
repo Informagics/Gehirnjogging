@@ -11,13 +11,14 @@ import android.app.Activity;
 
 public class Credits extends Activity 
 {
+	VideoView Videoview;
     @Override
     public void onCreate(Bundle savedInstanceState) 
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.credits);
         
-        VideoView Videoview = (VideoView)findViewById(R.id.videoview1);
+        Videoview = (VideoView)findViewById(R.id.videoview1);
         Uri videopfad = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.credits); //Quelle ist eigenes Projekt; Name des Projekts; Dateipfad (ohne dateiendung)
         MediaController mc = new MediaController(this); // Erstellt ein Videoplayer mit Pause-Button usw. DRINGEND NOTWENDIG!!! ohne gehts nicht
         mc.setVisibility(4);
@@ -33,4 +34,18 @@ public class Credits extends Activity
         Videoview.setVideoURI(videopfad);
         Videoview.start();
     }
+    
+    public void onPause() 
+	{
+    	super.onStop();
+    	
+    	Videoview.pause();
+	}
+
+	public void onResume() 
+	{
+		super.onResume();
+		
+		Videoview.resume();
+	}
 }

@@ -11,7 +11,7 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 30px;
-	width: 480px;
+	min-width: 20px;
 	min-height: 6px;
 	border: 1px solid #0F0;
 	background-color: #ffffff;

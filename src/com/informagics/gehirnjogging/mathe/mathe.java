@@ -21,7 +21,7 @@ public class mathe extends Activity
 	private static int Punkte = 0;
 	CountDownTimer CountDown2;
 	int countdowntime=120000;
-	int clicked=0,musikcheck=0;
+	int clicked=0,musikcheck=0,check=0;
 	MediaPlayer gameover,click,time;
 	
 	//CountDown
@@ -163,7 +163,6 @@ public class mathe extends Activity
     
     public void endGame()
     {
-    	
     	 //Alles auf dem Spielfeld auf unsichtbar stellen und inx txtAusgabe den Endpunktestand ausgeben
     	 ((Button)findViewById(R.id.m00)).setVisibility(4);
     	 ((Button)findViewById(R.id.m01)).setVisibility(4);
@@ -178,7 +177,11 @@ public class mathe extends Activity
     	 ((TextView)findViewById(R.id.punkte)).setText("Du hast "+String.valueOf(Punkte)+" Punkte erreicht. GOTT IST DAS SCHLECHT! *NAK NAK*");
     	 
     	 ((TextView)findViewById(R.id.txtTimeLeftMathe)).setVisibility(4);
-    	 InputOutput.HS_int_eintragen("mathe",String.valueOf(Punkte),this);
-    	 
+
+    	 if(check==0)
+    	 {
+    		 InputOutput.HS_int_eintragen("mathe",String.valueOf(Punkte),this);	 
+    		 check=1;
+    	 }
     }
 }

@@ -262,7 +262,8 @@ public class Quiz extends Activity
     public void stop()
     {
     	//Alles auf unsichtbar setzen & Text leeren
-   	 	
+    	if(end==0)
+    		InputOutput.HS_int_eintragen("quiz",String.valueOf(scorehigh),this);
         //Neu
     	end=1;
 		((ImageView)findViewById(R.id.IMVPointer)).setVisibility(4);
@@ -276,7 +277,6 @@ public class Quiz extends Activity
 		((TextView)findViewById(R.id.txtHighscore)).setText("");
 		((TextView)findViewById(R.id.txtCountDown)).setText("");
 		
-		InputOutput.HS_int_eintragen("quiz",String.valueOf(scorehigh),this);
 		gameover.start();
 		//GameOver Screen setzen
 		((LinearLayout)findViewById(R.id.LinearLayoutQuiz)).setBackgroundResource(R.drawable.bluescreen_gameover_quiz);  
