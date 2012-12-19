@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
+import android.view.WindowManager;
 
 public class MainActivity extends Activity
 {
@@ -20,6 +21,8 @@ public class MainActivity extends Activity
         click=MediaPlayer.create(this, R.raw.menuepunkt_auswahl);
         menuesound=MediaPlayer.create(this, R.raw.menue_sound);
         menuesound.start();
+        
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
     
     public void Auswahloeffnen(View view)

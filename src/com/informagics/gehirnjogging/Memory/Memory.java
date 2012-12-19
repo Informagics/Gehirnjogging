@@ -7,6 +7,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -43,7 +44,8 @@ public class Memory extends Activity
         click=MediaPlayer.create(this, R.raw.menuepunkt_auswahl);  
         over=MediaPlayer.create(this, R.raw.ratsel_gewonnen);  
         Spielfeld();
-
+        
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
     void Spielfeld()

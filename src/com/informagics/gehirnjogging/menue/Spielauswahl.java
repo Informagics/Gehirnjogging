@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
+import android.view.WindowManager;
 
 public class Spielauswahl extends Activity
 {
@@ -23,6 +24,8 @@ public class Spielauswahl extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.spielauswahl);
         click=MediaPlayer.create(this, R.raw.menuepunkt_auswahl);
+        
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
     
     public void Spieloeffnen(View view)

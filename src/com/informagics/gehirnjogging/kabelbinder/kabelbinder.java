@@ -7,6 +7,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +37,8 @@ public class kabelbinder extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_kabelbinder);
+		
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		
 		click=MediaPlayer.create(this, R.raw.menuepunkt_auswahl);
         gameover=MediaPlayer.create(this, R.raw.ratsel_verloren);

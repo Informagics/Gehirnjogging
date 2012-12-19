@@ -8,6 +8,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -54,6 +55,8 @@ public class mathe extends Activity
         time=MediaPlayer.create(this, R.raw.zeitleft);
         CountDown1.start();
         Rätsel(this); 
+        
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 	}
 	
 	public static int myRandom(int low, int high) // Rand. Funk.

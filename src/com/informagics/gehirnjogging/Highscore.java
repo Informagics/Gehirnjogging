@@ -2,6 +2,7 @@ package com.informagics.gehirnjogging;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.app.Activity;
 
@@ -11,6 +12,7 @@ public class Highscore extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_highscore);
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 	
 		((TextView)findViewById(R.id.txt_HS_Titel)).setText("Kabelbinder");
 		((TextView)findViewById(R.id.txt_HS)).setText(InputOutput.HS_int_auslesen("cable",this));

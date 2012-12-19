@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.WindowManager;
 import android.widget.MediaController;
 import android.widget.VideoView;
 import android.app.Activity;
@@ -33,6 +34,8 @@ public class Credits extends Activity
         Videoview.setMediaController(mc);
         Videoview.setVideoURI(videopfad);
         Videoview.start();
+        
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
     
     public void onPause() 
