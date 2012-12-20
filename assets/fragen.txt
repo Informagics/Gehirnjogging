@@ -1,6 +1,6 @@
 Studenten&Parkplatz? Gebaue&L Gebäude&A Gebäude&I
 In&welcher&Straße&befindet&sich&die&Festhalle? Gerwigstraße Robert-Gerwig-Platz Friedrichstraße
-Skripte&kaufen? Cafeteria Aula  Magazin
+Skripte&kaufen? Cafeteria Aula Magazin
 Lernplattform&der&HFU? Eclipse LaTeX FELIX
 Vorlesungspläne&der&Studiengänge? Mensa&Speiseplan Im&Language&Center HFU&Webseite->Quicklinks
 Tutor? Hausmeister Putzfrau Student&aus&höherem&Semester
