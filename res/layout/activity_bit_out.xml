@@ -3,8 +3,8 @@
     android:id="@+id/LinearLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/background_bits"
+    android:orientation="vertical"
     tools:context=".BitOutActivity" >
 
     <LinearLayout
@@ -13,18 +13,18 @@
 
         <View
             android:id="@+id/view1"
-            android:layout_width="220dp"
-            android:layout_height="70dp" />
+            android:layout_width="200dp"
+            android:layout_height="77dp" />
 
         <TextView
             android:id="@+id/Clicks"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:textSize="12sp"
-            android:textStyle="bold"
             android:text="@string/count"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/PunktezahlBitOut"
@@ -32,22 +32,35 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginLeft="5dp"
-            android:textSize="12sp"
-            android:textStyle="bold"
             android:text="@string/punktezahlbitout"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/TimerBitOut"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:textSize="12sp"
-            android:textStyle="bold"
             android:layout_marginLeft="5dp"
             android:text="@string/timerbitout"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
+        <View
+            android:id="@+id/view2"
+            android:layout_width="40dp"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/btn_BitOut_neustart"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:onClick="Levelinit"
+            android:text="Neustart" />
     </LinearLayout>
 
     <TableLayout
@@ -264,17 +277,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="clicked" />
-
         </TableRow>
     </TableLayout>
-    
-    <Button
-        android:id="@+id/btn_BitOut_neustart"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:onClick="Levelinit"
-        android:text="Neustart" />
-    
+
 </LinearLayout>

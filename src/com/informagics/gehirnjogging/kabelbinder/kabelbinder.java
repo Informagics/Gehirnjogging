@@ -118,6 +118,8 @@ public class kabelbinder extends Activity
 	{
 		if(mode == 1)
 			return;
+		
+		click.start();
 
 		int zahl=view.getId()-R.id.i00;
 		int x=zahl%6;
@@ -218,9 +220,6 @@ public class kabelbinder extends Activity
 			}
 			
 		}while(element!=3);
-		
-		//Debug
-		//((TextView)findViewById(R.id.Clickskabel)).setText("e: "+element+" x: "+x+" y: "+y+" Ra: "+rotation);
 		
 		do//Durchlauf der Map bis fehlerhafter Baustein oder zweiter Stecker Baustein erreicht wird
 		{
@@ -328,9 +327,6 @@ public class kabelbinder extends Activity
 			String str_element[]=mapwerte[x][y].split(":");
 			rotationneu=Integer.parseInt(str_element[1]);
 			element=Integer.parseInt(str_element[0]);
-			
-			//Debug
-			//((TextView)findViewById(R.id.Clickskabel)).setText(((TextView)findViewById(R.id.Clickskabel)).getText()+" | e: "+element+" x: "+x+" y: "+y+" Ra: "+rotation+" Rn: "+rotationneu);
 			
 			if(element == 3 && rotationneu%2==rotation%2 && rotationneu!=rotation)//ignorieren der Stecker
 				break;

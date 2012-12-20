@@ -16,6 +16,7 @@
 
         <Button
             android:id="@+id/btn_Mathe"
+            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="3.36"
@@ -24,6 +25,7 @@
 
         <Button
             android:id="@+id/btn_BitOut"
+            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="3.36"
@@ -32,6 +34,7 @@
 
         <Button
             android:id="@+id/btn_Cable"
+            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="3.36"
@@ -40,6 +43,7 @@
 
         <Button
             android:id="@+id/btn_Memory"
+            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="3.36"
@@ -48,6 +52,7 @@
 
         <Button
             android:id="@+id/btn_Quiz"
+            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="3.36"
