@@ -155,6 +155,8 @@ public class kabelbinder extends Activity
 	{
 		Levelinit();
 		
+		click.start();
+		
 		cd.cancel();
 		
 		cd = new CountDownTimer(240000, 1000) //setzt den Timer auf 240 Sekunden 

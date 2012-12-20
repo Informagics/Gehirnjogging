@@ -118,6 +118,8 @@ public class BitOut extends Activity {
 	{		
 		Levelinit();
 		
+		click.start();
+		
 		countdowntimer.cancel();
 		
 		countdowntimer = new CountDownTimer(240000, 1000) //setzt den Timer auf 240 Sekunden 

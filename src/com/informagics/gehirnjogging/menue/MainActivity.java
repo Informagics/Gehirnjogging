@@ -42,9 +42,6 @@ public class MainActivity extends Activity
     	case R.id.btn_Credits:
     		intent = new Intent(this, Credits.class);
     		break;
-    	case R.id.btn_Optionen:
-    		intent = new Intent(this, Optionenauswahl.class);
-    		break;
     	}
     	click.start();
     	startActivity(intent);

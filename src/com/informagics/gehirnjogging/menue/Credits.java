@@ -38,13 +38,15 @@ public class Credits extends Activity
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
     
+    @Override
     public void onPause() 
 	{
     	super.onStop();
     	
     	Videoview.pause();
 	}
-
+    
+    @Override
 	public void onResume() 
 	{
 		super.onResume();
