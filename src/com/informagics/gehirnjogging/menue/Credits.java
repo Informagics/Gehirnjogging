@@ -13,6 +13,7 @@ import android.app.Activity;
 public class Credits extends Activity 
 {
 	VideoView Videoview;
+	int currentpos=0;
     @Override
     public void onCreate(Bundle savedInstanceState) 
     {
@@ -42,15 +43,15 @@ public class Credits extends Activity
     public void onPause() 
 	{
     	super.onStop();
-    	
-    	Videoview.pause();
+    	currentpos = Videoview.getCurrentPosition();
+    	Videoview.suspend();
 	}
     
     @Override
 	public void onResume() 
 	{
 		super.onResume();
-		
+		Videoview.seekTo(currentpos);
 		Videoview.resume();
 	}
 }
