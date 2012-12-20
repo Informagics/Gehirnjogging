@@ -1,7 +1,7 @@
 Studenten&Parkplatz? Gebaue&L Gebäude&A Gebäude&I
 In&welcher&Straße&befindet&sich&die&Festhalle? Gerwigstraße Robert-Gerwig-Platz Friedrichstraße
 Skripte&kaufen? Cafeteria Aula  Magazin
-Lernplattform&der&HFU? Eclipse LaTeX Felix
+Lernplattform&der&HFU? Eclipse LaTeX FELIX
 Vorlesungspläne&der&Studiengänge? Mensa&Speiseplan Im&Language&Center HFU&Webseite->Quicklinks
 Tutor? Hausmeister Putzfrau Student&aus&höherem&Semester
 ein Byte? 16&bit 4&bit 8&bit
@@ -9,10 +9,9 @@ Zahl&"0011d"? 11 0,011 3
 Zahlensystem? C hekta Hex
 Zahlensystem? Kanonische Basis log Binär 
 Zahl&pi? 512 31,4 3,14
-AStA? Allgemainer Softwareausschuss Alle&sind&total&allein Allgemeiner&Studierendenausschuss
+AStA? Allgemainer&Softwareausschuss Alle&sind&total&allein Allgemeiner&Studierendenausschuss
 Wann&war&das&40&jährige&Jubiläum&der&Fakultät&Wirtschaftsinformatik? 2002 2010 2012
-Wo&befindet&sich&der&Standort&der&HFU&in&Furtwangen?
-Robert-Gerwig-Platz 1  Jakob-Kienzle-Str. 17 Kronenstraße 16
+Wo&befindet&sich&der&Standort&der&HFU&in&Furtwangen? Robert-Gerwig-Platz&1  Jakob-Kienzle-Str.&17 Kronenstraße&16
 Wie&viele&Fakultäten&hat&die&HFU? 15 25 9
 Wie&viele&Profesoren&gibt&es&in&der&HFU? 100 105 150
 Wie&viel&Studiengänge&hat&die&HFU&in&englischer&Sprache 5 10 6
@@ -59,7 +58,7 @@ Terminal-Befehl for printf ls
 Informatikpionier Einstein Gauss Turing
 Arithmetischer&Operator int if %
 Gleitkommazahl int char float
-8 bit Kilobit Kilobyte Byte
+8&bit Kilobit Kilobyte Byte
 TREFFER-Büro A-Bau O-Bau B-Bau
 Mathematik&Workshop Wahl Fleischer Kettern
 IN-Workshop Kettern Fleischer Wahl
