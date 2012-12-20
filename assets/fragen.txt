@@ -66,3 +66,16 @@ Semesteranzahl 5  10 7
 Anzahl&der&INside-Wochen 6 3 2
 Texteditor Terminal C vi
 Studierendenanzahl ca.&10000 ca.&2500 ca.&5500
+RAM Read&Only&Memory Raus&aus&Marburg Random&Access&Memory
+Topologien Drache Auto Ring
+512Mbit&in&Megabyte 512&Megabyte 32&Megabyte 64&Megabyte
+Kerne&in&Dualcore 4 8 2
+Datenmenge&Blu-Ray 4,78&Gigabyte 15&Gigabyte 25&Gigabyte
+USB&3.0&Datenrate 40&MByte/s 10&KByte/s 600&MByte/s
+Faktor&Mega 10&Hoch&12 10&Hoch&10 10&Hoch&6
+Faktor&Peta 10&Hoch&3 10&Hoch&20 10&Hoch&15
+Erfolgreichster&PC Windows&98 Atari&2600 Commodore&64  
+VGA Standart 240x128&Pixel 256x224&Pixel 640x480&Pixel
+AGP Augmented&Great&Person Antistatic&General&Profi Accelerated&Graphics&Port
+Erste&CD-ROM-Laufwerke 1993 2003 1985
+Erstes&Internet CERN WWW ARPANET
